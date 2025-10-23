@@ -4,6 +4,16 @@ A detailed documentation of our **robust virtualized home network** built using 
 This project demonstrates practical skills in **network design, virtualization, configurations, and security implementation**.
 
 ---
+## Academic Information
+**Team:** [Jordyn](https://github.com/Jordynns), [Marek](https://github.com/marekslapa), Adam, Shae
+
+**Course:** HNC NextGen Computing
+
+**Date:** 23/10/2025
+
+**Project Type:** Virtulized Network
+
+---
 
 ## 🗂️ Table of Contents
 
