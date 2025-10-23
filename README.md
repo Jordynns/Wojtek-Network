@@ -5,7 +5,7 @@ This project demonstrates practical skills in **network design, virtualization, 
 
 ---
 ## Academic Information
-**Team:** [Jordyn](https://github.com/Jordynns), [Marek](https://github.com/marekslapa), [Adam](https://github.com/adamc02), Shae
+**Team:** [Jordyn](https://github.com/Jordynns), [Marek](https://github.com/marekslapa), [Adam](https://github.com/adamc02), [Shae](https://github.com/Tadger65443)
 
 **Course:** HNC NextGen Computing
 
