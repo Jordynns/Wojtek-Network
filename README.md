@@ -5,7 +5,7 @@ This project demonstrates practical skills in **network design, virtualization, 
 
 ---
 ## Academic Information
-**Team:** [Jordyn](https://github.com/Jordynns), [Marek](https://github.com/marekslapa), Adam, Shae
+**Team:** [Jordyn](https://github.com/Jordynns), [Marek](https://github.com/marekslapa), [Adam](https://github.com/adamc02), Shae
 
 **Course:** HNC NextGen Computing
 
@@ -31,7 +31,7 @@ This project demonstrates practical skills in **network design, virtualization, 
 
 ---
 
-## Overview 
+## 📘 Overview 
 
 Placeholder
 
@@ -43,60 +43,60 @@ Placeholder
 
 ---
 
-## Objectives
+## 💡 Objectives
 
 Placeholder
 
 ---
 
-## Network Topology
+## 🧩 Network Topology
 
 Placeholder
 
 ---
 
-## Hardware & Virtualization Setup
+## 🖥️ Hardware & Virtualization Setup
 
 Placeholder
 
 ---
 
-## Virtual Machines
+## 🧱 Virtual Machines
 
 Placeholder
 
 ---
 
-## Network Configuration
+## ⚙️ Network Configuration
 
 Placeholder
 
 ---
 
-## Security Measures
+## 🛡️ Security Measures
 
 Placeholder
 
 ---
 
-## Testing & Monitoring
+## 👁️ Testing & Monitoring
 
 Placeholder
 
 ---
 
-## Challenges & Solutions
+## 🪨 Challenges & Solutions
 
 Placeholder
 
 ---
 
-## Future Improvements
+## ✅ Future Improvements
 
 Placeholder
 
 ---
 
-## References
+## 📚 References
 
 Placeholder
