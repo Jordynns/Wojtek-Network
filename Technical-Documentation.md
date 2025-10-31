@@ -16,7 +16,8 @@
    - ***Routing***  
    - ***Firewall***
 5. [**Implementation**](#implementation)
-   - ***Hyper-V Setup***  
+   - [***Hyper V Setup***](#hyper-v-setup)
+      - [***Virtual Switches***](#virtual-switches)
    - ***Debian 13 Client Setup***  
    - ***pfSense Setup***  
      - ***Configuring DNS/DHCP***  
@@ -90,7 +91,17 @@
 ## Implementation
 
 ### Hyper-V Setup
-*(Content goes here)*
+*Placeholder Description*
+
+#### **Virtual Switches**:
+
+*Create TWO virtual switches*
+   - Wide Area Network (WAN)
+     - Name: WAN
+     - Connection Type: External (Select Host NIC)
+   - Local Area Network (LAN)
+     - Name: LAN
+     - Connection Type: Internal
 
 ### Debian 13 Client Setup
 *(Content goes here)*
