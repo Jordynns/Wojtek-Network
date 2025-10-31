@@ -2,7 +2,7 @@
 
 ## 📒 Table of Contents
 
-1. [Summary](#summary)
+1. [Summary](#-summary)
 2. Introduction
    - Overview of Virtulization
    - Objectives of SomethingNetwork
@@ -33,19 +33,19 @@
     - Create VM Snapshots / Checkpoints
     - Updating Devices
     - Network Backup / Recovery
-11. [Troubleshooting](#troubleshooting)
+11. [Troubleshooting](#-troubleshooting)
     - Common Issues
-12. [Conclusion](#conclusion)
+12. [Conclusion](#-conclusion)
     - Achievements
     - Lessons Learned
     - Future Improvements
-14. [Appendices](#appendices)
+14. [Appendices](#-appendices)
     - Full Configurations
     - References
 
 ---
 
-## 🗒️Summary
+## 🗒️ Summary
 
 ---
 
