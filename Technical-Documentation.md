@@ -1,6 +1,23 @@
+<div align="center">
+   
 # 🧠 SomethingNetwork Technical Documentation
 
+</div>
+
+
+<div align="center">
+   
+![test](logo.png)
+
+</div>
+
+<div align="center">
+   
 ## 📒 Table of Contents
+
+</div>
+
+
 
 1. [**Summary**](#summary)
 2. [**Introduction**](#introduction)
@@ -45,11 +62,19 @@
 
 ---
 
+<div align="center">
+   
 ## Summary
+
+</div>
 
 ---
 
+<div align="center">
+   
 ## Introduction
+
+</div>
 
 ### Overview of Virtualization
 *(Content goes here)*
@@ -69,7 +94,12 @@
 
 ---
 
+<div align="center">
+
 ## Network Design
+
+</div>
+
 
 ### Logical Topology Diagram
 *(Content goes here)*
@@ -87,21 +117,22 @@
 *(Content goes here)*
 
 ---
+<div align="center">
 
 ## Implementation
 
-### Hyper-V Setup
+</div>
+
+### _Hyper-V Setup_
 *Placeholder Description*
 
 #### **Virtual Switches**:
-
-*Create TWO virtual switches*
-   - Wide Area Network (WAN)
-     - Name: WAN
-     - Connection Type: External (Select Host NIC)
+   - **Wide Area Network (WAN)**
+     - **Name**: *WAN*
+     - **Connection Type**: *External (Select Host NIC)*
    - Local Area Network (LAN)
-     - Name: LAN
-     - Connection Type: Internal
+     - **Name**: *LAN*
+     - **Connection Type**: *Internal*
 
 ### Debian 13 Client Setup
 *(Content goes here)*
@@ -115,7 +146,11 @@
 
 ---
 
+<div align="center">
+
 ## Testing & Validation
+
+</div>
 
 ### Connectivity (Ping)
 *(Content goes here)*
@@ -133,8 +168,11 @@
 *(Content goes here)*
 
 ---
+<div align="center">
 
 ## Maintenance & Backup
+
+</div>
 
 ### Create VM Snapshots / Checkpoints
 *(Content goes here)*
@@ -147,14 +185,22 @@
 
 ---
 
+<div align="center">
+
 ## Troubleshooting
+
+</div>
 
 ### Common Issues
 *(Content goes here)*
 
 ---
 
+<div align="center">
+
 ## Conclusion
+
+</div>
 
 ### Achievements
 *(Content goes here)*
@@ -167,7 +213,11 @@
 
 ---
 
+<div align="center">
+
 ## Appendices
+
+</div>
 
 ### Full Configurations
 *(Content goes here)*
