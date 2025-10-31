@@ -1,6 +1,4 @@
-# SomethingNetwork Technical Documentation
-
----
+# 🧠 [SomethingNetwork] Technical Documentation
 
 ## 📒 Table of Contents
 
@@ -31,7 +29,7 @@
            - Custom Resolution
        - DHCP
    -  
-9. Maintence & Backup
+9. Maintenece & Backup
     - Create VM Snapshots / Checkpoints
     - Updating Devices
     - Network Backup / Recovery
@@ -48,3 +46,35 @@
 ---
 
 ## 🗒️Summary
+
+---
+
+## 🖥️ System Requirements
+
+---
+
+## 🕸️ Network Design
+
+--- 
+
+## 🛠️ Implementation
+
+---
+
+## 📝 Testing & Validation
+
+---
+
+## 🏗️ Maintenence & Backup
+
+---
+
+## ❌ Troubleshooting
+
+--- 
+
+## 📋 Conclusion
+
+---
+
+## 📃 Appendices 
