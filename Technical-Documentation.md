@@ -33,13 +33,13 @@
     - Create VM Snapshots / Checkpoints
     - Updating Devices
     - Network Backup / Recovery
-11. Troubleshooting
+11. [Troubleshooting](#troubleshooting)
     - Common Issues
-12. Conclusion
+12. [Conclusion](#conclusion)
     - Achievements
     - Lessons Learned
     - Future Improvements
-14. Appendices
+14. [Appendices](#appendices)
     - Full Configurations
     - References
 
