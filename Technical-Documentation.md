@@ -11,43 +11,43 @@
 
 1. [**Summary**](#summary)
 2. [**Introduction**](#introduction)
-   - *Overview of Virtualization*
-   - *Objectives of SomethingNetwork*
+   - ***Overview of Virtualization***
+   - ***Objectives of SomethingNetwork***
 3. [**System Requirements**](#system-requirements)
-   - *Hardware Specifications*
-   - *Software Used (OS, Hypervisors, Tools)*
+   - ***Hardware Specifications***
+   - ***Software Used (OS, Hypervisors, Tools)***
 4. [**Network Design**](#network-design)
-   - *Logical Topology Diagram*
-   - *IP Addressing Scheme*
-   - *VLAN Configuration*
-   - *Routing*
-   - *Firewall*
+   - ***Logical Topology Diagram***
+   - ***IP Addressing Scheme***
+   - ***VLAN Configuration***
+   - ***Routing***
+   - ***Firewall***
 5. [**Implementation**](#implementation)
-   - [*Hyper-V Setup*](#hyper-v-setup)
-     - [*Virtual Switches*](#virtual-switches)
-   - *Debian 13 Client Setup*
-   - *pfSense Setup*
-   - *Pi-Hole Setup*
+   - [***Hyper-V Setup***](#hyper-v-setup)
+     - [***Virtual Switches***](#virtual-switches)
+   - ***Debian 13 Client Setup***
+   - ***pfSense Setup***
+   - ***Pi-Hole Setup***
 6. [**Testing & Validation**](#testing--validation)
-   - *Connectivity (Ping)*
-   - *Services*
-     - *DNS*
-       - *Filtering (Pi-Hole)*
-       - *Custom Resolution*
-     - *DHCP*
+   - ***Connectivity (Ping)***
+   - ***Services***
+     - ***DNS***
+       - ***Filtering (Pi-Hole)***
+       - ***Custom Resolution***
+     - ***DHCP***
 7. [**Maintenance & Backup**](#maintenance--backup)
-   - *Create VM Snapshots / Checkpoints*
-   - *Updating Devices*
-   - *Network Backup / Recovery*
+   - ***Create VM Snapshots / Checkpoints***
+   - ***Updating Devices***
+   - ***Network Backup / Recovery***
 8. [**Troubleshooting**](#troubleshooting)
-   - *Common Issues*
+   - ***Common Issues***
 9. [**Conclusion**](#conclusion)
-   - *Achievements*
-   - *Lessons Learned*
-   - *Future Improvements*
+   - ***Achievements***
+   - ***Lessons Learned***
+   - ***Future Improvements***
 10. [**Appendices**](#appendices)
-    - *Full Configurations*
-    - *References*
+    - ***Full Configurations***
+    - ***References***
 
 <hr/>
 
