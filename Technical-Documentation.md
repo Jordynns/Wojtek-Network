@@ -81,7 +81,7 @@
 
 ⠀
 
-### Hardware Specifications
+## Hardware Specifications
 *(Placeholder Description)*
 
 #### Minimum Specifications
@@ -99,7 +99,7 @@
 - GPU:
 - RAM:
 
-### Software Used (OS, Hypervisors, Tools)
+## Software Used (OS, Hypervisors, Tools)
 *(Placeholder Description)*
 
 #### Operating Systems
@@ -150,7 +150,7 @@
 
 ⠀
 
-### Hyper-V Setup
+## Hyper-V Setup
 *(Placeholder Description)*
 
 #### Virtual Switches
@@ -161,15 +161,15 @@
   - **Name:** *LAN*
   - **Connection Type:** *Internal*
 
-### Debian 13 Client Setup
+## Debian 13 Client Setup
 *(Content goes here)*
 
-### pfSense Setup
+## pfSense Setup
 
-#### Configuring DNS/DHCP
+### Configuring DNS/DHCP
 *(Content goes here)*
 
-### Pi-Hole Setup
+## Pi-Hole Setup
 *(Content goes here)*
 
 <hr/>
@@ -180,20 +180,21 @@
 
 ⠀
 
-### Connectivity (Ping)
+## Connectivity (Ping)
 *(Content goes here)*
 
-### Services
+## Services
+*(Placeholder Description)*
 
-#### DNS
+### DNS
 
-##### Filtering (Pi-Hole)
+### Filtering (Pi-Hole)
 *(Content goes here)*
 
-##### Custom Resolution
+### Custom Resolution
 *(Content goes here)*
 
-#### DHCP
+### DHCP
 *(Content goes here)*
 
 <hr/>
