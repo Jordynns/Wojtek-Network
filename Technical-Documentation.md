@@ -81,13 +81,45 @@
 
 ⠀
 
-## Hardware Specifications
-*(Content goes here)*
+### Hardware Specifications
+*(Placeholder Description)*
 
-## Software Used (OS, Hypervisors, Tools)
-*(Content goes here)*
+#### Minimum Specifications
+- CPU:
+- GPU:
+- RAM:
 
-<hr/>
+#### Recommended Specifications
+- CPU:
+- GPU:
+- RAM:
+
+#### Our Specifications
+- CPU:
+- GPU:
+- RAM:
+
+### Software Used (OS, Hypervisors, Tools)
+*(Placeholder Description)*
+
+#### Operating Systems
+- [**Linux**](https://www.linux.org/)
+    - [***Debian 13 "Trixie"***](https://www.debian.org/download)
+    - [***pfSense***](https://www.pfsense.org/)
+- [**Windows**](https://www.microsoft.com/en-us/windows/?r=1)
+    - [***Windows 11***](https://www.microsoft.com/en-us/software-download/windows11)
+ 
+#### Hypervisors
+- [**Hyper-V**](https://en.wikipedia.org/wiki/Hyper-V)
+
+#### Tools
+- [**Search Engines**](https://en.wikipedia.org/wiki/Search_engine)
+    - [***DuckDuckGo***](https://duckduckgo.com/)
+    - [***Firefox***](https://www.firefox.com/en-US/)
+    - [***Brave***](https://brave.com/)
+- [**GitHub**](https://github.com/)
+- [**Discord**](https://discord.com/)
+- [**Teams**](https://teams.live.com/free/)
 
 <div align="center" id="network-design">
   <h1>Network Design</h1>
