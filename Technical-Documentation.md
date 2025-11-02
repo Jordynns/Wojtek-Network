@@ -28,8 +28,10 @@
 5. [**Implementation**](#implementation)
    - [***Hyper-V Setup***](#hyper-v-setup)
      - [***Virtual Switches***](#virtual-switches)
-   - ***Debian 13 Client Setup***
-   - ***pfSense Setup***
+   - [***Debian 13 Client Setup***](#debian-13-client-setup)
+       - [***Video Guide***](#client-video-guide)
+   - [***pfSense Setup***](#pfsense-setup)
+       - [***Video Guide***](#pfsense-video-guide)
    - ***Pi-Hole Setup***
 6. [**Testing & Validation**](#testing--validation)
    - ***Connectivity (Ping)***
@@ -167,7 +169,13 @@
 ## Debian 13 Client Setup
 *(Content goes here)*
 
+#### Client Video Guide
+[Video Guide](https://www.youtube.com/watch?v=AdMjQk7OZYQ)
+
 ## pfSense Setup
+
+#### pfSense Video Guide
+[Video Guide](https://www.youtube.com/watch?v=c7Hl1ILJIPo)
 
 ### Configuring DNS/DHCP
 *(Content goes here)*
