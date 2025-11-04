@@ -26,13 +26,14 @@
    - ***Routing***
    - ***Firewall***
 5. [**Implementation**](#implementation)
-   - [***Hyper-V Setup***](#hyper-v-setup)
+   - [***Hyper-V***](#hyper-v-setup)
      - [***Virtual Switches***](#virtual-switches)
-   - [***Debian 13 Client Setup***](#debian-13-client-setup)
+   - [***Debian 13 Client***](#debian-13-client-setup)
        - [***Video Guide***](#client-video-guide)
-   - [***pfSense Setup***](#pfsense-setup)
+   - [***pfSense***](#pfsense-setup)
        - [***Video Guide***](#pfsense-video-guide)
-   - ***Pi-Hole Setup***
+   - [***Docker / Portainer***](#portainer-setup)
+       - ***Pi-Hole***
 6. [**Testing & Validation**](#testing--validation)
    - ***Connectivity (Ping)***
    - ***Services***
@@ -111,6 +112,7 @@
 - [**Linux**](https://www.linux.org/)
     - [***Debian 13 "Trixie"***](https://www.debian.org/download)
     - [***pfSense***](https://www.pfsense.org/)
+    - [***Ubuntu Server***](https://ubuntu.com/download/server)
 - [**Windows**](https://www.microsoft.com/en-us/windows/?r=1)
     - [***Windows 11***](https://www.microsoft.com/en-us/software-download/windows11)
  
@@ -177,8 +179,61 @@
 #### pfSense Video Guide
 [Video Guide](https://www.youtube.com/watch?v=c7Hl1ILJIPo)
 
+## Ubuntu Server Setup
+
+#### Ubuntu Server Video Guide
+
 ### Configuring DNS/DHCP
 *(Content goes here)*
+
+## Portainer Setup
+1) Firstly update the machine:
+```
+sudo apt update && sudo apt upgrade -y
+```
+
+2) Install these following packages:
+```
+sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+```
+
+3) Set GPG Keyrings for Ubuntu and update sources list:
+```
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+
+4) Update the packages then install Docker package:
+``` 
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io -y
+```
+
+5) Enable and Restart Docker services:
+```
+sudo systemctl enable docker
+sudo systemctl start docker
+```
+
+6) Run the following command to check if Docker installed correctly:
+```
+docker --version
+```
+
+7) Once Docker is installed properly, create a volume for Portainer data: 
+```
+docker volume create portainer_data
+```
+
+8) Then run the Docker container: 
+```
+docker run -d -p 8000:8000 -p 9443:9443 \
+    --name=portainer \
+    --restart=always \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v portainer_data:/data \
+    portainer/portainer-ce:latest
+```
 
 ## Pi-Hole Setup
 *(Content goes here)*
