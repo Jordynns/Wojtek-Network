@@ -194,7 +194,35 @@ curl -fsSL https://raw.githubusercontent.com/Jordynns/SomethingNetwork/refs/head
 
 
 ## Pi-Hole Setup
-*(Content goes here)*
+Run this script to create a slice of network for Docker container services:
+```
+curl -fsSL https://raw.githubusercontent.com/Jordynns/SomethingNetwork/refs/heads/main/scripts/docker-network.sh | bash
+```
+
+After you have setup the network, head to Portainer in the WebGUI and create a stack. Name the stack "pihole" and copy the Docker compose YAML:
+```
+version: "3.9"
+networks:
+  pihole_ipvlan:
+    external: true
+
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    restart: unless-stopped
+    environment:
+      TZ: "Etc/UTC"
+      WEBPASSWORD: "changeme"
+    volumes:
+      - /docker/pihole/etc-pihole:/etc/pihole
+      - /docker/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
+    networks:
+      pihole_ipvlan:
+        ipv4_address: 192.168.1.2
+```
+
+Change the password, this will create pihole on ip 192.168.1.2, To access the WebGUI head to https://192.168.1.2/admin
 
 <hr/>
 
