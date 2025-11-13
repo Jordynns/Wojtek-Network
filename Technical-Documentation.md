@@ -205,6 +205,7 @@ networks:
 services:
   pihole:
     container_name: pihole
+    hostname: pihole
     image: pihole/pihole:latest
     restart: unless-stopped
     environment:
