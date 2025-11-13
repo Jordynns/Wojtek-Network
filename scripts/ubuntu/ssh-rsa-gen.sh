@@ -35,3 +35,5 @@ echo "Public key:  ${KEY_PATH}.pub"
 echo "Comment:     $KEY_COMMENT"
 
 echo "============================="
+
+rm -- "$0"
