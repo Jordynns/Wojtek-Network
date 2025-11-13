@@ -23,6 +23,6 @@ echo "✅ Installed Successfully"
 
 echo "Container: Portainer"
 echo "IP: $(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'):9443"
-echo "Status: $(docker inspect -f '{{.State.Status}}' portainer)"
+echo "Status: $(sudo docker inspect -f '{{.State.Status}}' portainer)"
 
 echo "=================================="
