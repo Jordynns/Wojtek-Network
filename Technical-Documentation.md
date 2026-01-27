@@ -32,7 +32,8 @@
    - [***pfSense***](#pfsense-setup)
        - [***Video Guide***](#pfsense-video-guide)
    - [***Docker / Portainer***](#portainer-setup)
-       - ***Pi-Hole***
+       - [***Pi-Hole***](#pihole-setup)
+       - [***Jellyfin Setup***](#jellyfin-setup)
 6. [**Testing & Validation**](#testing--validation)
    - ***Connectivity (Ping)***
    - ***Services***
@@ -229,7 +230,10 @@ services:
       pihole_ipvlan:
         ipv4_address: 192.168.1.2
 ```
-This will create pihole on ip 192.168.1.2, To access the WebGUI head to https://192.168.1.2/admin
+This will create pihole on ip 192.168.1.2, To access the WebGUI head to:
+```
+https://192.168.1.2/admin
+```
 
 To update or change the password use the following command:
 ```
@@ -265,6 +269,11 @@ services:
     # Optional - alternative address used for autodiscovery
     extra_hosts:
       - 'host.docker.internal:host-gateway'
+```
+
+This will create a media server which can be accessed locally from the IP:
+```
+http://192.168.1.3:8096
 ```
 
 <hr/>
