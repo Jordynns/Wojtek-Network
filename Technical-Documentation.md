@@ -202,7 +202,7 @@ chmod +x docker.sh
 ```
 
 
-## Pi-Hole Setup
+## PiHole Setup
 Run this script to create a slice of network for Docker container services:
 ```
 curl -fsSL https://raw.githubusercontent.com/Jordynns/SomethingNetwork/refs/heads/main/scripts/docker-network.sh | bash
