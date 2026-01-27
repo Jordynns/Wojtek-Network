@@ -180,7 +180,9 @@
 #### Generating RSA Keys (Passwordless Login)
 Run ssh-rsa-gen.sh in your Management machine e.g., Debian 13 GUI
 ```
-curl -fsSL -o ssh-rsa-gen.sh https://raw.githubusercontent.com/Jordynns/SomethingNetwork/refs/heads/main/scripts/ubuntu/ssh-rsa-gen.sh
+curl -fsSL -o ssh-rsa-gen.sh \
+https://raw.githubusercontent.com/Jordynns/SomethingNetwork/main/scripts/ubuntu/ssh-rsa-gen.sh
+
 chmod +x ssh-rsa-gen.sh
 ./ssh-rsa-gen.sh
 ```
