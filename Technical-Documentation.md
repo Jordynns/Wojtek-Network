@@ -226,7 +226,10 @@ curl -fsSL -o docker.sh https://raw.githubusercontent.com/Jordynns/SomethingNetw
 chmod +x docker.sh
 ./docker.sh
 ```
-
+Navigate to the IP below to access the Portainer WEB-GUI:
+```
+https://192.168.1.3:9443/
+```
 
 ## PiHole Setup
 Run this script to create a slice of network for Docker container services:
