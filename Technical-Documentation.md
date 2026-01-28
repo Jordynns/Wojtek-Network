@@ -173,6 +173,15 @@
 
 ## pfSense Setup
 
+Hyper-V Settings:
+- Generation: Generation 2
+- Memory: 2048MB (Static)
+- NIC: WAN (Public)
+- Storage: 8gb (Static)
+- ISO: pfSense-CE-2.7.2-RELEASE-amd64.iso
+- Processor: 1
+- Security: Secure Boot (Off)
+
 #### pfSense Video Guide
 [Video Guide](https://www.youtube.com/watch?v=c7Hl1ILJIPo)
 
