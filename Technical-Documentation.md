@@ -311,6 +311,11 @@ UDP:
 UDP: http://192.168.1.3:7359
 ```
 
+Create a script: (ADMIN)
+```
+sudo chown -R 1000:1000 /home/jellyfin
+sudo chmod -R 775 /home/jellyfin
+```
 <hr/>
 
 <div align="center" id="testing--validation">
