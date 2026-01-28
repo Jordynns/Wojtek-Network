@@ -1,4 +1,4 @@
-# 🏠 SomethingNetwork A Robust Home Network Virtualization Project (Hyper-V)
+# 🏠 Wojtek Network A Robust Home Network Virtualization Project (Hyper-V)
 
 A detailed documentation of our **robust virtualized home network** built using **Microsoft Hyper-V**.  
 This project demonstrates practical skills in **network design, virtualization, configurations, and security implementation**.
