@@ -166,7 +166,15 @@
   - **Connection Type:** *Internal*
 
 ## Debian 13 Client Setup
-*(Content goes here)*
+
+Hyper-V Settings:
+- Generation: Generation 2
+- Memory: 2048MB (Static)
+- NIC: LAN (Internal)
+- Storage: 12gb (Static)
+- ISO: debian-13.1.0-amd64-netinst.iso
+- Processor: 2
+- Security: Secure Boot (Off)
 
 #### Client Video Guide
 [Video Guide](https://www.youtube.com/watch?v=AdMjQk7OZYQ)
@@ -186,6 +194,15 @@ Hyper-V Settings:
 [Video Guide](https://www.youtube.com/watch?v=c7Hl1ILJIPo)
 
 ## Ubuntu Server Setup
+
+Hyper-V Settings:
+- Generation: Generation 2
+- Memory: 4096MB (Static)
+- NIC: LAN (Internal)
+- Storage: 32gb+ (Static)
+- ISO: ubuntu-24.04.3-live-server-amd64.iso
+- Processor: 6
+- Security: Secure Boot (Off)
 
 #### Generating RSA Keys (Passwordless Login)
 Run ssh-rsa-gen.sh in your Management machine e.g., Debian 13 GUI
