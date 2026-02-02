@@ -256,11 +256,11 @@ services:
       - /docker/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
     networks:
       pihole_ipvlan:
-        ipv4_address: 192.168.1.2
+        ipv4_address: 192.168.1.3
 ```
 This will create pihole on ip 192.168.1.2, To access the WebGUI head to:
 ```
-https://192.168.1.2/admin
+https://192.168.1.3/admin
 ```
 
 To update or change the password use the following command:
@@ -274,29 +274,23 @@ On the Ubuntu Server, create a main "jellyfin" directory, within that Directory 
 
 Head into Portainer and create a new stack named "jellyfin" and paste the YAML:
 ```
+version: "3.8"
 services:
   jellyfin:
     image: jellyfin/jellyfin
     container_name: jellyfin
     user: 1000:1000
-    ports:
-      - 8096:8096/tcp
-      - 7359:7359/udp
+    networks:
+      jellyfin_ipvlan:
+        ipv4_address: 192.168.1.4
     volumes:
-      - type: bind
-        source: /home/jellyfin/cache
-        target: /cache
-      - type: bind
-        source: /home/jellyfin/config
-        target: /config
-      - type: bind
-        source: /home/jellyfin/media
-        target: /media
-        read_only: true
-    restart: 'unless-stopped'
-    # Optional - alternative address used for autodiscovery
-    extra_hosts:
-      - 'host.docker.internal:host-gateway'
+      - /home/jellyfin/cache:/cache
+      - /home/jellyfin/config:/config
+      - /home/jellyfin/media:/media:ro
+    restart: unless-stopped
+networks:
+  jellyfin_ipvlan:
+    external: true
 ```
 
 This will create a media server which can be accessed locally from the IP(s):
