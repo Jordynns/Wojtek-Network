@@ -31,7 +31,7 @@
        - [***Video Guide***](#client-video-guide)
    - [***pfSense***](#pfsense-setup)
        - [***Video Guide***](#pfsense-video-guide)
-   - [***Docker / Portainer***](#portainer-setup)
+   - [***Docker / Portainer***](#docker-/-portainer-setup)
        - [***Pi-Hole***](#pihole-setup)
        - [***Jellyfin Setup***](#jellyfin-setup)
 6. [**Testing & Validation**](#testing--validation)
@@ -219,7 +219,7 @@ chmod +x ssh-rsa-gen.sh
 ## Configuring DNS/DHCP
 *(Content goes here)*
 
-## Portainer Setup
+## Docker / Portainer Setup
 Run the docker.sh install script while SSH into Ubuntu server:
 ```
 curl -fsSL -o docker.sh https://raw.githubusercontent.com/Jordynns/SomethingNetwork/refs/heads/main/scripts/docker.sh | bash
@@ -231,19 +231,18 @@ Navigate to the IP below to access the Portainer WEB-GUI:
 https://192.168.1.3:9443/
 ```
 
-## PiHole Setup
-Run this script to create a slice of network for Docker container services:
+Run this script to create a slices of the network for Docker container services:
 ```
-curl -fsSL https://raw.githubusercontent.com/Jordynns/SomethingNetwork/refs/heads/main/scripts/docker-network.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/scripts/docker-network-creation.sh | bash
 ```
 
-After you have setup the network, head to Portainer in the WebGUI and create a stack. Name the stack "pihole" and copy the Docker compose YAML:
+## PiHole Setup
+Head to Portainer in the WebGUI and create a stack. Name the stack "pihole" and copy the Docker compose YAML:
 ```
 version: "3.9"
 networks:
   pihole_ipvlan:
     external: true
-
 services:
   pihole:
     container_name: pihole
