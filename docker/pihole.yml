@@ -1,19 +1,19 @@
 version: "3.9"
-networks:
-  pihole_ipvlan:
-    external: true
 
 services:
   pihole:
     container_name: pihole
     image: pihole/pihole:latest
     restart: unless-stopped
+        networks:
+          pihole_ipvlan:
+            ipv4_address: 192.168.1.2
     environment:
       TZ: "Etc/UTC"
       WEBPASSWORD: "changeme"
     volumes:
       - /docker/pihole/etc-pihole:/etc/pihole
       - /docker/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
-    networks:
-      pihole_ipvlan:
-        ipv4_address: 192.168.1.2
+networks:
+  pihole_ipvlan:
+    external: true
