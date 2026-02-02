@@ -297,11 +297,11 @@ This will create a media server which can be accessed locally from the IP(s):
 
 TCP:
 ```
-http://192.168.1.3:8096
+http://192.168.1.4:8096
 ```
 UDP:
 ```
-UDP: http://192.168.1.3:7359
+UDP: http://192.168.1.4:7359
 ```
 
 Create a script: (ADMIN)
