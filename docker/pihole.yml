@@ -11,6 +11,9 @@ services:
     environment:
       TZ: "Etc/UTC"
       WEBPASSWORD: "Pa$$w0rd"
+      FTLCONF_LOCAL_IPV4: "192.168.10.2"
+      DNSMASQ_LISTENING: "all"
+      QUERY_LOGGING: "true"
     volumes:
       - /docker/pihole/etc-pihole:/etc/pihole
       - /docker/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
