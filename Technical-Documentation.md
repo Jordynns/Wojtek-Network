@@ -240,23 +240,27 @@ curl -fsSL https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/
 Head to Portainer in the WebGUI and create a stack. Name the stack "pihole" and copy the Docker compose YAML:
 ```
 version: "3.9"
-networks:
-  pihole_ipvlan:
-    external: true
+
 services:
   pihole:
     container_name: pihole
-    hostname: pihole
     image: pihole/pihole:latest
     restart: unless-stopped
+    networks:
+      ip_vlan:
+        ipv4_address: 192.168.1.2
     environment:
       TZ: "Etc/UTC"
+      WEBPASSWORD: "changeme"
     volumes:
       - /docker/pihole/etc-pihole:/etc/pihole
       - /docker/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
-    networks:
-      pihole_ipvlan:
-        ipv4_address: 192.168.1.3
+    ports:
+      - "80:80"
+      - "443:443"
+networks:
+  ip_vlan:
+    external: true
 ```
 This will create pihole on ip 192.168.1.2, To access the WebGUI head to:
 ```
