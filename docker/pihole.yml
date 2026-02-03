@@ -5,15 +5,18 @@ services:
     container_name: pihole
     image: pihole/pihole:latest
     restart: unless-stopped
-        networks:
-          pihole_ipvlan:
-            ipv4_address: 192.168.1.2
+    networks:
+      ip_vlan:
+        ipv4_address: 192.168.1.2
     environment:
       TZ: "Etc/UTC"
       WEBPASSWORD: "changeme"
     volumes:
       - /docker/pihole/etc-pihole:/etc/pihole
       - /docker/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
+    ports:
+      - "80:80"
+      - "443:443"
 networks:
-  pihole_ipvlan:
+  ip_vlan:
     external: true
