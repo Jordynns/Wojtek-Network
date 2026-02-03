@@ -1,19 +1,18 @@
-version: "3.9"
-
 services:
   caddy:
-    image: caddy:2
+    image: caddy:latest
     container_name: caddy
     restart: unless-stopped
     networks:
-      caddy_ipvlan:
-        ipv4_address: 192.168.1.20
+      ip_vlan:
+        ipv4_address: 192.168.10.20
+    ports:
+      - "80:80"
+      - "443:443"
     volumes:
-      - /home/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
-      - /home/caddy/data:/data
-      - /home/caddy/config:/config
-    environment:
-      - TZ=UTC
+      - /home/Caddy/Caddyfile:/etc/caddy/Caddyfile
+      - /home/Caddy/data:/data
+      - /home/Caddy/config:/config
 networks:
-  caddy_ipvlan:
+  ip_vlan:
     external: true
