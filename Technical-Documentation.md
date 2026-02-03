@@ -234,7 +234,7 @@ sudo nano /etc/samba/smb.conf
 
 and add the following:
 ```
-[Shared]
+[NAS]
   path = /srv/storage
      browseable = yes
      read only = no
