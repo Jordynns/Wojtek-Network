@@ -6,7 +6,7 @@ services:
     container_name: jellyfin
     user: 1000:1000
     networks:
-      jellyfin_ipvlan:
+      ip_vlan:
         ipv4_address: 192.168.1.4
     volumes:
       - /home/jellyfin/cache:/cache
@@ -14,5 +14,5 @@ services:
       - /home/jellyfin/media:/media:ro
     restart: unless-stopped
 networks:
-  jellyfin_ipvlan:
+  ip_vlan:
     external: true
