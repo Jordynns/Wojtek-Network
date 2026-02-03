@@ -193,6 +193,11 @@ Hyper-V Settings:
 #### pfSense Video Guide
 [Video Guide](https://www.youtube.com/watch?v=c7Hl1ILJIPo)
 
+VLAN Setup: No
+WAN: hn0
+LAN: hn1
+Assign Interfaces: 
+
 ## Ubuntu Server Setup
 
 Hyper-V Settings:
@@ -204,14 +209,44 @@ Hyper-V Settings:
 - Processor: 6
 - Security: Secure Boot (Off)
 
-#### Generating RSA Keys (Passwordless Login)
-Run ssh-rsa-gen.sh in your Management machine e.g., Debian 13 GUI
+Post Install (GUI):
 ```
-curl -fsSL -o ssh-rsa-gen.sh \
-https://raw.githubusercontent.com/Jordynns/SomethingNetwork/main/scripts/ubuntu/ssh-rsa-gen.sh
+sudo apt install xubuntu-desktop
+sudo apt install cockpit
+```
 
-chmod +x ssh-rsa-gen.sh
-./ssh-rsa-gen.sh
+Navigate to 192.168.10.3:9090, mount NAS drive to /srv/storage location in ext4
+
+Run:
+```
+sudo shown -R 1000:1000 /srv/storage
+sudo chown -R 775 /srv/storage
+```
+
+```
+sudo apt install samba
+```
+
+Run:
+```
+sudo nano /etc/samba/smb.conf
+```
+
+and add the following:
+```
+[Shared]
+  path = /srv/storage
+     browseable = yes
+     read only = no
+     guest ok = no
+     valid users = root
+     force user = root
+```
+
+Then Run:
+```
+sudo smbpasswd -a root
+sudo smbpasswd -e root
 ```
 
 #### Ubuntu Server Video Guide
