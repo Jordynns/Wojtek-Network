@@ -7,10 +7,10 @@ services:
     restart: unless-stopped
     networks:
       ip_vlan:
-        ipv4_address: 192.168.1.2
+        ipv4_address: 192.168.10.2
     environment:
       TZ: "Etc/UTC"
-      WEBPASSWORD: "changeme"
+      WEBPASSWORD: "Pa$$w0rd"
     volumes:
       - /docker/pihole/etc-pihole:/etc/pihole
       - /docker/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
