@@ -196,7 +196,7 @@ Hyper-V Settings:
 VLAN Setup: No
 WAN: hn0
 LAN: hn1
-Assign Interfaces: 
+Assign Interfaces: Custom IPv4 subnet, 192.168.10.1 (DHCP range 192.168.1.20 - 192.168.1.254)
 
 ## Ubuntu Server Setup
 
