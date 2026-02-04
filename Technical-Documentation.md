@@ -169,7 +169,7 @@ Hyper-V Settings:
 - Generation: Generation 2
 - Memory: 2048MB (Static)
 - NIC: WAN (Public) + LAN (Internal)
-- Storage: 8gb (Static)
+- Storage: 6gb (Static)
 - ISO: pfSense-CE-2.7.2-RELEASE-amd64.iso
 - Processor: 1
 - Security: Secure Boot (Off)
@@ -180,7 +180,7 @@ Hyper-V Settings:
 VLAN Setup: No
 WAN: hn0
 LAN: hn1
-Assign Interfaces: Custom IPv4 subnet, 192.168.10.1 (DHCP range 192.168.1.20 - 192.168.1.254)
+Assign Interfaces: Custom IPv4 subnet, 192.168.10.1 (DHCP range 192.168.10.20 - 192.168.10.254)
 
 ## Ubuntu Server Setup
 
@@ -233,11 +233,6 @@ sudo smbpasswd -a root
 sudo smbpasswd -e root
 ```
 
-#### Ubuntu Server Video Guide
-
-## Configuring DNS/DHCP
-*(Content goes here)*
-
 ## Docker / Portainer Setup
 Run the docker.sh install script while SSH into Ubuntu server:
 ```
@@ -245,6 +240,7 @@ curl -fsSL -o docker.sh https://raw.githubusercontent.com/Jordynns/SomethingNetw
 chmod +x docker.sh
 ./docker.sh
 ```
+
 Navigate to the IP below to access the Portainer WEB-GUI:
 ```
 https://192.168.10.3:9443/
@@ -347,28 +343,23 @@ services:
     container_name: jellyfin
     user: 1000:1000
     networks:
-      jellyfin_ipvlan:
-        ipv4_address: 192.168.1.4
+      ip_vlan:
+        ipv4_address: 192.168.10.4
     volumes:
       - /home/jellyfin/cache:/cache
       - /home/jellyfin/config:/config
       - /home/jellyfin/media:/media:ro
     restart: unless-stopped
 networks:
-  jellyfin_ipvlan:
+  ip_vlan:
     external: true
 ```
 
-This will create a media server which can be accessed locally from the IP(s):
+To access, navigate to:
+```
+http://jellyfin.home
+```
 
-TCP:
-```
-http://192.168.1.4:8096
-```
-UDP:
-```
-UDP: http://192.168.1.4:7359
-```
 
 Create a script: (ADMIN)
 ```
