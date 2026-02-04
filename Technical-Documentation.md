@@ -247,7 +247,7 @@ chmod +x docker.sh
 ```
 Navigate to the IP below to access the Portainer WEB-GUI:
 ```
-https://192.168.1.3:9443/
+https://192.168.10.3:9443/
 ```
 
 Run this script to create a slices of the network for Docker container services:
@@ -267,10 +267,13 @@ services:
     restart: unless-stopped
     networks:
       ip_vlan:
-        ipv4_address: 192.168.1.2
+        ipv4_address: 192.168.10.2
     environment:
       TZ: "Etc/UTC"
-      WEBPASSWORD: "changeme"
+      WEBPASSWORD: "Pa$$w0rd"
+      FTLCONF_LOCAL_IPV4: "192.168.10.2"
+      DNSMASQ_LISTENING: "all"
+      QUERY_LOGGING: "true"
     volumes:
       - /docker/pihole/etc-pihole:/etc/pihole
       - /docker/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
@@ -283,10 +286,10 @@ networks:
 ```
 This will create pihole on ip 192.168.1.2, To access the WebGUI head to:
 ```
-https://192.168.1.3/admin
+https://192.168.10.2/admin
 ```
 
-To update or change the password use the following command:
+To update or change the password use the following command (inside Portainer Docker terminal):
 ```
 pihole setpassword
 ```
