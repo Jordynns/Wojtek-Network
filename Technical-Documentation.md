@@ -27,8 +27,6 @@
 5. [**Implementation**](#implementation)
    - [***Hyper-V***](#hyper-v-setup)
      - [***Virtual Switches***](#virtual-switches)
-   - [***Debian 13 Client***](#debian-13-client-setup)
-       - [***Video Guide***](#client-video-guide)
    - [***pfSense***](#pfsense-setup)
        - [***Video Guide***](#pfsense-video-guide)
    - [***Docker / Portainer***](#docker-/-portainer-setup)
@@ -164,20 +162,6 @@
 - **Local Area Network (LAN)**
   - **Name:** *LAN*
   - **Connection Type:** *Internal*
-
-## Debian 13 Client Setup
-
-Hyper-V Settings:
-- Generation: Generation 2
-- Memory: 2048MB (Static)
-- NIC: LAN (Internal)
-- Storage: 12gb (Static)
-- ISO: debian-13.1.0-amd64-netinst.iso
-- Processor: 2
-- Security: Secure Boot (Off)
-
-#### Client Video Guide
-[Video Guide](https://www.youtube.com/watch?v=AdMjQk7OZYQ)
 
 ## pfSense Setup
 
