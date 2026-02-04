@@ -255,6 +255,36 @@ Run this script to create a slices of the network for Docker container services:
 curl -fsSL https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/scripts/docker-network-creation.sh | bash
 ```
 
+## Caddy Setup (Reverse Proxy)
+Firstly run the Caddy setup script to create the relevant directories and Caddyfile for defining IPs and Domain names for local reverse proxy:
+```
+curl -fsSL https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/scripts/caddy-setup.sh | bash
+```
+
+Create a new Portainer Stack within the WEB-GUI:
+```
+services:
+  caddy:
+    image: caddy:latest
+    container_name: caddy
+    restart: unless-stopped
+    networks:
+      ip_vlan:
+        ipv4_address: 192.168.10.20
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /home/Caddy/Caddyfile:/etc/caddy/Caddyfile
+      - /home/Caddy/data:/data
+      - /home/Caddy/config:/config
+networks:
+  ip_vlan:
+    external: true
+```
+
+To have clean Domain Name addresses for each service, continue to setup pihole below and when you get to local DNS setup that is when you will be able to implement what Caddy does.
+
 ## PiHole Setup
 Head to Portainer in the WebGUI and create a stack. Name the stack "pihole" and copy the Docker compose YAML:
 ```
@@ -284,7 +314,7 @@ networks:
   ip_vlan:
     external: true
 ```
-This will create pihole on ip 192.168.1.2, To access the WebGUI head to:
+This will create pihole on ip 192.168.10.2, To access the WebGUI head to:
 ```
 https://192.168.10.2/admin
 ```
@@ -292,6 +322,16 @@ https://192.168.10.2/admin
 To update or change the password use the following command (inside Portainer Docker terminal):
 ```
 pihole setpassword
+```
+
+### Pihole Local DNS Records
+On the side navigation bar, head to "Settings" > "Local DNS Records" and within the left side create a few records:
+```
+DOMAIN | IP
+192.168.10.2 : pihole.home
+192.168.10.3 : portainer.home
+192.168.10.4 : jellyfin.home
+192.168.10.x : cockpit.home
 ```
 
 ## Jellyfin Setup
