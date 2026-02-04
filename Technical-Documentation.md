@@ -188,7 +188,7 @@ Hyper-V Settings:
 - Generation: Generation 2
 - Memory: 4096MB (Static)
 - NIC: LAN (Internal)
-- Storage: 32gb+ (Static)
+- Storage: 12gb+ (Static) + 50gb (Static) NAS Drive
 - ISO: ubuntu-24.04.3-live-server-amd64.iso
 - Processor: 6
 - Security: Secure Boot (Off)
