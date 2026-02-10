@@ -7,7 +7,7 @@ services:
     user: 1000:1000
     networks:
       ip_vlan:
-        ipv4_address: 192.168.1.4
+        ipv4_address: 192.168.10.3
     volumes:
       - /home/jellyfin/cache:/cache
       - /home/jellyfin/config:/config
