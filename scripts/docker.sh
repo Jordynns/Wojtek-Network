@@ -1,28 +1,66 @@
 #!/bin/bash
 
-sudo apt update && sudo apt upgrade -y
-sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt update
-sudo apt install docker-ce=5:28.5.2-1~ubuntu.24.04~noble docker-ce-cli=5:28.5.2-1~ubuntu.24.04~noble docker-compose containerd.io -y
-sudo systemctl enable docker
-sudo systemctl start docker
-sudo docker volume create portainer_data
-sudo docker run -d -p 8000:8000 -p 9443:9443 \
-    --name=portainer \
-    --restart=always \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    -v portainer_data:/data \
-    portainer/portainer-ce:latest
+# Pull required Docker images
+docker pull portainer/portainer-ce:latest
+docker pull caddy:latest
+docker pull pihole/pihole:latest
 
+# Create a custom network with your specified settings
+docker network create -d macvlan \
+  --subnet=192.168.10.0/24 \
+  --gateway=192.168.10.1 \
+  -o parent=eth0 \
+  caddy
 
-echo "=== Docker & Portainer Install ==="
+# Start Portainer container
+docker run -d \
+  --name portainer \
+  --restart unless-stopped \
+  --security-opt no-new-privileges:true \
+  -v /etc/localtime:/etc/localtime:ro \
+  -v /var/run/docker.sock:/var/run/docker.sock:ro \
+  -v /home/portainer/portainer-data:/data \
+  --network caddy \
+  -p 9000:9000 \
+  portainer/portainer-ce:latest
 
-echo "✅ Installed Successfully"
+# Start Caddy container
+docker run -d \
+  --name caddy \
+  --restart unless-stopped \
+  -v /home/caddy/Caddyfile:/etc/caddy/Caddyfile \
+  -v /home/caddy/data:/data \
+  -v /home/caddy/config:/config \
+  --network caddy \
+  -p 80:80 \
+  -p 443:443 \
+  caddy:latest
 
-echo "Container: Portainer"
-echo "IP: $(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'):9443"
-echo "=================================="
+# Start Pi-hole container
+docker run -d \
+  --name pihole \
+  --restart unless-stopped \
+  -e TZ="Europe/London" \
+  -e WEBPASSWORD="admin" \
+  -e DNS1="8.8.8.8" \
+  -e DNS2="8.8.4.4" \
+  -e PIHOLE_INTERFACE="eth0" \
+  -e IPV4_ADDRESS="192.168.10.2/24" \
+  -e PIHOLE_DOCKER_TAG="latest" \
+  -v /etc/pihole:/etc/pihole \
+  -v /etc/dnsmasq.d:/etc/dnsmasq.d \
+  --network caddy \
+  -p 53:53/tcp \
+  -p 53:53/udp \
+  -p 67:67/udp \
+  -p 80:80 \
+  --cap-add NET_ADMIN \
+  --dns 127.0.0.1 \
+  --dns 8.8.8.8 \
+  pihole/pihole:latest
 
-rm -- "$0"
+# Optional: Create volumes for caddy if needed
+docker volume create caddy_data
+docker volume create caddy_config
+
+echo "Containers have been created successfully."
