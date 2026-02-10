@@ -12,12 +12,12 @@ http://portainer.home {
     reverse_proxy 192.168.10.3:9443
 }
 
-http://jellyfin.home {
-    reverse_proxy 192.168.10.4:8096
+http://cockpit.home {
+    reverse_proxy 192.168.10.3:9090
 }
 
-http://cockpit.home {
-    reverse_proxy 192.168.10.10:9090
+http://jellyfin.home {
+    reverse_proxy 192.168.10.4:8096
 }
 EOF
 
