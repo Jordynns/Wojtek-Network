@@ -1,4 +1,3 @@
----
 pageInfo:
   title: Home Lab
 appConfig:
@@ -11,195 +10,201 @@ sections:
   items:
   - title: Archive Box
     description: Web site archiving
-    icon: productivity/archive-box.png
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/archivebox.png
   - title: Baserow
-    description: Feature-rich dynamic tables (similar to Airtable)
-    icon: productivity/baserow.png
+    description: Feature-rich dynamic tables
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/baserow.png
   - title: Bookstack
     description: Self-hosted Wiki
-    icon: productivity/bookstack.png
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/bookstack.png
   - title: Domain Mod
     description: Manage domains and other internet assets
-    icon: productivity/domain-mod.png
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/domainmod.png
   - title: Firefly
-    description: Financial manager, for keeping track of expenses, income, budgets, etc
-    icon: productivity/firefly.png
+    description: Financial manager
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/firefly-iii.png
   - title: Fresh RSS
-    description: RSS feed reader and news aggregator
-    icon: productivity/fresh-rss.png
+    description: RSS feed reader
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/freshrss.png
   - title: GifWit
     description: Personal GIF library
-    icon: productivity/gifwit.png
+    icon: far fa-images
   - title: Git Tea
-    description: Git service, hosting mirrors of my public repos
-    icon: productivity/git-tea.png
+    description: Git service
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/gitea.png
   - title: LessPass
     description: Deterministic stateless password manager
-    icon: productivity/lesspass.png
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/lesspass.png
   - title: NextCloud
-    description: Cloud office suit and collaboration platform
-    icon: productivity/nextcloud.png
+    description: Cloud office suit
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/nextcloud.png
   - title: Paperless
-    description: Scan, index, and archive physical paper documents
-    icon: productivity/paperless.png
+    description: Scan and archive documents
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/paperless-ngx.png
   - title: Photo Prism
-    description: Browsing, organizing, and sharing photos and albums
-    icon: productivity/photo-prism.png
+    description: Browsing and organizing photos
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/photoprism.png
   - title: Standard Notes
-    description: Encrypted notes app, with extensions and desktop + mobile apps
-    icon: productivity/standard-notes.png
+    description: Encrypted notes app
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/standard-notes.png
   - title: Syncthing
     description: Peer-to-peer file synchronization
-    icon: productivity/syncthing.png
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/syncthing.png
   - title: VS Code Web
-    description: Cloud based VS Code development environment
-    icon: productivity/vs-code.png
+    description: Cloud based development
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/visual-studio-code.png
   - title: Wallabag
     description: Saved URLs and bookmarks
-    icon: productivity/wallabag.png
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/wallabag.png
   - title: XBrowserSync
-    description: Bookmarks, history and browser sync
-    icon: productivity/x-browser-sync.png
+    description: Bookmarks and browser sync
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/xbrowsersync.png
 - name: Firewall
   items:
   - title: OPNsense
     description: Firewall Central Management
-    icon: networking/opnsense.png
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/opnsense.png
     target: iframe
   - title: NetData
-    description: System resource usage on firewall
-    icon: networking/netdata.png
+    description: System resource usage
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/netdata.png
   - title: MalTrail
-    description: Malicious traffic detection system
-    icon: networking/maltrail.png
+    description: Malicious traffic detection
+    icon: fas fa-shield-alt
   - title: Ntopng
-    description: Network traffic probe and network use monitor
-    icon: networking/ntop.png
+    description: Network traffic probe
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/ntopng.png
   - title: Sensei
     description: Additional data features
-    icon: networking/sensei.png
+    icon: fas fa-project-diagram
   - title: Monit
-    description: Status of firewall system alerts
-    icon: networking/monit.png
+    description: Status alerts
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/monit.png
   - title: Firewall Logs
-    description: Real-time view of firewall data and logs
-    icon: networking/logs.png
+    description: Real-time logs
+    icon: fas fa-terminal
   - title: WireGuard
-    description: Manage WireGuard client and server on firewall
-    icon: networking/wireguard.png
+    description: Manage WireGuard
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/wireguard.png
 - name: Networks
   items:
   - title: Pi-Hole
-    description: DNS settings for ad & tracker blocking
-    icon: networking/pihole.png
+    description: DNS settings
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/pi-hole.png
   - title: PiAlert
-    description: Presence monitoring and ARP scanning
-    icon: networking/pialert.png
+    description: Presence monitoring
+    icon: fas fa-bell
   - title: SmokePing
     description: Network latency monitoring
-    icon: networking/smokeping.png
+    icon: fas fa-chart-line
   - title: StatPing
-    description: Up-time monitoring for local service
-    icon: networking/statping.png
+    description: Up-time monitoring
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/statping.png
   - title: LibreSpeed
-    description: Local network speed and latency test
-    icon: networking/librespeed.png
+    description: Local network speed test
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/librespeed.png
   - title: Grafana
-    description: Data visualised on dashboards
-    icon: networking/grafana.png
+    description: Data visualised
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/grafana.png
 - name: System Maintence
   items:
   - title: NetData
-    description: Real-time system resource usage
-    icon: networking/netdata.png
+    description: Real-time usage
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/netdata.png
   - title: Portainer
-    description: Docker container management
-    icon: networking/portainer.png
+    description: Docker management
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/portainer.png
   - title: cAdvisor
     description: Container monitoring
-    icon: networking/cadvisor.png
+    icon: fas fa-microchip
   - title: Glances
     description: Simple resource usage
-    icon: networking/glances.png
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/glances.png
   - title: Dozzle
-    description: Docker container web log viewer
-    icon: networking/dozzle.png
+    description: Docker log viewer
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/dozzle.png
   - title: Prometheus
-    description: System Statistics Aggregation with PromQL
-    icon: networking/prometheus.png
+    description: Statistics Aggregation
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/prometheus.png
 - name: External Services
   items:
   - title: DuckDNS
-    description: Dynamic DNS for fixed public IP
-    icon: networking/duckdns.png
+    description: Dynamic DNS
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/duckdns.png
   - title: BorgBase
-    description: Off-site system Borg backups
-    icon: networking/borgbase.png
+    description: Off-site backups
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/borgbackup.png
     url: https://www.borgbase.com/repositories
   - title: Mullvad
     description: Hosted VPN provider
-    icon: networking/mullvad.png
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/mullvad.png
     url: https://mullvad.net/en/account/
   - title: ZeroTier
-    description: Secure networks between devices
-    icon: networking/zeroteir.png
+    description: Secure networks
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/zerotier.png
     url: https://my.zerotier.com/
   - title: HealthChecks
     description: Cron Job Monitoring
-    icon: networking/healthchecks.png
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/healthchecks.png
     url: https://healthchecks.io/checks/
   - title: ISP - Vodafone
-    description: Broadband internet provider
-    icon: networking/vodafone.png
+    description: Broadband provider
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/vodafone.png
     url: https://myaccount.vodafone.co.uk/
 - name: Media
   items:
   - title: Plex
-    description: Self-Hosted Media Streaming Service
-    icon: media/plex.png
+    description: Media Streaming
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/plex.png
   - title: Tautulli
-    description: Monitoring and statistics for Plex
-    icon: media/tautulli.png
+    description: Monitoring for Plex
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/tautulli.png
   - title: Transmission
-    description: Transmission remote for managing torrents 
-    icon: media/transmission.png
+    description: Transmission remote
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/transmission.png
   - title: Couch Potato
-    description: Automatic Movie Downloading via NZBs & Torrents
-    icon: media/couch-potato.png
+    description: Automatic Movie Downloading
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/couch-potato.png
 - name: Home Control
   items:
   - title: Home Assistant
     description: Smart home control
-    icon: smart-home/home-assistant.png
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/home-assistant.png
   - title: Node-RED
     description: Flow-based automation
-    icon: smart-home/node-red.png
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/node-red.png
 - name: Other Devices
   items:
   - title: Modem
     description: ISP Router Modem Combo
-    icon: ''
+    icon: fas fa-router
   - title: Wireless Access Point
     description: View clients connected to WiFi
+    icon: fas fa-wifi
   - title: Fing
-    description: Monitor connectivity issues, ISP quality, health checks and troubleshooting
-    provider: Fing
+    description: Monitor connectivity
+    icon: favicon-https://app.fing.com/
     url: https://app.fing.com/
   - title: Switch
-    description: Manage VLANs on Ubiquity Ethernet switch
+    description: Manage VLANs
+    icon: fas fa-network-wired
 - name: External Utilities
   displayData:
     collapsed: true
   items:
   - title: Public IP
-    description: Check public IP and associated data
+    description: Check public IP
+    icon: fas fa-globe
     url: https://www.whatismyip.com/
   - title: Who Is Lookup
-    description: Check ICAN info for a given IP address or domain
+    description: Check ICAN info
+    icon: fas fa-search-location
     url: https://whois.domaintools.com/
   - title: Speed Test
-    description: Upload + download speeds and latency
+    description: Upload + download speeds
+    icon: fas fa-tachometer-alt
     url: https://speed.cloudflare.com/
   - title: Mullvad Check
-    description: Confirms a secure connection to Mullvad's WireGuard servers
+    description: Confirms secure connection
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/mullvad.png
     url: https://mullvad.net/check
