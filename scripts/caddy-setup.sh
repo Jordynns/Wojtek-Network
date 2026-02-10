@@ -17,7 +17,7 @@ http://jellyfin.home {
 }
 
 http://cockpit.home {
-    reverse_proxy 192.168.10.20:9090
+    reverse_proxy 192.168.10.10:9090
 }
 EOF
 
