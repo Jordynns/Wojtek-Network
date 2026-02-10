@@ -236,7 +236,7 @@ sudo smbpasswd -e root
 ## Docker / Portainer Setup
 Run the docker.sh install script while SSH into Ubuntu server:
 ```
-curl -fsSL -o docker.sh https://raw.githubusercontent.com/Jordynns/SomethingNetwork/refs/heads/main/scripts/docker.sh | bash
+curl -fsSL -o docker.sh https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/scripts/docker.sh | bash
 chmod +x docker.sh
 ./docker.sh
 ```
