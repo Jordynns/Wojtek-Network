@@ -9,7 +9,7 @@ sudo apt install docker-ce=5:28.5.2-1~ubuntu.24.04~noble docker-ce-cli=5:28.5.2-
 sudo systemctl enable docker
 sudo systemctl start docker
 sudo docker volume create portainer_data
-sudo docker run -d -p 8000:8000 -p 9000:9000 \
+sudo docker run -d -p 9000:9000 \
     --name=portainer \
     --restart=always \
     -v /var/run/docker.sock:/var/run/docker.sock \
