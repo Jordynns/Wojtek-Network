@@ -241,8 +241,8 @@ net use Z: \\192.168.1.50\nas /persistent:yes
 ## Docker / Portainer Setup
 Run the docker.sh install script while SSH into Ubuntu server:
 ```
-curl -fsSL -o docker.sh https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/scripts/docker.sh | bash
-chmod +x docker.sh
+sudo curl -fsSL -o docker.sh https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/scripts/docker.sh | bash
+sudo chmod +x docker.sh
 ./docker.sh
 ```
 
