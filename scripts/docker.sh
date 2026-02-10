@@ -1,19 +1,19 @@
 #!/bin/bash
 
 # Pull required Docker images
-docker pull portainer/portainer-ce:latest
-docker pull caddy:latest
-docker pull pihole/pihole:latest
+sudo docker pull portainer/portainer-ce:latest
+sudo docker pull caddy:latest
+sudo docker pull pihole/pihole:latest
 
 # Create a custom network with your specified settings
-docker network create -d macvlan \
+sudo docker network create -d macvlan \
   --subnet=192.168.10.0/24 \
   --gateway=192.168.10.1 \
   -o parent=eth0 \
   caddy
 
 # Start Portainer container
-docker run -d \
+sudo docker run -d \
   --name portainer \
   --restart unless-stopped \
   --security-opt no-new-privileges:true \
@@ -25,7 +25,7 @@ docker run -d \
   portainer/portainer-ce:latest
 
 # Start Caddy container
-docker run -d \
+sudo docker run -d \
   --name caddy \
   --restart unless-stopped \
   -v /home/caddy/Caddyfile:/etc/caddy/Caddyfile \
@@ -37,7 +37,7 @@ docker run -d \
   caddy:latest
 
 # Start Pi-hole container
-docker run -d \
+sudo docker run -d \
   --name pihole \
   --restart unless-stopped \
   -e TZ="Europe/London" \
@@ -60,7 +60,7 @@ docker run -d \
   pihole/pihole:latest
 
 # Optional: Create volumes for caddy if needed
-docker volume create caddy_data
-docker volume create caddy_config
+sudo docker volume create caddy_data
+sudo docker volume create caddy_config
 
 echo "Containers have been created successfully."
