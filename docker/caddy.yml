@@ -6,13 +6,9 @@ services:
     container_name: caddy
     restart: unless-stopped
     network_mode: "host" 
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro  
-      - caddy_data:/data                          
-      - caddy_config:/config                       
+    volumes: 
+      - /home/Caddy/Caddyfile:/etc/caddy/Caddyfile 
+      - /home/Caddy/data:/data 
+      - /home/Caddy/config:/config                   
     environment:
       - ACME_AGREE=true
-
-volumes:
-  caddy_data:
-  caddy_config:
