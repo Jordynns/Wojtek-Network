@@ -29,9 +29,9 @@ services:
     environment:
       JELLYFIN_HTTP_PORT: "80"
     volumes:
-      - /home/jellyfin/cache:/cache
-      - /home/jellyfin/config:/config
-      - /home/jellyfin/media:/media:ro
+      - /srv/storage/jellyfin/cache:/cache
+      - /srv/storage/jellyfin/config:/config
+      - /srv/storage/jellyfin/media:/media:ro
 
   dashy:
     image: lissy93/dashy
