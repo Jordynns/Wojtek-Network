@@ -7,7 +7,7 @@ sudo docker network create -d ip_vlan \
   ip_vlan
 
 echo "=== Docker Network ==="
-echo " ✅ Created caddy Network"
+echo " ✅ Created ip_vlan Network"
 echo "-   Subnet: 192.168.10.0/24"
 echo "-   Gateway: 192.168.10.1"
 echo "-   Parent NIC ID: eth0"
