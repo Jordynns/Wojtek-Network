@@ -2,30 +2,41 @@
 
 sudo mkdir -p "/home/Caddy/config" "/home/Caddy/data"
 
-sudo cat << 'EOF' > "/home/Caddy/Caddyfile"
-http://pihole.home {
+sudo tee "/home/Caddy/Caddyfile" > /dev/null << 'EOF'
+
+pihole.home {
+    tls internal
     redir / /admin{uri}
-    reverse_proxy 192.168.10.2:80
+    reverse_proxy http://192.168.10.2:80
 }
 
-http://portainer.home {
-    reverse_proxy 192.168.10.3:9443
+portainer.home {
+    tls internal
+    reverse_proxy https://192.168.10.3:9443 {
+        transport http {
+            tls_insecure_skip_verify
+        }
+    }
 }
 
-http://cockpit.home {
-    reverse_proxy 192.168.10.3:9090
+cockpit.home {
+    tls internal
+    reverse_proxy http://192.168.10.3:9090
 }
 
-http://jellyfin.home {
-    reverse_proxy 192.168.10.4:8096
+jellyfin.home {
+    tls internal
+    reverse_proxy http://192.168.10.4:8096
 }
+
 EOF
 
+echo "======================="
 echo "=== Caddy Setup ==="
-echo "✅ Created Caddy Directory"
-echo "✅ Created Caddyfile"
-echo "✅ Writing reverse proxies"
-echo "✅ Finished Caddy setup"
+echo "✅ Created Caddy directories"
+echo "✅ HTTPS enabled (internal CA)"
+echo "✅ Reverse proxies configured"
+echo "🔒 Access via https://*.home"
 echo "======================="
 
 rm -- "$0"
