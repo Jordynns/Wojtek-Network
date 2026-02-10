@@ -1,18 +1,18 @@
+version: '3.8'
+
 services:
   caddy:
     image: caddy:latest
     container_name: caddy
     restart: unless-stopped
-    networks:
-      ip_vlan:
-        ipv4_address: 192.168.10.20
-    ports:
-      - "80:80"
-      - "443:443"
+    network_mode: "host" 
     volumes:
-      - /home/Caddy/Caddyfile:/etc/caddy/Caddyfile
-      - /home/Caddy/data:/data
-      - /home/Caddy/config:/config
-networks:
-  ip_vlan:
-    external: true
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro  
+      - caddy_data:/data                          
+      - caddy_config:/config                       
+    environment:
+      - ACME_AGREE=true
+
+volumes:
+  caddy_data:
+  caddy_config:
