@@ -1,6 +1,7 @@
 version: '3.3'
 networks:
   caddy:
+
 services:
   portainer:
     image: portainer/portainer-ce:latest
@@ -16,7 +17,7 @@ services:
       - caddy
     ports:
       - 9000:9000
-      
+
   caddy:
     image: caddy:latest
     restart: unless-stopped
@@ -30,6 +31,35 @@ services:
       - /home/caddy/config:/config
     networks:
       - caddy
+
+  pihole:
+    image: pihole/pihole:latest
+    container_name: pihole
+    restart: unless-stopped
+    environment:
+      TZ: "Europe/London" 
+      WEBPASSWORD: "admin"
+      DNS1: "8.8.8.8"
+      DNS2: "8.8.4.4"
+      PIHOLE_INTERFACE: "eth0" 
+      IPV4_ADDRESS: "192.168.10.2/24"
+      PIHOLE_DOCKER_TAG: "latest"
+    volumes:
+      - /etc/pihole:/etc/pihole
+      - /etc/dnsmasq.d:/etc/dnsmasq.d
+    networks:
+      - caddy
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp"
+      - "80:80"
+    cap_add:
+      - NET_ADMIN
+    dns:
+      - 127.0.0.1
+      - 8.8.8.8
+
 volumes:
   caddy_data:
     external: true
