@@ -53,8 +53,6 @@ sudo docker run -d \
   -p 443:443 \
   caddy:latest
 
-# Run Pi-hole container
-echo "Running Pi-hole container..."
 sudo docker run -d \
   --name pihole \
   --restart unless-stopped \
@@ -63,7 +61,7 @@ sudo docker run -d \
   -e DNS1="8.8.8.8" \
   -e DNS2="8.8.4.4" \
   -e PIHOLE_INTERFACE="eth0" \
-  -e IPV4_ADDRESS="192.168.10.2/24" \
+  -e IPV4_ADDRESS="192.168.10.4/24" \
   -e PIHOLE_DOCKER_TAG="latest" \
   -v /etc/pihole:/etc/pihole \
   -v /etc/dnsmasq.d:/etc/dnsmasq.d \
