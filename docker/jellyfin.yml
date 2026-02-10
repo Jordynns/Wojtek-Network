@@ -8,6 +8,8 @@ services:
     networks:
       ip_vlan:
         ipv4_address: 192.168.10.3
+    ports:
+      - "6767:6767"
     volumes:
       - /home/jellyfin/cache:/cache
       - /home/jellyfin/config:/config
