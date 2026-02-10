@@ -233,6 +233,11 @@ sudo smbpasswd -a root
 sudo smbpasswd -e root
 ```
 
+To Map the NAS on Windows Run:
+```
+net use Z: \\192.168.1.50\nas /persistent:yes
+```
+
 ## Docker / Portainer Setup
 Run the docker.sh install script while SSH into Ubuntu server:
 ```
