@@ -10,169 +10,169 @@ sections:
   items:
   - title: Archive Box
     description: Web site archiving
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/archivebox.png
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/archivebox.png
   - title: Baserow
-    description: Feature-rich dynamic tables
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/baserow.png
+    description: Feature-rich dynamic tables (similar to Airtable)
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/baserow.png
   - title: Bookstack
     description: Self-hosted Wiki
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/bookstack.png
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/bookstack.png
   - title: Domain Mod
     description: Manage domains and other internet assets
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/domainmod.png
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/domainmod.png
   - title: Firefly
     description: Financial manager
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/firefly-iii.png
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/firefly-iii.png
   - title: Fresh RSS
-    description: RSS feed reader
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/freshrss.png
+    description: RSS feed reader and news aggregator
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/freshrss.png
   - title: GifWit
     description: Personal GIF library
-    icon: far fa-images
+    icon: fas fa-images
   - title: Git Tea
-    description: Git service
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/gitea.png
+    description: Git service, hosting mirrors of my public repos
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/gitea.png
   - title: LessPass
     description: Deterministic stateless password manager
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/lesspass.png
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/lesspass.png
   - title: NextCloud
-    description: Cloud office suit
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/nextcloud.png
+    description: Cloud office suit and collaboration platform
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/nextcloud.png
   - title: Paperless
-    description: Scan and archive documents
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/paperless-ngx.png
+    description: Scan, index, and archive physical paper documents
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/paperless-ngx.png
   - title: Photo Prism
-    description: Browsing and organizing photos
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/photoprism.png
+    description: Browsing, organizing, and sharing photos and albums
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/photoprism.png
   - title: Standard Notes
     description: Encrypted notes app
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/standard-notes.png
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/standard-notes.png
   - title: Syncthing
     description: Peer-to-peer file synchronization
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/syncthing.png
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/syncthing.png
   - title: VS Code Web
-    description: Cloud based development
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/visual-studio-code.png
+    description: Cloud based VS Code development environment
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/visual-studio-code.png
   - title: Wallabag
     description: Saved URLs and bookmarks
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/wallabag.png
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/wallabag.png
   - title: XBrowserSync
-    description: Bookmarks and browser sync
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/xbrowsersync.png
+    description: Bookmarks, history and browser sync
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/xbrowsersync.png
 - name: Firewall
   items:
   - title: OPNsense
     description: Firewall Central Management
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/opnsense.png
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/opnsense.png
     target: iframe
   - title: NetData
-    description: System resource usage
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/netdata.png
+    description: System resource usage on firewall
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/netdata.png
   - title: MalTrail
-    description: Malicious traffic detection
-    icon: fas fa-shield-alt
+    description: Malicious traffic detection system
+    icon: fas fa-shield-virus
   - title: Ntopng
-    description: Network traffic probe
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/ntopng.png
+    description: Network traffic probe and network use monitor
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/ntopng.png
   - title: Sensei
     description: Additional data features
     icon: fas fa-project-diagram
   - title: Monit
-    description: Status alerts
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/monit.png
+    description: Status of firewall system alerts
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/monit.png
   - title: Firewall Logs
-    description: Real-time logs
+    description: Real-time view of firewall data and logs
     icon: fas fa-terminal
   - title: WireGuard
-    description: Manage WireGuard
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/wireguard.png
+    description: Manage WireGuard client and server on firewall
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/wireguard.png
 - name: Networks
   items:
   - title: Pi-Hole
-    description: DNS settings
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/pi-hole.png
+    description: DNS settings for ad & tracker blocking
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/pi-hole.png
   - title: PiAlert
-    description: Presence monitoring
+    description: Presence monitoring and ARP scanning
     icon: fas fa-bell
   - title: SmokePing
     description: Network latency monitoring
     icon: fas fa-chart-line
   - title: StatPing
-    description: Up-time monitoring
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/statping.png
+    description: Up-time monitoring for local service
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/statping.png
   - title: LibreSpeed
-    description: Local network speed test
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/librespeed.png
+    description: Local network speed and latency test
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/librespeed.png
   - title: Grafana
-    description: Data visualised
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/grafana.png
+    description: Data visualised on dashboards
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/grafana.png
 - name: System Maintence
   items:
   - title: NetData
-    description: Real-time usage
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/netdata.png
+    description: Real-time system resource usage
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/netdata.png
   - title: Portainer
-    description: Docker management
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/portainer.png
+    description: Docker container management
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/portainer.png
   - title: cAdvisor
     description: Container monitoring
     icon: fas fa-microchip
   - title: Glances
     description: Simple resource usage
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/glances.png
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/glances.png
   - title: Dozzle
-    description: Docker log viewer
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/dozzle.png
+    description: Docker container web log viewer
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/dozzle.png
   - title: Prometheus
-    description: Statistics Aggregation
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/prometheus.png
+    description: System Statistics Aggregation with PromQL
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/prometheus.png
 - name: External Services
   items:
   - title: DuckDNS
-    description: Dynamic DNS
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/duckdns.png
+    description: Dynamic DNS for fixed public IP
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/duckdns.png
   - title: BorgBase
-    description: Off-site backups
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/borgbackup.png
+    description: Off-site system Borg backups
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/borgbackup.png
     url: https://www.borgbase.com/repositories
   - title: Mullvad
     description: Hosted VPN provider
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/mullvad.png
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/mullvad.png
     url: https://mullvad.net/en/account/
   - title: ZeroTier
-    description: Secure networks
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/zerotier.png
+    description: Secure networks between devices
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/zerotier.png
     url: https://my.zerotier.com/
   - title: HealthChecks
     description: Cron Job Monitoring
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/healthchecks.png
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/healthchecks.png
     url: https://healthchecks.io/checks/
   - title: ISP - Vodafone
-    description: Broadband provider
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/vodafone.png
+    description: Broadband internet provider
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/vodafone.png
     url: https://myaccount.vodafone.co.uk/
 - name: Media
   items:
   - title: Plex
-    description: Media Streaming
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/plex.png
+    description: Self-Hosted Media Streaming Service
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/plex.png
   - title: Tautulli
-    description: Monitoring for Plex
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/tautulli.png
+    description: Monitoring and statistics for Plex
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/tautulli.png
   - title: Transmission
-    description: Transmission remote
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/transmission.png
+    description: Transmission remote for managing torrents 
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/transmission.png
   - title: Couch Potato
-    description: Automatic Movie Downloading
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/couch-potato.png
+    description: Automatic Movie Downloading via NZBs & Torrents
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/couch-potato.png
 - name: Home Control
   items:
   - title: Home Assistant
     description: Smart home control
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/home-assistant.png
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/home-assistant.png
   - title: Node-RED
     description: Flow-based automation
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/node-red.png
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/node-red.png
 - name: Other Devices
   items:
   - title: Modem
@@ -186,25 +186,25 @@ sections:
     icon: favicon-https://app.fing.com/
     url: https://app.fing.com/
   - title: Switch
-    description: Manage VLANs
+    description: Manage VLANs on Ubiquity Ethernet switch
     icon: fas fa-network-wired
 - name: External Utilities
   displayData:
     collapsed: true
   items:
   - title: Public IP
-    description: Check public IP
+    description: Check public IP and associated data
     icon: fas fa-globe
     url: https://www.whatismyip.com/
   - title: Who Is Lookup
-    description: Check ICAN info
+    description: Check ICAN info for a given IP address or domain
     icon: fas fa-search-location
     url: https://whois.domaintools.com/
   - title: Speed Test
-    description: Upload + download speeds
+    description: Upload + download speeds and latency
     icon: fas fa-tachometer-alt
     url: https://speed.cloudflare.com/
   - title: Mullvad Check
-    description: Confirms secure connection
-    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/mullvad.png
+    description: Confirms a secure connection to Mullvad's WireGuard servers
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/mullvad.png
     url: https://mullvad.net/check
