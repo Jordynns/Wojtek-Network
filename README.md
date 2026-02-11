@@ -1,6 +1,5 @@
 <div align="center">
   <img src="logo.png" alt="Project Logo" width="400"/>
-
   <div align="center">
 
   <!-- Community -->
@@ -13,7 +12,6 @@
   <img src="https://img.shields.io/github/license/jordynns/wojtek-network?style=flat-square" />
 
 </div>
-
 </div>
 
 ---
