@@ -91,6 +91,10 @@ Full technical breakdown including architecture, configuration, implementation s
 
 ➡️ **[Read Technical Documentation](https://github.com/Jordynns/Wojtek-Network/blob/main/Technical-Documentation.md)**
 
+This repository contains documentation and installation scripts that retrieve
+software from official upstream sources. Third-party software remains subject
+to its own licenses.
+
 ---
 
 ## 🧪 Testing & Validation
