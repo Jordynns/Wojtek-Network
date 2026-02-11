@@ -201,15 +201,19 @@ sudo apt install cockpit
 
 Navigate to 192.168.10.3:9090, mount NAS drive to /srv/storage location in ext4
 
-Run:
 ```
-sudo shown -R 1000:1000 /srv/storage
-sudo chown -R 775 /srv/storage
 ```
 
+Run:
 ```
 sudo apt install samba
+sudo adduser nasuser
+sudo smbpasswd -a nasuser
+sudo smbpasswd -e nasuser
+sudo chown -R nasuser:nasuser /srv/storage
+sudo chmod -R 775 /srv/storage
 ```
+
 
 Run:
 ```
@@ -218,6 +222,11 @@ sudo nano /etc/samba/smb.conf
 
 and add the following:
 ```
+[global]
+   server min protocol = SMB2
+   server max protocol = SMB3
+   security = user
+
 [NAS]
   path = /srv/storage
      browseable = yes
@@ -227,16 +236,13 @@ and add the following:
      force user = root
 ```
 
-Then Run:
-```
-sudo smbpasswd -a root
-sudo smbpasswd -e root
-```
-
 To Map the NAS on Windows Run:
 ```
-net use Z: \\192.168.1.50\nas /persistent:yes
+net use Z: \\192.168.10.3\nas /persistent:yes
 ```
+
+Login with username = nasuser
+Password = User Defined
 
 ## Docker / Portainer Setup
 Run the docker.sh install script while SSH into Ubuntu server:
