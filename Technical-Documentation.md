@@ -210,7 +210,7 @@ https://192.168.10.3:9000/
 ```
 
 ## Containers / Services
-To Setup all containers, use the following docker-compose.yml:
+To Setup all containers, use the following docker-compose.yml and create a stack within Portainer:
 
 ```
 version: "3.9"
