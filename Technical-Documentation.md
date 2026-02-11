@@ -1,10 +1,6 @@
 <div align="center">
-  <h1>SomethingNetwork Technical Documentation</h1>
+  <img src="logo.png" alt="Project Logo" width="400"/>
 </div>
-<div align="center">
-  <img src="logo.png">
-</div>
-
 <div align="center">
   <h1>Table of Contents</h1>
 </div>
