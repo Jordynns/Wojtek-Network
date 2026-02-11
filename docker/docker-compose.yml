@@ -57,13 +57,26 @@ services:
      networks:
        ip_vlan:
          ipv4_address: 192.168.10.6
-     ports:
-       - "8000:80"
      volumes:
        - /home/bitwarden/bw-data:/data
      environment:
        WEBSOCKET_ENABLED: 'true'
        SIGNUPS_ALLOWED: 'false'
+
+  nginx-proxy-manager:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: nginx-proxy-manager
+    restart: unless-stopped
+    networks:
+      ip_vlan:
+        ipv4_address: 192.168.10.20
+    ports:
+    - "80:80"
+    - "443:443"
+    - "81:81"
+    volumes:
+    - /home/nginx/data:/data
+    - /home/nginx/letsencrypt:/etc/letsencrypt
 
 networks:
   ip_vlan:
