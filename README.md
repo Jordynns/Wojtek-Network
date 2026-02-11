@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="logo.png" alt="Project Logo" width="200"/>
+  <img src="logo.png" alt="Project Logo" width="400"/>
 
   ### A Robust Home Network Virtualization Project (Hyper-V)
 
