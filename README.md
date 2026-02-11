@@ -1,9 +1,19 @@
 <div align="center">
   <img src="logo.png" alt="Project Logo" width="400"/>
 
-  ### A Robust Home Network Virtualization Project (Hyper-V)
+  <div align="center">
 
-  *HNC NextGen Computing · Virtualized Network Infrastructure*
+  <!-- Community -->
+  <img src="https://img.shields.io/github/contributors/jordynns/wojtek-network?style=flat-square" />
+  <img src="https://img.shields.io/github/stars/jordynns/wojtek-network?style=flat-square" />
+
+  <!-- Project Health -->
+  <img src="https://img.shields.io/github/last-commit/jordynns/wojtek-network?style=flat-square" />
+  <img src="https://img.shields.io/github/repo-size/jordynns/wojtek-network?style=flat-square" />
+  <img src="https://img.shields.io/github/license/jordynns/wojtek-network?style=flat-square" />
+
+</div>
+
 </div>
 
 ---
