@@ -210,7 +210,7 @@ curl -fsSL https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/
 
 Navigate to the IP below to access the Portainer WEB-GUI:
 ```
-https://192.168.10.3:9443/
+https://192.168.10.3:9000/
 ```
 
 <div align="center" id="testing--validation">
