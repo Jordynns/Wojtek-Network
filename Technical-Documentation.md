@@ -245,6 +245,13 @@ Login with username = nasuser
 Password = User Defined
 
 ## Docker / Portainer Setup
+Generate the required file paths for Docker
+```
+sudo curl -fsSL -o docker.sh https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/scripts/file-path-gen.sh | bash
+sudo chmod +x docker.sh
+./docker.sh
+```
+
 Run the docker.sh install script while SSH into Ubuntu server:
 ```
 sudo curl -fsSL -o docker.sh https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/scripts/docker.sh | bash
@@ -261,6 +268,7 @@ Run this script to create a slices of the network for Docker container services:
 ```
 curl -fsSL https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/scripts/docker-network-creation.sh | bash
 ```
+
 
 ## Caddy Setup (Reverse Proxy)
 Firstly run the Caddy setup script to create the relevant directories and Caddyfile for defining IPs and Domain names for local reverse proxy:
