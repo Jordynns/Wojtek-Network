@@ -197,13 +197,6 @@ nasuser:*****
 ```
 
 ## Docker / Portainer Setup
-Generate the required file paths for Docker Containers
-```
-sudo curl -fsSL -o docker.sh https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/scripts/file-path-gen.sh | bash
-sudo chmod +x docker.sh
-./docker.sh
-```
-
 Run the docker.sh install script:
 ```
 sudo curl -fsSL -o docker.sh https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/scripts/docker.sh | bash
@@ -211,14 +204,76 @@ sudo chmod +x docker.sh
 ./docker.sh
 ```
 
-Run this script to create a slices of the network for Docker container services:
-```
-curl -fsSL https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/scripts/docker-network-creation.sh | bash
-```
-
 Navigate to the IP below to access the Portainer WEB-GUI:
 ```
 https://192.168.10.3:9000/
+```
+
+## Containers / Services
+To Setup all containers, use the following docker-compose.yml:
+
+```
+version: "3.9"
+
+services:
+  pihole:
+    image: pihole/pihole:latest
+    container_name: pihole
+    restart: unless-stopped
+    networks:
+      ip_vlan:
+        ipv4_address: 192.168.10.2
+    environment:
+      TZ: "Etc/UTC"
+      WEBPASSWORD: "Pa$$w0rd"
+      FTLCONF_LOCAL_IPV4: "192.168.10.2"
+      DNSMASQ_LISTENING: "all"
+      QUERY_LOGGING: "true"
+    volumes:
+      - /docker/pihole/etc-pihole:/etc/pihole
+      - /docker/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
+
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    restart: unless-stopped
+    ports:
+      - "80:8096"
+    user: "1000:1000"
+    networks:
+      ip_vlan:
+        ipv4_address: 192.168.10.4
+    environment:
+      JELLYFIN_HTTP_PORT: "80"
+    volumes:
+      - /srv/storage/jellyfin/cache:/cache
+      - /srv/storage/jellyfin/config:/config
+      - /srv/storage/jellyfin/media:/media:ro
+
+  dashy:
+    image: lissy93/dashy
+    container_name: dashy
+    restart: unless-stopped
+    networks:
+      ip_vlan:
+        ipv4_address: 192.168.10.5
+    environment:
+      NODE_ENV: production
+      UID: "1000"
+      GID: "1000"
+      PORT: "80"
+    volumes:
+      - /home/dashy/conf.yml:/app/user-data/conf.yml
+    healthcheck:
+      test: ["CMD", "node", "/app/services/healthcheck"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  ip_vlan:
+    external: true
 ```
 
 <div align="center" id="testing--validation">
