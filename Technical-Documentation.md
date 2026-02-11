@@ -150,8 +150,6 @@
   <h1>Implementation</h1>
 </div>
 
-⠀
-
 ## Hyper-V Setup
 *(Placeholder Description)*
 
@@ -174,9 +172,6 @@ Hyper-V Settings:
 - Processor: 1
 - Security: Secure Boot (Off)
 
-#### pfSense Video Guide
-[Video Guide](https://www.youtube.com/watch?v=c7Hl1ILJIPo)
-
 VLAN Setup: No
 WAN: hn0
 LAN: hn1
@@ -193,10 +188,14 @@ Hyper-V Settings:
 - Processor: 6
 - Security: Secure Boot (Off)
 
-Post Install (GUI):
+Post Install Commands:
+```
+sudo apt install cockpit
+```
+
+Optional (GUI):
 ```
 sudo apt install xubuntu-desktop
-sudo apt install cockpit
 ```
 
 Navigate to 192.168.10.3:9090, mount NAS drive to /srv/storage location in ext4
