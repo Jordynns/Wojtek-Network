@@ -9,7 +9,6 @@
   <!-- Project Health -->
   <img src="https://img.shields.io/github/last-commit/jordynns/wojtek-network?style=flat-square" />
   <img src="https://img.shields.io/github/repo-size/jordynns/wojtek-network?style=flat-square" />
-  <img src="https://img.shields.io/github/license/jordynns/wojtek-network?style=flat-square" />
 
 </div>
 </div>
