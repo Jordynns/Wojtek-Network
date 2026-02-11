@@ -269,71 +269,6 @@ Run this script to create a slices of the network for Docker container services:
 curl -fsSL https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/scripts/docker-network-creation.sh | bash
 ```
 
-
-## Caddy Setup (Reverse Proxy)
-Firstly run the Caddy setup script to create the relevant directories and Caddyfile for defining IPs and Domain names for local reverse proxy:
-```
-curl -fsSL https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/scripts/caddy-setup.sh | bash
-```
-
-Create a new Portainer Stack within the WEB-GUI:
-```
-services:
-  caddy:
-    image: caddy:latest
-    container_name: caddy
-    restart: unless-stopped
-    networks:
-      ip_vlan:
-        ipv4_address: 192.168.10.20
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /home/Caddy/Caddyfile:/etc/caddy/Caddyfile
-      - /home/Caddy/data:/data
-      - /home/Caddy/config:/config
-networks:
-  ip_vlan:
-    external: true
-```
-
-To have clean Domain Name addresses for each service, continue to setup pihole below and when you get to local DNS setup that is when you will be able to implement what Caddy does.
-
-## PiHole Setup
-Head to Portainer in the WebGUI and create a stack. Name the stack "pihole" and copy the Docker compose YAML:
-```
-version: "3.9"
-
-services:
-  pihole:
-    container_name: pihole
-    image: pihole/pihole:latest
-    restart: unless-stopped
-    networks:
-      ip_vlan:
-        ipv4_address: 192.168.10.2
-    environment:
-      TZ: "Etc/UTC"
-      WEBPASSWORD: "Pa$$w0rd"
-      FTLCONF_LOCAL_IPV4: "192.168.10.2"
-      DNSMASQ_LISTENING: "all"
-      QUERY_LOGGING: "true"
-    volumes:
-      - /docker/pihole/etc-pihole:/etc/pihole
-      - /docker/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
-    ports:
-      - "80:80"
-      - "443:443"
-networks:
-  ip_vlan:
-    external: true
-```
-This will create pihole on ip 192.168.10.2, To access the WebGUI head to:
-```
-https://192.168.10.2/admin
-```
-
 To update or change the password use the following command (inside Portainer Docker terminal):
 ```
 pihole setpassword
@@ -348,44 +283,6 @@ DOMAIN | IP
 192.168.10.4 : jellyfin.home
 192.168.10.x : cockpit.home
 ```
-
-## Jellyfin Setup
-
-On the Ubuntu Server, create a main "jellyfin" directory, within that Directory create three sub-directories "cache", "config", and "media" optional but best practice to host media is within the media directory is to include extra directories such as "Movies", "TV Shows", and/or "YouTube" which can help keep it organised.
-
-Head into Portainer and create a new stack named "jellyfin" and paste the YAML:
-```
-version: "3.8"
-services:
-  jellyfin:
-    image: jellyfin/jellyfin
-    container_name: jellyfin
-    user: 1000:1000
-    networks:
-      ip_vlan:
-        ipv4_address: 192.168.10.4
-    volumes:
-      - /home/jellyfin/cache:/cache
-      - /home/jellyfin/config:/config
-      - /home/jellyfin/media:/media:ro
-    restart: unless-stopped
-networks:
-  ip_vlan:
-    external: true
-```
-
-To access, navigate to:
-```
-http://jellyfin.home
-```
-
-
-Create a script: (ADMIN)
-```
-sudo chown -R 1000:1000 /home/jellyfin
-sudo chmod -R 775 /home/jellyfin
-```
-<hr/>
 
 <div align="center" id="testing--validation">
   <h1>Testing & Validation</h1>
