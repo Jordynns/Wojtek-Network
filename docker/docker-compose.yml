@@ -61,7 +61,8 @@ services:
        - /home/bitwarden/bw-data:/data
      environment:
        WEBSOCKET_ENABLED: 'true'
-       SIGNUPS_ALLOWED: 'false'
+       SIGNUPS_ALLOWED: 'true'
+       ADMIN_TOKEN: "Pa$$w0rd" 
 
   nginx-proxy-manager:
     image: jc21/nginx-proxy-manager:latest
