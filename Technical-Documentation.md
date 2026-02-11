@@ -61,38 +61,11 @@
 
 <hr/>
 
-<div align="center" id="introduction">
-  <h1>Introduction</h1>
-</div>
-
-⠀
-
-## Overview of Virtualization
-*(Content goes here)*
-
-## Objectives of SomethingNetwork
-*(Content goes here)*
-
-<hr/>
-
 <div align="center" id="system-requirements">
   <h1>System Requirements</h1>
 </div>
 
-⠀
-
 ## Hardware Specifications
-*(Placeholder Description)*
-
-#### Minimum Specifications
-- CPU:
-- GPU:
-- RAM:
-
-#### Recommended Specifications
-- CPU:
-- GPU:
-- RAM:
 
 #### Our Specifications
 - CPU: [**Intel(R) Core(TM) i9-14900**](https://www.intel.com/content/www/us/en/products/sku/236793/intel-core-i9-processor-14900-36m-cache-up-to-5-80-ghz/specifications.html)
@@ -100,11 +73,9 @@
 - RAM: 128GB DDR4 @ 3600MHz
 
 ## Software Used (OS, Hypervisors, Tools)
-*(Placeholder Description)*
 
 #### Operating Systems
 - [**Linux**](https://www.linux.org/)
-    - [***Debian 13 "Trixie"***](https://www.debian.org/download)
     - [***pfSense***](https://www.pfsense.org/)
     - [***Ubuntu Server***](https://ubuntu.com/download/server)
 - [**Windows**](https://www.microsoft.com/en-us/windows/?r=1)
@@ -115,7 +86,6 @@
 
 #### Tools
 - [**Search Engines**](https://en.wikipedia.org/wiki/Search_engine)
-    - [***DuckDuckGo***](https://duckduckgo.com/)
     - [***Firefox***](https://www.firefox.com/en-US/)
     - [***Brave***](https://brave.com/)
 - [**GitHub**](https://github.com/)
@@ -125,8 +95,6 @@
 <div align="center" id="network-design">
   <h1>Network Design</h1>
 </div>
-
-⠀
 
 ## Logical Topology Diagram
 *(Content goes here)*
@@ -146,8 +114,7 @@
   <h1>Implementation</h1>
 </div>
 
-## Hyper-V Setup
-*(Placeholder Description)*
+## Host Hyper-V Settings
 
 #### Virtual Switches
 - **Wide Area Network (WAN)**
@@ -220,11 +187,11 @@ and add the following:
 
 [NAS]
   path = /srv/storage
-     browseable = yes
-     read only = no
-     guest ok = no
-     valid users = root
-     force user = root
+  browseable = yes
+  read only = no
+  guest ok = no
+  valid users = root
+  force user = root
 ```
 
 To Map the NAS on Windows Run in CMD:
