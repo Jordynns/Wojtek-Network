@@ -50,20 +50,22 @@ services:
     volumes:
       - /home/dashy/conf.yml:/app/user-data/conf.yml
       
-   bitwarden:
-     image: vaultwarden/server:latest
-     container_name: bitwarden
-     restart: unless-stopped
-     networks:
-       ip_vlan:
-         ipv4_address: 192.168.10.6
-     volumes:
-       - /home/bitwarden/bw-data:/data
-     environment:
-       WEBSOCKET_ENABLED: 'true'
-       SIGNUPS_ALLOWED: 'true'
-       ADMIN_TOKEN: "Pa$$w0rd" 
+  bitwarden:
+   image: vaultwarden/server:latest
+   container_name: bitwarden
+   restart: unless-stopped
+   networks:
+     ip_vlan:
+       ipv4_address: 192.168.10.6
+   volumes:
+     - /home/bitwarden/bw-data:/data
+   environment:
+    DOMAIN: "https://bitwarden.home.arpa"
+    WEBSOCKET_ENABLED: "true"
+    SIGNUPS_ALLOWED: "true"
+    ADMIN_TOKEN: "Pa$$w0rd"
 
+  
   nginx-proxy-manager:
     image: jc21/nginx-proxy-manager:latest
     container_name: nginx-proxy-manager
