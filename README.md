@@ -19,7 +19,7 @@
 ## 📘 Project Summary
 
 **Wojtek Network** is a fully virtualized home network environment built using **Microsoft Hyper-V**.  
-The project simulates a realistic, secure, and scalable home or small-office network by combining virtual machines, firewall routing, containerized services, and centralized management tools.
+The project aims to simulate a realistic, secure, and scalable home or small-office network by combining virtual machines, routing, containerised services, and centralised management tools.
 
 The environment demonstrates real-world networking concepts including **network segmentation**, **firewalling**, **DNS filtering**, **DHCP**, **container orchestration**, and **service hosting**.
 
@@ -28,12 +28,11 @@ The environment demonstrates real-world networking concepts including **network 
 ## 🎯 Project Objectives
 
 - Design and deploy a **secure virtual network** using Hyper-V
-- Implement **routing and firewalling** with pfSense
+- Implement **DHCP, routing and firewalling** with pfSense
 - Provide **DNS filtering and ad-blocking** using Pi-hole
 - Host services using **Docker & Portainer**
 - Demonstrate **media hosting** via Jellyfin
 - Validate connectivity, security, and reliability
-- Apply best practices for **maintenance, backups, and recovery**
 
 ---
 
@@ -43,12 +42,12 @@ The network consists of multiple virtual machines connected through isolated vir
 
 - **Hyper-V Host** – Core virtualization platform
 - **pfSense Firewall** – Routing, NAT, firewall rules, DHCP
-- **Debian 13 Client** – Management / client workstation
 - **Ubuntu Server** – Docker host for services
 - **Docker Services**
   - Portainer (container management)
-  - Pi-hole (DNS filtering & ad-blocking)
+  - Pi-hole (DNS filtering, ad-blocking & local DNS resolution)
   - Jellyfin (media server)
+  - Dashy (dashboard for services & tools)
 
 Traffic is segmented between **WAN** and **LAN**, with pfSense enforcing security boundaries.
 
@@ -62,16 +61,15 @@ Traffic is segmented between **WAN** and **LAN**, with pfSense enforcing securit
 - pfSense CE
 
 ### Operating Systems
-- Debian 13 “Trixie”
 - Ubuntu Server 24.04 LTS
-- Windows 11 (Host)
+- Windows 11 (Host & Client)
 
 ### Services & Tools
 - Docker
 - Portainer
 - Pi-hole
 - Jellyfin
-- SSH (RSA key authentication)
+- Dashy
 
 ---
 
@@ -89,10 +87,6 @@ Full technical breakdown including architecture, configuration, implementation s
 
 ➡️ **[Read Technical Documentation](https://github.com/Jordynns/Wojtek-Network/blob/main/Technical-Documentation.md)**
 
-This repository contains documentation and installation scripts that retrieve
-software from official upstream sources. Third-party software remains subject
-to its own licenses.
-
 ---
 
 ## 🧪 Testing & Validation
@@ -100,7 +94,7 @@ to its own licenses.
 The network has been validated through:
 - VM-to-VM connectivity testing (ICMP / Ping)
 - DNS resolution and filtering verification
-- Service availability testing (Portainer, Pi-hole, Jellyfin)
+- Service availability testing (Portainer, Pi-hole, Jellyfin, Dashy)
 - Firewall and routing validation via pfSense
 
 ---
@@ -108,7 +102,7 @@ The network has been validated through:
 ## 👥 Team Information
 
 **Course:** HNC NextGen Computing  
-**Project Type:** Virtualized Network  
+**Project Type:** Virtualised Network  
 **Submission Date:** 23/10/2025  
 
 ### Team Members
@@ -121,7 +115,7 @@ The network has been validated through:
 
 ## 📌 License & Usage
 
-This project was developed **for educational purposes** as part of the HNC NextGen Computing course.
+This project was developed **for educational purposes** as part of the HNC NextGen Computing course. The repository contains documentation and installation scripts that retrieve software from official upstream sources. Third-party software remains subject to its own licenses.
 
 ---
 
