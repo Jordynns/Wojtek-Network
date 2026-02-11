@@ -201,9 +201,6 @@ sudo apt install cockpit
 
 Navigate to 192.168.10.3:9090, mount NAS drive to /srv/storage location in ext4
 
-```
-```
-
 Run:
 ```
 sudo apt install samba
@@ -213,7 +210,6 @@ sudo smbpasswd -e nasuser
 sudo chown -R nasuser:nasuser /srv/storage
 sudo chmod -R 775 /srv/storage
 ```
-
 
 Run:
 ```
@@ -236,7 +232,7 @@ and add the following:
      force user = root
 ```
 
-To Map the NAS on Windows Run:
+To Map the NAS on Windows Run in CMD:
 ```
 net use Z: \\192.168.10.3\nas /persistent:yes
 ```
@@ -245,23 +241,18 @@ Login with username = nasuser
 Password = User Defined
 
 ## Docker / Portainer Setup
-Generate the required file paths for Docker
+Generate the required file paths for Docker Containers
 ```
 sudo curl -fsSL -o docker.sh https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/scripts/file-path-gen.sh | bash
 sudo chmod +x docker.sh
 ./docker.sh
 ```
 
-Run the docker.sh install script while SSH into Ubuntu server:
+Run the docker.sh install script:
 ```
 sudo curl -fsSL -o docker.sh https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/scripts/docker.sh | bash
 sudo chmod +x docker.sh
 ./docker.sh
-```
-
-Navigate to the IP below to access the Portainer WEB-GUI:
-```
-https://192.168.10.3:9443/
 ```
 
 Run this script to create a slices of the network for Docker container services:
@@ -269,10 +260,11 @@ Run this script to create a slices of the network for Docker container services:
 curl -fsSL https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/scripts/docker-network-creation.sh | bash
 ```
 
-To update or change the password use the following command (inside Portainer Docker terminal):
+Navigate to the IP below to access the Portainer WEB-GUI:
 ```
-pihole setpassword
+https://192.168.10.3:9443/
 ```
+
 
 ### Pihole Local DNS Records
 On the side navigation bar, head to "Settings" > "Local DNS Records" and within the left side create a few records:
@@ -284,11 +276,14 @@ DOMAIN | IP
 192.168.10.x : cockpit.home
 ```
 
+To update or change the password use the following command (inside Portainer Docker terminal):
+```
+pihole setpassword
+```
+
 <div align="center" id="testing--validation">
   <h1>Testing & Validation</h1>
 </div>
-
-⠀
 
 ## Connectivity (Ping)
 *(Content goes here)*
