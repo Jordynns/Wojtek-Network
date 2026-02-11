@@ -146,22 +146,29 @@ Hyper-V Settings:
 - Generation: Generation 2
 - Memory: 4096MB (Static)
 - NIC: LAN (Internal)
-- Storage: 12gb+ (Static) + 50gb (Static) NAS Drive
+- Storage: 42gb+ (Static) + 5-20gb (Static) NAS Drive
 - ISO: ubuntu-24.04.3-live-server-amd64.iso
 - Processor: 6
 - Security: Secure Boot (Off)
 
-Post Install Commands:
+Post Install:
 ```
-sudo apt install cockpit
+sudo apt update && apt upgrade -y
 ```
 
 Optional (GUI):
 ```
-sudo apt install xubuntu-desktop
+sudo apt install xubuntu-desktop -y
 ```
 
-Navigate to 192.168.10.3:9090, mount NAS drive to /srv/storage location in ext4
+## NAS Setup
+Install cockpit
+
+```
+sudo apt install cockpit -y
+```
+
+After install navigate to 192.168.10.3:9090 and mount NAS drive to /srv/storage location in ext4
 
 Run:
 ```
@@ -173,34 +180,13 @@ sudo chown -R nasuser:nasuser /srv/storage
 sudo chmod -R 775 /srv/storage
 ```
 
-Run:
-```
-sudo nano /etc/samba/smb.conf
-```
+Update /etc/samba/smb.conf file with additional lines [smb.conf](https://github.com/Jordynns/Wojtek-Network/blob/main/config/samba/smb.conf)
 
-and add the following:
-```
-[global]
-   server min protocol = SMB2
-   server max protocol = SMB3
-   security = user
 
-[NAS]
-  path = /srv/storage
-  browseable = yes
-  read only = no
-  guest ok = no
-  valid users = root
-  force user = root
+Login with:
 ```
-
-To Map the NAS on Windows Run in CMD:
+nasuser:*****
 ```
-net use Z: \\192.168.10.3\nas /persistent:yes
-```
-
-Login with username = nasuser
-Password = User Defined
 
 ## Docker / Portainer Setup
 Generate the required file paths for Docker Containers
@@ -227,22 +213,6 @@ Navigate to the IP below to access the Portainer WEB-GUI:
 https://192.168.10.3:9443/
 ```
 
-
-### Pihole Local DNS Records
-On the side navigation bar, head to "Settings" > "Local DNS Records" and within the left side create a few records:
-```
-DOMAIN | IP
-192.168.10.2 : pihole.home
-192.168.10.3 : portainer.home
-192.168.10.4 : jellyfin.home
-192.168.10.x : cockpit.home
-```
-
-To update or change the password use the following command (inside Portainer Docker terminal):
-```
-pihole setpassword
-```
-
 <div align="center" id="testing--validation">
   <h1>Testing & Validation</h1>
 </div>
@@ -262,13 +232,15 @@ Additionally, you can add some optional filter list(s) to increase blocking pote
 https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/multi.txt
 ```
 
-To update the lists after adding, head to Tools > Update Gravity and update the lists or run the command:
-```
-pihole -g
-```
-
 ### Custom Domain Resolution
-*(Content goes here)*
+Within pihole WEB-GUI head to the side navigation bar, then head to "Settings" > "Local DNS Records" and within the left side create a few records:
+| Domain          | IP Address       |
+|-----------------|------------------|
+| pihole.home     | 192.168.10.2     |
+| portainer.home  | 192.168.10.3     |
+| jellyfin.home   | 192.168.10.4     |
+| cockpit.home    | 192.168.10.x     |
+
 
 ### DHCP
 *(Content goes here)*
@@ -298,8 +270,25 @@ pihole -g
 
 ⠀
 
-### Common Issues
-*(Content goes here)*
+## Common Issues
+
+### Mapping NAS
+To Map the NAS on Windows Run in CMD:
+```
+net use Z: \\192.168.10.3\nas /persistent:yes
+```
+
+### Pi-Hole Password Wrong
+To update or change the password use the following command (inside Portainer Docker terminal):
+```
+pihole setpassword
+```
+
+### Pi-Hole Filter Lists Not Updating
+To update the lists after adding, head to Tools > Update Gravity and update the lists or run the command:
+```
+pihole -g
+```
 
 <hr/>
 
