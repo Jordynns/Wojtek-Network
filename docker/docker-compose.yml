@@ -49,12 +49,21 @@ services:
       PORT: "80"
     volumes:
       - /home/dashy/conf.yml:/app/user-data/conf.yml
-    healthcheck:
-      test: ["CMD", "node", "/app/services/healthcheck"]
-      interval: 1m30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
+      
+   bitwarden:
+     image: vaultwarden/server:latest
+     container_name: bitwarden
+     restart: unless-stopped
+     networks:
+       ip_vlan:
+         ipv4_address: 192.168.10.6
+     ports:
+       - "8000:80"
+     volumes:
+       - /home/bitwarden/bw-data:/data
+     environment:
+       WEBSOCKET_ENABLED: 'true'
+       SIGNUPS_ALLOWED: 'false'
 
 networks:
   ip_vlan:
