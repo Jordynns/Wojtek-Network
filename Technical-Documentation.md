@@ -299,10 +299,11 @@ https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/multi.txt
 Within pihole WEB-GUI head to the side navigation bar, then head to "Settings" > "Local DNS Records" and within the left side create a few records:
 | Domain          | IP Address       |
 |-----------------|------------------|
-| pihole.home     | 192.168.10.2     |
-| portainer.home  | 192.168.10.3     |
-| jellyfin.home   | 192.168.10.4     |
-| cockpit.home    | 192.168.10.x     |
+| pihole.local    | 192.168.10.2     |
+| portainer.local | 192.168.10.3     |
+| jellyfin.local  | 192.168.10.4     |
+| dashy.local     | 192.168.10.5     |
+| cockpit.local   | 192.168.10.x     |
 
 
 ### DHCP
