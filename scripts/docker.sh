@@ -3,7 +3,7 @@ set -e
 
 # Define Variables
 NAS_PATH="/srv/storage"
-DASHY_CFG="https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/scripts/config/dashy/conf.yml"
+DASHY_CFG="https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/config/dashy/conf.yml"
 
 # Upgrade System
 sudo apt update && sudo apt upgrade -y
