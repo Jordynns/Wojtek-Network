@@ -62,7 +62,7 @@
 <hr/>
 
 <div align="center" id="system-requirements">
-  <h1>System Requirements</h1>
+  <h1>System Information</h1>
 </div>
 
 ## Hardware Specifications
@@ -72,7 +72,7 @@
 - GPU: Intel(R) UHD Graphics 770
 - RAM: 128GB DDR4 @ 3600MHz
 
-## Software Used (OS, Hypervisors, Tools)
+## Software Used (OS, Hypervisors, Containers, Tools)
 
 #### Operating Systems
 - [**Linux**](https://www.linux.org/)
@@ -84,6 +84,12 @@
 #### Hypervisors
 - [**Hyper-V**](https://en.wikipedia.org/wiki/Hyper-V)
 
+### Containers
+- [**Portainer**]
+- [**Pi-Hole**]
+- [**Jellyfin**]
+- [**Dashy**]
+
 #### Tools
 - [**Search Engines**](https://en.wikipedia.org/wiki/Search_engine)
     - [***Firefox***](https://www.firefox.com/en-US/)
@@ -91,6 +97,8 @@
 - [**GitHub**](https://github.com/)
 - [**Discord**](https://discord.com/)
 - [**Teams**](https://teams.live.com/free/)
+- [**Cockpit**]
+- [**Docker**]
 
 <div align="center" id="network-design">
   <h1>Network Design</h1>
