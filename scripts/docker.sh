@@ -52,6 +52,11 @@ sudo chmod -R 775 "$NAS_PATH/jellyfin/cache"
 sudo mkdir -p /home/dashy
 sudo curl -fsSL "$DASHY_CFG" -o /home/dashy/conf.yml
 
+# Nginx Proxy Manager Directories
+sudo mkdir -p \
+    "/home/nginx/data" \
+    "/home/nginx/letsencrypt"
+
 
 echo "=== Docker & Portainer Install ==="
 echo "✅ Installed Successfully"
