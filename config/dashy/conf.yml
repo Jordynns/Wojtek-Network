@@ -1,0 +1,210 @@
+pageInfo:
+  title: Home Lab
+appConfig:
+  theme: nord-frost
+sections:
+- name: Productivity
+  displayData:
+    collapsed: false
+    cols: 2
+  items:
+  - title: Archive Box
+    description: Web site archiving
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/archivebox.png
+  - title: Baserow
+    description: Feature-rich dynamic tables (similar to Airtable)
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/baserow.png
+  - title: Bookstack
+    description: Self-hosted Wiki
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/bookstack.png
+  - title: Domain Mod
+    description: Manage domains and other internet assets
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/domainmod.png
+  - title: Firefly
+    description: Financial manager
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/firefly-iii.png
+  - title: Fresh RSS
+    description: RSS feed reader and news aggregator
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/freshrss.png
+  - title: GifWit
+    description: Personal GIF library
+    icon: fas fa-images
+  - title: Git Tea
+    description: Git service, hosting mirrors of my public repos
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/gitea.png
+  - title: LessPass
+    description: Deterministic stateless password manager
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/lesspass.png
+  - title: NextCloud
+    description: Cloud office suit and collaboration platform
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/nextcloud.png
+  - title: Paperless
+    description: Scan, index, and archive physical paper documents
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/paperless-ngx.png
+  - title: Photo Prism
+    description: Browsing, organizing, and sharing photos and albums
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/photoprism.png
+  - title: Standard Notes
+    description: Encrypted notes app
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/standard-notes.png
+  - title: Syncthing
+    description: Peer-to-peer file synchronization
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/syncthing.png
+  - title: VS Code Web
+    description: Cloud based VS Code development environment
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/visual-studio-code.png
+  - title: Wallabag
+    description: Saved URLs and bookmarks
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/wallabag.png
+  - title: XBrowserSync
+    description: Bookmarks, history and browser sync
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/xbrowsersync.png
+- name: Firewall
+  items:
+  - title: OPNsense
+    description: Firewall Central Management
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/opnsense.png
+    target: iframe
+  - title: NetData
+    description: System resource usage on firewall
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/netdata.png
+  - title: MalTrail
+    description: Malicious traffic detection system
+    icon: fas fa-shield-virus
+  - title: Ntopng
+    description: Network traffic probe and network use monitor
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/ntopng.png
+  - title: Sensei
+    description: Additional data features
+    icon: fas fa-project-diagram
+  - title: Monit
+    description: Status of firewall system alerts
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/monit.png
+  - title: Firewall Logs
+    description: Real-time view of firewall data and logs
+    icon: fas fa-terminal
+  - title: WireGuard
+    description: Manage WireGuard client and server on firewall
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/wireguard.png
+- name: Networks
+  items:
+  - title: Pi-Hole
+    description: DNS settings for ad & tracker blocking
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/pi-hole.png
+  - title: PiAlert
+    description: Presence monitoring and ARP scanning
+    icon: fas fa-bell
+  - title: SmokePing
+    description: Network latency monitoring
+    icon: fas fa-chart-line
+  - title: StatPing
+    description: Up-time monitoring for local service
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/statping.png
+  - title: LibreSpeed
+    description: Local network speed and latency test
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/librespeed.png
+  - title: Grafana
+    description: Data visualised on dashboards
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/grafana.png
+- name: System Maintence
+  items:
+  - title: NetData
+    description: Real-time system resource usage
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/netdata.png
+  - title: Portainer
+    description: Docker container management
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/portainer.png
+  - title: cAdvisor
+    description: Container monitoring
+    icon: fas fa-microchip
+  - title: Glances
+    description: Simple resource usage
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/glances.png
+  - title: Dozzle
+    description: Docker container web log viewer
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/dozzle.png
+  - title: Prometheus
+    description: System Statistics Aggregation with PromQL
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/prometheus.png
+- name: External Services
+  items:
+  - title: DuckDNS
+    description: Dynamic DNS for fixed public IP
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/duckdns.png
+  - title: BorgBase
+    description: Off-site system Borg backups
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/borgbackup.png
+    url: https://www.borgbase.com/repositories
+  - title: Mullvad
+    description: Hosted VPN provider
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/mullvad.png
+    url: https://mullvad.net/en/account/
+  - title: ZeroTier
+    description: Secure networks between devices
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/zerotier.png
+    url: https://my.zerotier.com/
+  - title: HealthChecks
+    description: Cron Job Monitoring
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/healthchecks.png
+    url: https://healthchecks.io/checks/
+  - title: ISP - Vodafone
+    description: Broadband internet provider
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/vodafone.png
+    url: https://myaccount.vodafone.co.uk/
+- name: Media
+  items:
+  - title: Plex
+    description: Self-Hosted Media Streaming Service
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/plex.png
+  - title: Tautulli
+    description: Monitoring and statistics for Plex
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/tautulli.png
+  - title: Transmission
+    description: Transmission remote for managing torrents 
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/transmission.png
+  - title: Couch Potato
+    description: Automatic Movie Downloading via NZBs & Torrents
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/couch-potato.png
+- name: Home Control
+  items:
+  - title: Home Assistant
+    description: Smart home control
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/home-assistant.png
+  - title: Node-RED
+    description: Flow-based automation
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/node-red.png
+- name: Other Devices
+  items:
+  - title: Modem
+    description: ISP Router Modem Combo
+    icon: fas fa-router
+  - title: Wireless Access Point
+    description: View clients connected to WiFi
+    icon: fas fa-wifi
+  - title: Fing
+    description: Monitor connectivity
+    icon: favicon-https://app.fing.com/
+    url: https://app.fing.com/
+  - title: Switch
+    description: Manage VLANs on Ubiquity Ethernet switch
+    icon: fas fa-network-wired
+- name: External Utilities
+  displayData:
+    collapsed: true
+  items:
+  - title: Public IP
+    description: Check public IP and associated data
+    icon: fas fa-globe
+    url: https://www.whatismyip.com/
+  - title: Who Is Lookup
+    description: Check ICAN info for a given IP address or domain
+    icon: fas fa-search-location
+    url: https://whois.domaintools.com/
+  - title: Speed Test
+    description: Upload + download speeds and latency
+    icon: fas fa-tachometer-alt
+    url: https://speed.cloudflare.com/
+  - title: Mullvad Check
+    description: Confirms a secure connection to Mullvad's WireGuard servers
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/mullvad.png
+    url: https://mullvad.net/check
