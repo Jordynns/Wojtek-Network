@@ -65,7 +65,26 @@ services:
     SIGNUPS_ALLOWED: "true"
     ADMIN_TOKEN: "Pa$$w0rd"
 
-  
+  retroarch:
+    image: linuxserver/retroarch
+    container_name: retroarch
+    restart: unless-stopped
+    networks:
+      ip_vlan:
+        ipv4_address: 192.168.10.7
+    ports:
+      - "6080:6080"
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: "Etc/UTC"
+    volumes:
+      - /home/retroarch/retroarch_config:/config
+      - /home/retroarch/roms:/roms
+    devices:
+      - /dev/input:/dev/input
+    shm_size: "1gb"
+
   nginx-proxy-manager:
     image: jc21/nginx-proxy-manager:latest
     container_name: nginx-proxy-manager
@@ -80,23 +99,6 @@ services:
     volumes:
     - /home/nginx/data:/data
     - /home/nginx/letsencrypt:/etc/letsencrypt
-
-  retroarch:
-    image: linuxserver/retroarch
-    container_name: retroarch
-    restart: unless-stopped
-    ports:
-      - "6080:6080"
-    environment:
-      PUID: 1000
-      PGID: 1000
-      TZ: "Etc/UTC"
-    volumes:
-      - /home/retroarch/retroarch_config:/config
-      - /home/retroarch/roms:/roms
-    devices:
-      - /dev/input:/dev/input
-    shm_size: "1gb"
 
 networks:
   ip_vlan:
