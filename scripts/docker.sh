@@ -4,6 +4,7 @@ set -e
 # Define Variables
 NAS_PATH="/srv/storage"
 DASHY_CFG="https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/config/dashy/conf.yml"
+PROMETHEUS_CFG="https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/config/prometheus/prometheus.yml"
 
 # Upgrade System
 sudo apt update && sudo apt upgrade -y
@@ -56,6 +57,13 @@ sudo curl -fsSL "$DASHY_CFG" -o /home/dashy/conf.yml
 sudo mkdir -p \
     "/home/nginx/data" \
     "/home/nginx/letsencrypt"
+
+# Grafana + Prometheus Directories/Config
+sudo mkdir -p \
+    "home/prometheus" \
+    "home/prometheus/prometheus_data" \
+    "home/grafana/data"
+sudo curl -fsSL "$PROMETHEUS_CFG" -o /home/prometheus/prometheus.yml
 
 
 echo "=== Docker & Portainer Install ==="
