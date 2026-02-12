@@ -108,7 +108,17 @@
 *(Content goes here)*
 
 ## IP Addressing Scheme
-*(Content goes here)*
+|       Service       	|               IP               	|                          Usage                          	|
+|:-------------------:	|:------------------------------:	|:-------------------------------------------------------:	|
+|       pfSense       	|          192.168.10.1          	|                 Default Gateway & Router                	|
+|       Pih-hole      	|          192.168.10.2          	|           Primary DNS & Ad-blocking/Filtering           	|
+|    Ubuntu Server    	|          192.168.10.3          	|               Docker Host & NAS (Cockpit)               	|
+|       Jellyfin      	|          192.168.10.4          	|                     Media Streaming                     	|
+|        Dashy        	|          192.168.10.5          	|              Network Dashboard via Browser              	|
+| Nginx Proxy Manager 	|          192.168.10.6          	| Reverse Proxy w/ Signed Certs for HTTPS Traffic (Local) 	|
+|      Bitwarden      	|          192.168.10.7          	|                 Secure Password Manager                 	|
+|      DHCP Pool      	| 192.168.10.20 - 192.168.10.254 	|            Dynamic IP allocation for clients            	|
+
 
 ## Routing
 *(Content goes here)*
