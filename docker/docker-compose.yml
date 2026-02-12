@@ -81,6 +81,23 @@ services:
     - /home/nginx/data:/data
     - /home/nginx/letsencrypt:/etc/letsencrypt
 
+  retroarch:
+    image: linuxserver/retroarch
+    container_name: retroarch
+    restart: unless-stopped
+    ports:
+      - "6080:6080"
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: "Etc/UTC"
+    volumes:
+      - /home/retroarch/retroarch_config:/config
+      - /home/retroarch/roms:/roms
+    devices:
+      - /dev/input:/dev/input
+    shm_size: "1gb"
+
 networks:
   ip_vlan:
     external: true
