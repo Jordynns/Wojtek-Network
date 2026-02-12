@@ -65,12 +65,6 @@ sudo mkdir -p \
     "home/grafana/data"
 sudo curl -fsSL "$PROMETHEUS_CFG" -o /home/prometheus/prometheus.yml
 
-# RetroArch Directories
-sudo mkdir -p \
-    "/home/retroarch/config" \
-    "/home/retroarch/roms"
-
-
 echo "=== Docker & Portainer Install ==="
 echo "✅ Installed Successfully"
 echo "=================================="
