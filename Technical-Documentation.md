@@ -108,6 +108,9 @@
 *(Content goes here)*
 
 ## IP Addressing Scheme
+
+Each service has been allocated their own IP to allow for easier management and tracking of services
+
 |       Service       	|               IP               	|                          Usage                          	|
 |:-------------------:	|:------------------------------:	|:-------------------------------------------------------:	|
 |       pfSense       	|          192.168.10.1          	|                 Default Gateway & Router                	|
