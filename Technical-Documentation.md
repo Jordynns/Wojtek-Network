@@ -111,7 +111,7 @@
 |       Service       	|               IP               	|                          Usage                          	|
 |:-------------------:	|:------------------------------:	|:-------------------------------------------------------:	|
 |       pfSense       	|          192.168.10.1          	|                 Default Gateway & Router                	|
-|       Pih-hole      	|          192.168.10.2          	|           Primary DNS & Ad-blocking/Filtering           	|
+|       Pi-hole      	  |          192.168.10.2          	|           Primary DNS & Ad-blocking/Filtering           	|
 |    Ubuntu Server    	|          192.168.10.3          	|               Docker Host & NAS (Cockpit)               	|
 |       Jellyfin      	|          192.168.10.4          	|                     Media Streaming                     	|
 |        Dashy        	|          192.168.10.5          	|              Network Dashboard via Browser              	|
