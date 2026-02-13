@@ -118,7 +118,7 @@ Each service has been allocated their own IP to allow for easier management and 
 |    Ubuntu Server    	|          192.168.10.3          	|               Docker Host & NAS (Cockpit)               	|
 |       Jellyfin      	|          192.168.10.4          	|                     Media Streaming                     	|
 |        Dashy        	|          192.168.10.5          	|              Network Dashboard via Browser              	|
-|      Bitwarden      	|          192.168.10.7          	|                 Secure Password Manager                 	|
+|      Bitwarden      	|          192.168.10.6          	|                 Secure Password Manager                 	|
 | Nginx Proxy Manager 	|          192.168.10.20          | Reverse Proxy w/ Signed Certs for HTTPS Traffic (Local) 	|
 |      DHCP Pool      	| 192.168.10.20 - 192.168.10.254 	|            Dynamic IP allocation for clients            	|
 
@@ -128,7 +128,7 @@ The pfSense virtual machine works as the router which does Network Address Trans
 
 ## Firewall
 
-Basic pfSense Firewall configuration, esentially block all and allow what is needed
+Basic pfSense Firewall configuration, essentially block all and allow what is needed
 
 |   Protocol   	|    Source   	| Port 	| Destination  	| Port    	| Gateway 	| Description                          	|
 |:------------:	|:-----------:	|:----:	|--------------	|---------	|---------	|--------------------------------------	|
@@ -136,7 +136,7 @@ Basic pfSense Firewall configuration, esentially block all and allow what is nee
 | IPv4 TCP/UDP  | LAN Subnets 	|   *  	| 192.168.10.2 	| 53      	| *       	| Allow DNS - Pi-Hole                  	|
 | IPv4 TCP/UDP 	| LAN Subnets 	|   *  	| *            	| 53      	| *       	| Reject to Prevent DNS Bypass          |
 | IPv4 TCP      | LAN Subnets 	|   *  	| *            	| 80, 443 	| *       	| Allow Common Internet Ports (HTTP(S) 	|
-| IPv4 UDP    	| LAN Subnets 	|   *  	| *            	| 123       | *       	| NPT Time Sync (SSL/HTTPS)        	    |
+| IPv4 UDP    	| LAN Subnets 	|   *  	| *            	| 123       | *       	| NTP Time Sync (SSL/HTTPS)        	    |
 | IPv4 ICMP    	| LAN Subnets 	|   *  	| *            	| *       	| *       	| Enable Ping usage on the network      |
 | IPv4 TCP/UDP  | 192.168.10.2 	|   *  	| * 	          | 53      	| *       	| Allow Pi-Hole Outbound DNS            |
 | IPv4 *    	  | LAN Subnets 	|   *  	| *            	| *       	| *       	| Block all traffic not defined        	|
@@ -260,8 +260,6 @@ services:
     image: jellyfin/jellyfin
     container_name: jellyfin
     restart: unless-stopped
-    ports:
-      - "8096:8096"
     user: "1000:1000"
     networks:
       ip_vlan:
@@ -330,7 +328,7 @@ networks:
 ## Creation of Certificate Authority
 Firstly you will need to create and generate a Local Certificate Authority, navigate to pfSense Web-GUI > System > Certificates > Authorities > +Add
 
-- Descriiptive Name: Local-CA
+- Descriptive Name: Local-CA
 - Method: Create an internal Certificate Authority
 - Key Type: RSA 2048
 - Digest Alorithm: sha256
@@ -343,7 +341,7 @@ Firstly you will need to create and generate a Local Certificate Authority, navi
   - Organisation: Wojtek
 
 > [!TIP]
-> Downmload and install the Local-CA certificate on endpoints e.g. Windows 11 client
+> Download and install the Local-CA certificate on endpoints e.g. Windows 11 client
 > Open it > Local Machine > Certificate Store > Trusted Root Certification Authorities > Finish
 
 ## Service Certificates & Keys
@@ -395,7 +393,7 @@ After you have implemented the Service Certificate navigate to Hosts > Proxy Hos
   - HSTS Sub-domains: ❌
 
 > [!TIP]
-> Be sure to make the domainame to resolve to Nginx Proxy Manager IP within Pi-Hole
+> Be sure to make the domain name to resolve to Nginx Proxy Manager IP within Pi-Hole
 > | Domain                      | IP Address       |
 > |-----------------------------|------------------|
 > | ExampleService.home.arpa    | 192.168.10.20    |
