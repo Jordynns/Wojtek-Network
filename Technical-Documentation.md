@@ -217,10 +217,8 @@ sudo chmod +x docker.sh
 ./docker.sh
 ```
 
-Navigate to the IP below to access the Portainer WEB-GUI:
-```
-https://192.168.10.3:9000/
-```
+> [!TIP]
+> Navigate to https://192.168.10.3:9000/ to access the Web-GUI
 
 ## Containers / Services
 To Setup all containers, use the following docker-compose.yml and create a stack within Portainer:
@@ -251,7 +249,7 @@ services:
     container_name: jellyfin
     restart: unless-stopped
     ports:
-      - "80:8096"
+      - "8096:8096"
     user: "1000:1000"
     networks:
       ip_vlan:
@@ -277,12 +275,36 @@ services:
       PORT: "80"
     volumes:
       - /home/dashy/conf.yml:/app/user-data/conf.yml
-    healthcheck:
-      test: ["CMD", "node", "/app/services/healthcheck"]
-      interval: 1m30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
+      
+  bitwarden:
+   image: vaultwarden/server:latest
+   container_name: bitwarden
+   restart: unless-stopped
+   networks:
+     ip_vlan:
+       ipv4_address: 192.168.10.6
+   volumes:
+     - /home/bitwarden/bw-data:/data
+   environment:
+    DOMAIN: "https://bitwarden.home.arpa"
+    WEBSOCKET_ENABLED: "true"
+    SIGNUPS_ALLOWED: "true"
+    ADMIN_TOKEN: "Pa$$w0rd"
+
+  nginx-proxy-manager:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: nginx-proxy-manager
+    restart: unless-stopped
+    networks:
+      ip_vlan:
+        ipv4_address: 192.168.10.20
+    ports:
+    - "80:80"
+    - "443:443"
+    - "81:81"
+    volumes:
+    - /home/nginx/data:/data
+    - /home/nginx/letsencrypt:/etc/letsencrypt
 
 networks:
   ip_vlan:
