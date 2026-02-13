@@ -459,7 +459,7 @@ Connecting clients to the network shall dish out IPs in the range of 192.168.10.
 </div>
 
 ### Create VM Snapshots / Checkpoints
-*(Content goes here)*
+Within Hyper-V to create a snapshot/checkpoint, you will Right Click VM > Checkpoint and that is it.
 
 ### Updating Devices
 > [!TIP]
