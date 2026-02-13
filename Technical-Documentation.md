@@ -385,6 +385,12 @@ After you have implemented the Service Certificate navigate to Hosts > Proxy Hos
   - HSTS Enabled: ❌
   - HSTS Sub-domains: ❌
 
+> [!TIP]
+> Be sure to make the domainame to resolve to Nginx Proxy Manager IP within Pi-Hole
+> | Domain                      | IP Address       |
+> |-----------------------------|------------------|
+> | ExampleService.home.arpa    | 192.168.10.20    |
+
 <div align="center" id="testing--validation">
   <h1>Testing & Validation</h1>
 </div>
