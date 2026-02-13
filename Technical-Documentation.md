@@ -461,10 +461,19 @@ Connecting clients to the network shall dish out IPs in the range of 192.168.10.
 *(Content goes here)*
 
 ### Updating Devices
-*(Content goes here)*
+> [!TIP]
+> Before Updating any devices/machines, it is recommended to create a backup & restorepoint/checkpoint of the machine.
 
-### Network Backup / Recovery
-*(Content goes here)*
+Linux:
+```
+sudo apt update && apt upgrade -y
+```
+
+Windows:
+Updates > Download & Install
+
+Docker Containers:
+Redeploy the stack, keep persistent data
 
 <hr/>
 
