@@ -404,7 +404,7 @@ After you have implemented the Service Certificate navigate to Hosts > Proxy Hos
   <h1>Testing & Validation</h1>
 </div>
 
-## Connectivity (Ping)
+### Connectivity (Ping)
 To test connectivity between Network <-> Server and Client <-> Server you can utilise the ping command
 
 Windows 11 Client <-> Server:
