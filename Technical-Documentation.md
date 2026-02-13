@@ -514,7 +514,12 @@ pihole -g
 *(Content goes here)*
 
 ### Future Improvements
-*(Content goes here)*
+Improvements that can be added to the Project:
+
+- Secure RDP via Tunneling **[Parsec](https://parsec.app/)** / **[Moonlight](https://moonlight-stream.org/)**
+- Securley host services via **[Cloud Flared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)** tunneling
+- Implement Cloud Flare **[Zero Trust](https://www.cloudflare.com/tr-tr/sase/products/access/)** to ensure a secured login to publically hosted services
+- Additional Docker Services e.g. **[NextCloud](https://nextcloud.com/)** (Self-hosted Cloud Storage Solution)
 
 <hr/>
 
