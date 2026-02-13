@@ -107,6 +107,10 @@
 ## Logical Topology Diagram
 *(Content goes here)*
 
+## Design Decisions
+
+*(Content Goes Here)*
+
 ## IP Addressing Scheme
 
 Each service has been allocated their own IP to allow for easier management and tracking of services
@@ -140,6 +144,9 @@ Basic pfSense Firewall configuration, essentially block all and allow what is ne
 | IPv4 ICMP    	| LAN Subnets 	|   *  	| *            	| *       	| *       	| Enable Ping usage on the network      |
 | IPv4 TCP/UDP  | 192.168.10.2 	|   *  	| * 	          | 53      	| *       	| Allow Pi-Hole Outbound DNS            |
 | IPv4 *    	  | LAN Subnets 	|   *  	| *            	| *       	| *       	| Block all traffic not defined        	|
+
+## Security Design
+*(Content Goes Here)*
 
 <hr/>
 
