@@ -246,7 +246,7 @@ sudo chown -R nasuser:nasuser /srv/storage
 sudo chmod -R 775 /srv/storage
 ```
 
-Update /etc/samba/smb.conf file with additional lines [smb.conf](https://github.com/Jordynns/Wojtek-Network/blob/main/config/samba/smb.conf)
+Update /etc/samba/smb.conf file with additional lines **[smb.conf](https://github.com/Jordynns/Wojtek-Network/blob/main/config/samba/smb.conf)**
 
 
 Login with:
@@ -400,7 +400,7 @@ Next generate individual Certificates & Keys for each service e.g. Pi-Hole, Bitw
 
 ## Nginx Proxy Manager Configuration
 
-Navigate towards the IP for Nginx Proxy Manager (192.168.10.20) and after creating/logging in navigate to Certificates > Add Certificate > Custom Certificate
+Navigate towards the IP for Nginx Proxy Manager (**192.168.10.20**) and after creating/logging in navigate to Certificates > Add Certificate > Custom Certificate
 
 - Name: ExampleService
 - Certificate Key: ExampleService-cert.key
@@ -523,7 +523,12 @@ pihole -g
 </div>
 
 ### Full Configurations
-*(Content goes here)*
+Check out **[Configs](https://github.com/Jordynns/Wojtek-Network/tree/main/config)** within the repository to find all of our configurations!
 
 ### References
-*(Content goes here)*
+1. **[pfSense Documentation](https://docs.netgate.com/pfsense/en/latest/)**
+2. **[Docker Network Documentation](https://docs.docker.com/engine/network/)**
+3. **[Portainer CE with Docker Documentation](https://docs.portainer.io/start/install-ce/server/docker/linux)**
+4. **[Pi-Hole Documentation](https://docs.pi-hole.net/)**
+5. **[Nginx Proxy Manager Documentation](https://nginxproxymanager.com/guide/)**
+
