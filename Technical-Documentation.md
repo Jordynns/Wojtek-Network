@@ -325,6 +325,9 @@ networks:
 
 ## Reverse Proxy (Nginx Proxy Manager)
 
+<hr/>
+
+## Creation of Certificate Authority
 Firstly you will need to create and generate a Local Certificate Authority, navigate to pfSense Web-GUI > System > Certificates > Authorities > +Add
 
 - Descriiptive Name: Local-CA
@@ -343,6 +346,8 @@ Firstly you will need to create and generate a Local Certificate Authority, navi
 > Downmload and install the Local-CA certificate on endpoints e.g. Windows 11 client
 > Open it > Local Machine > Certificate Store > Trusted Root Certification Authorities > Finish
 
+## Service Certificates & Keys
+
 Next generate individual Certificates & Keys for each service e.g. Pi-Hole, Bitwarden, etc.. Navigate to pfSense Web-GUI > System > Certificates > Certificates > +Add
 
 - Method: Create an internal Certificate
@@ -360,7 +365,11 @@ Next generate individual Certificates & Keys for each service e.g. Pi-Hole, Bitw
 - Certificate Type: Server Certificate
 
 > [!TIP]
-> Download both Certificate and Key for the Service, then navigate toward the IP for Nginx Proxy Manager.. After creating/logging in navigate to Certificates > Add Certificate > Custom Certificate
+> Download both Certificate and Key for the Service
+
+## Nginx Proxy Manager Configuration
+
+Navigate towards the IP for Nginx Proxy Manager (192.168.10.20) and after creating/logging in navigate to Certificates > Add Certificate > Custom Certificate
 
 - Name: ExampleService
 - Certificate Key: ExampleService-cert.key
@@ -396,41 +405,26 @@ After you have implemented the Service Certificate navigate to Hosts > Proxy Hos
 </div>
 
 ## Connectivity (Ping)
-*(Content goes here)*
+To test connectivity between Network <-> Server and Client <-> Server you can utilise the ping command
 
-## Services
-*(Placeholder Description)*
-
-### DNS
-
-### Filtering (Pi-Hole)
-
-Additionally, you can add some optional filter list(s) to increase blocking potential and security by adding the following:
+Windows 11 Client <-> Server:
 ```
-https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/multi.txt
+ping 192.168.10.3
 ```
 
-### Custom Domain Resolution
-Within pihole WEB-GUI head to the side navigation bar, then head to "Settings" > "Local DNS Records" and within the left side create a few records:
-| Domain          | IP Address       |
-|-----------------|------------------|
-| pihole.local    | 192.168.10.2     |
-| portainer.local | 192.168.10.3     |
-| jellyfin.local  | 192.168.10.4     |
-| dashy.local     | 192.168.10.5     |
-| cockpit.local   | 192.168.10.x     |
-
+Server <-> Windows 11 Client:
+```
+ping 192.168.10.21
+```
 
 ### DHCP
-*(Content goes here)*
+Connecting clients to the network shall dish out IPs in the range of 192.168.10.20 - 192.168.10.254... The Windows 11 client shall have the IP of 192.168.10.21+
 
 <hr/>
 
 <div align="center" id="maintenance--backup">
   <h1>Maintenance & Backup</h1>
 </div>
-
-⠀
 
 ### Create VM Snapshots / Checkpoints
 *(Content goes here)*
@@ -446,8 +440,6 @@ Within pihole WEB-GUI head to the side navigation bar, then head to "Settings" >
 <div align="center" id="troubleshooting">
   <h1>Troubleshooting</h1>
 </div>
-
-⠀
 
 ## Common Issues
 
@@ -475,8 +467,6 @@ pihole -g
   <h1>Conclusion</h1>
 </div>
 
-⠀
-
 ### Achievements
 *(Content goes here)*
 
@@ -491,8 +481,6 @@ pihole -g
 <div align="center" id="appendices">
   <h1>Appendices</h1>
 </div>
-
-⠀
 
 ### Full Configurations
 *(Content goes here)*
