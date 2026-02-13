@@ -118,8 +118,8 @@ Each service has been allocated their own IP to allow for easier management and 
 |    Ubuntu Server    	|          192.168.10.3          	|               Docker Host & NAS (Cockpit)               	|
 |       Jellyfin      	|          192.168.10.4          	|                     Media Streaming                     	|
 |        Dashy        	|          192.168.10.5          	|              Network Dashboard via Browser              	|
-| Nginx Proxy Manager 	|          192.168.10.6          	| Reverse Proxy w/ Signed Certs for HTTPS Traffic (Local) 	|
 |      Bitwarden      	|          192.168.10.7          	|                 Secure Password Manager                 	|
+| Nginx Proxy Manager 	|          192.168.10.20          | Reverse Proxy w/ Signed Certs for HTTPS Traffic (Local) 	|
 |      DHCP Pool      	| 192.168.10.20 - 192.168.10.254 	|            Dynamic IP allocation for clients            	|
 
 
