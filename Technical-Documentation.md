@@ -323,6 +323,68 @@ networks:
     external: true
 ```
 
+## Reverse Proxy (Nginx Proxy Manager)
+
+Firstly you will need to create and generate a Local Certificate Authority, navigate to pfSense Web-GUI > System > Certificates > Authorities > +Add
+
+- Descriiptive Name: Local-CA
+- Method: Create an internal Certificate Authority
+- Key Type: RSA 2048
+- Digest Alorithm: sha256
+- Lifetime (days): 3650 (10 years)
+- Common Name: internal-ca
+- Personal Preference Settings:
+  - Country Code: GB
+  - State: Scotland
+  - City: Glasgow
+  - Organisation: Wojtek
+
+> [!TIP]
+> Downmload and install the Local-CA certificate on endpoints e.g. Windows 11 client
+> Open it > Local Machine > Certificate Store > Trusted Root Certification Authorities > Finish
+
+Next generate individual Certificates & Keys for each service e.g. Pi-Hole, Bitwarden, etc.. Navigate to pfSense Web-GUI > System > Certificates > Certificates > +Add
+
+- Method: Create an internal Certificate
+- Descriptive Name: ExampleService-cert
+- Certificate Authority: Local-CA
+- Key Type: RSA 2048
+- Digest Algorithm: sha256
+- Lifetime (days): 800
+- Common Name: ExampleURL.home.arpa
+- Personal Preference Settings:
+  - Country Code: GB
+  - State: Scotland
+  - City: Glasgow
+  - Organisation: Wojtek
+- Certificate Type: Server Certificate
+
+> [!TIP]
+> Download both Certificate and Key for the Service, then navigate toward the IP for Nginx Proxy Manager.. After creating/logging in navigate to Certificates > Add Certificate > Custom Certificate
+
+- Name: ExampleService
+- Certificate Key: ExampleService-cert.key
+- Certificate: ExampleService-cert.crt
+- Intermediate Certificate: Local-CA
+
+After you have implemented the Service Certificate navigate to Hosts > Proxy Hosts > Add Proxy Host
+
+- Details
+  - Domain Names: ExampleService.home.arpa
+  - Scheme: http
+  - Forward Hostname / IP: 192.168.10.x
+  - Forward Port: xx
+  - Options:
+    - Cache Assets: ❌ 
+    - Block Common Exploits: ✅
+    - Websockets Support: ✅
+- SSL
+  - SSL Certificate: ExampleService
+  - Force SSL: ✅
+  - HTTP/2 Support: ✅
+  - HSTS Enabled: ❌
+  - HSTS Sub-domains: ❌
+
 <div align="center" id="testing--validation">
   <h1>Testing & Validation</h1>
 </div>
