@@ -107,6 +107,32 @@
 ## Logical Topology Diagram
 *(Content goes here)*
 
+Text-based visualsation of the network flow
+```
+Internet
+  |
+  | (External vSwitch)
+  |
+Hyper-V Host
+  |
+  |-- pfSense (WAN: hn0)
+  |-- pfSense (LAN: hn1 - 192.168.10.1)
+        |
+        +-- LAN 192.168.10.0/24
+              |
+              +-- Ubuntu Server (192.168.10.3)
+              |     |
+              |     +-- Docker ipvlan network
+              |           +-- Pi-hole (192.168.10.2)
+              |           +-- Jellyfin (192.168.10.4)
+              |           +-- Vaultwarden (192.168.10.6)
+              |           +-- Dashy (192.168.10.5)
+              |           +-- Nginx Proxy Manager (192.168.10.20)
+              |
+              +-- Windows 11 Client (DHCP)
+```
+
+
 ## Design Decisions
 
 *(Content Goes Here)*
