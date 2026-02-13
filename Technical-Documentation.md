@@ -127,7 +127,15 @@ Each service has been allocated their own IP to allow for easier management and 
 The pfSense virtual machine works as the router which does Network Address Translation (NAT) to allow internal devices to connect to the Internet (WAN) via the Hyper-V NIC / Interface.
 
 ## Firewall
-*(Content goes here)*
+
+Basic pfSense Firewall configuration, esentially block all and allow what is needed
+
+|   Protocol   	|    Source   	| Port 	| Destination  	| Port    	| Gateway 	| Description                          	|
+|:------------:	|:-----------:	|:----:	|--------------	|---------	|---------	|--------------------------------------	|
+|   IPv4 UDP   	| LAN Subnets 	|   *  	| 192.168.10.2 	| 53      	| *       	| Allow DNS - Pi-Hole                  	|
+| IPv4 TCP/UDP 	| LAN Subnets 	|   *  	| *            	| 53      	| *       	| Prevent Pi-Hole Bypass               	|
+|   IPv4 TCP   	| LAN Subnets 	|   *  	| *            	| 80, 443 	| *       	| Allow Common Internet Ports (HTTP(S) 	|
+|    IPv4 *    	| LAN Subnets 	|   *  	| *            	| *       	| *       	| Block all traffic not defined        	|
 
 <hr/>
 
