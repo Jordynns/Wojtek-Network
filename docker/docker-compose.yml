@@ -22,8 +22,6 @@ services:
     image: jellyfin/jellyfin
     container_name: jellyfin
     restart: unless-stopped
-    ports:
-      - "8096:8096"
     user: "1000:1000"
     networks:
       ip_vlan:
