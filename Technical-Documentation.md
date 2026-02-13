@@ -137,6 +137,7 @@ Basic pfSense Firewall configuration, esentially block all and allow what is nee
 | IPv4 TCP      | LAN Subnets 	|   *  	| *            	| 80, 443 	| *       	| Allow Common Internet Ports (HTTP(S) 	|
 | IPv4 UDP    	| LAN Subnets 	|   *  	| *            	| 123       | *       	| NPT Time Sync (SSL/HTTPS)        	    |
 | IPv4 ICMP    	| LAN Subnets 	|   *  	| *            	| *       	| *       	| Enable Ping usage on the network      |
+| IPv4 TCP/UDP  | 192.168.10.2 	|   *  	| * 	          | 53      	| *       	| Allow Pi-Hole Outbound DNS            |
 | IPv4 *    	  | LAN Subnets 	|   *  	| *            	| *       	| *       	| Block all traffic not defined        	|
 
 <hr/>
