@@ -132,6 +132,7 @@ Basic pfSense Firewall configuration, esentially block all and allow what is nee
 
 |   Protocol   	|    Source   	| Port 	| Destination  	| Port    	| Gateway 	| Description                          	|
 |:------------:	|:-----------:	|:----:	|--------------	|---------	|---------	|--------------------------------------	|
+| *             | * 	          |   *  	| LAN Address 	| 8443     	| *       	| Anti-Lockout Rule (pfSense Default)   |
 | IPv4 TCP/UDP  | LAN Subnets 	|   *  	| 192.168.10.2 	| 53      	| *       	| Allow DNS - Pi-Hole                  	|
 | IPv4 TCP/UDP 	| LAN Subnets 	|   *  	| *            	| 53      	| *       	| Reject to Prevent DNS Bypass          |
 | IPv4 TCP      | LAN Subnets 	|   *  	| *            	| 80, 443 	| *       	| Allow Common Internet Ports (HTTP(S) 	|
