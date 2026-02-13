@@ -124,7 +124,7 @@ Each service has been allocated their own IP to allow for easier management and 
 
 
 ## Routing
-*(Content goes here)*
+The pfSense virtual machine works as the router which does Network Address Translation (NAT) to allow internal devices to connect to the Internet (WAN) via the Hyper-V NIC / Interface.
 
 ## Firewall
 *(Content goes here)*
