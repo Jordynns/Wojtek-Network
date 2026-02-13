@@ -55,9 +55,10 @@
   <h1>Summary</h1>
 </div>
 
-⠀
+Wojtek Network is a fully virtualized home network environment built using Microsoft Hyper-V.
+The project aims to simulate a realistic, secure, and scalable home or small-office network by combining virtual machines, routing, containerised services, and centralised management tools.
 
-*(Content goes here)*
+The environment demonstrates real-world networking concepts including network segmentation, firewalling, DNS filtering, DHCP, container orchestration, and service hosting.
 
 <hr/>
 
