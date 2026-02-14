@@ -106,6 +106,17 @@ The environment demonstrates real-world networking concepts including network se
 </div>
 
 ## Logical Topology Diagram
+
+<div align="center">
+  <h3>Legend</h3>  
+  🔵 Internet / Edge
+  ⚫ Virtualisation Layer
+  🔴 Firewall / Routing
+  🟢 LAN Devices
+  🟣 Container Network
+  🟡 Application Services
+</div>
+
 ```mermaid
 graph TD
 
@@ -180,7 +191,6 @@ class LAN,Ubuntu,Win11 lan;
 class Docker docker;
 class PiHole,Jellyfin,Dashy,Vaultwarden,NPM service;
 ```
-
 
 ## Design Decisions
 
