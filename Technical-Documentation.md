@@ -532,4 +532,5 @@ Check out **[Configs](https://github.com/Jordynns/Wojtek-Network/tree/main/confi
 3. **[Portainer CE with Docker Documentation](https://docs.portainer.io/start/install-ce/server/docker/linux)**
 4. **[Pi-Hole Documentation](https://docs.pi-hole.net/)**
 5. **[Nginx Proxy Manager Documentation](https://nginxproxymanager.com/guide/)**
+6. **[Mermaid Diagram](https://mermaid.js.org/)**
 
