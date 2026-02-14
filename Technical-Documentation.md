@@ -231,7 +231,7 @@ Basic pfSense Firewall configuration, essentially block all and allow what is ne
 | IPv4 *    	  | LAN Subnets 	|   *  	| *            	| *       	| *       	| Block all traffic not defined        	|
 
 ## Security Design
-*(Content Goes Here)*
+Our security design goes off the basis of "Block everything, allow what is needed" essentially we block all traffic that isn't required for operations. For example, we only allow the Pi-Hole to get DNS requests from LAN sources and the Pi-Hole to fetch outbound DNS sources only. We have locked all other port connections aside from 80, 443, 123, and 53 as these are the only vital connections we currently need for external/internal connections.
 
 <hr/>
 
