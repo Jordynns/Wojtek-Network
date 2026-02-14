@@ -106,9 +106,6 @@ The environment demonstrates real-world networking concepts including network se
 </div>
 
 ## Logical Topology Diagram
-*(Content goes here)*
-
-Text-based visualsation of the network flow
 ```mermaid
 graph TD
 
