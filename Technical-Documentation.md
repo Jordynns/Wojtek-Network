@@ -109,28 +109,26 @@ The environment demonstrates real-world networking concepts including network se
 *(Content goes here)*
 
 Text-based visualsation of the network flow
-```
-Internet
-  |
-  | (External vSwitch)
-  |
-Hyper-V Host
-  |
-  |-- pfSense (WAN: hn0)
-  |-- pfSense (LAN: hn1 - 192.168.10.1)
-        |
-        +-- LAN 192.168.10.0/24
-              |
-              +-- Ubuntu Server (192.168.10.3)
-              |     |
-              |     +-- Docker ipvlan network
-              |           +-- Pi-hole (192.168.10.2)
-              |           +-- Jellyfin (192.168.10.4)
-              |           +-- Vaultwarden (192.168.10.6)
-              |           +-- Dashy (192.168.10.5)
-              |           +-- Nginx Proxy Manager (192.168.10.20)
-              |
-              +-- Windows 11 Client (DHCP)
+```mermaid
+graph TD
+
+Internet --> HyperV["Hyper-V Host"]
+
+HyperV --> pfWAN["pfSense WAN - hn0"]
+HyperV --> pfLAN["pfSense LAN - hn1 - 192.168.10.1"]
+
+pfLAN --> LAN["LAN 192.168.10.0/24"]
+
+LAN --> Ubuntu["Ubuntu Server 192.168.10.3"]
+LAN --> Win11["Windows 11 Client (DHCP)"]
+
+Ubuntu --> Docker["Docker ipvlan Network"]
+
+Docker --> PiHole["Pi-hole 192.168.10.2"]
+Docker --> Jellyfin["Jellyfin 192.168.10.4"]
+Docker --> Vaultwarden["Vaultwarden 192.168.10.6"]
+Docker --> Dashy["Dashy 192.168.10.5"]
+Docker --> NPM["Nginx Proxy Manager 192.168.10.20"]
 ```
 
 
