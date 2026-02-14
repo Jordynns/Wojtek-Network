@@ -109,23 +109,76 @@ The environment demonstrates real-world networking concepts including network se
 ```mermaid
 graph TD
 
-Internet --> HyperV["Hyper-V Host"]
+%% =========================
+%% Core Infrastructure
+%% =========================
 
-HyperV --> pfWAN["pfSense WAN - hn0"]
-HyperV --> pfLAN["pfSense LAN - hn1 - 192.168.10.1"]
+Internet["Internet"] --> vSwitch["External vSwitch"]
+vSwitch --> HyperV["Hyper-V Host"]
 
-pfLAN --> LAN["LAN 192.168.10.0/24"]
+%% =========================
+%% pfSense VM
+%% =========================
 
-LAN --> Ubuntu["Ubuntu Server 192.168.10.3"]
-LAN --> Win11["Windows 11 Client (DHCP)"]
+subgraph pfSense_VM["pfSense VM"]
+    pfWAN["WAN - hn0"]
+    pfLAN["LAN - 192.168.10.1"]
+end
+
+HyperV --> pfWAN
+HyperV --> pfLAN
+
+%% =========================
+%% LAN Network
+%% =========================
+
+pfLAN --> LAN["192.168.10.0/24"]
+
+subgraph LAN_Segment["LAN Clients"]
+    Ubuntu["Ubuntu Server<br/>192.168.10.3"]
+    Win11["Windows 11 Client<br/>DHCP"]
+end
+
+LAN --> Ubuntu
+LAN --> Win11
+
+%% =========================
+%% Docker Network
+%% =========================
 
 Ubuntu --> Docker["Docker ipvlan Network"]
 
-Docker --> PiHole["Pi-hole 192.168.10.2"]
-Docker --> Jellyfin["Jellyfin 192.168.10.4"]
-Docker --> Vaultwarden["Vaultwarden 192.168.10.6"]
-Docker --> Dashy["Dashy 192.168.10.5"]
-Docker --> NPM["Nginx Proxy Manager 192.168.10.20"]
+subgraph Docker_Services["Container Services"]
+    PiHole["192.168.10.2<br/>Pi-hole"]
+    Jellyfin["192.168.10.4<br/>Jellyfin"]
+    Dashy["192.168.10.5<br/>Dashy"]
+    Vaultwarden["192.168.10.6<br/>Vaultwarden"]
+    NPM["192.168.10.20<br/>Nginx Proxy Manager"]
+end
+
+Docker --> PiHole
+Docker --> Jellyfin
+Docker --> Dashy
+Docker --> Vaultwarden
+Docker --> NPM
+
+%% =========================
+%% Styling
+%% =========================
+
+classDef internet fill:#1f4e79,stroke:#0a2a43,color:#ffffff,stroke-width:2px;
+classDef hyperv fill:#444444,stroke:#222222,color:#ffffff,stroke-width:2px;
+classDef firewall fill:#b02a37,stroke:#6c1a21,color:#ffffff,stroke-width:2px;
+classDef lan fill:#1e7e34,stroke:#0f3d1c,color:#ffffff,stroke-width:2px;
+classDef docker fill:#6f42c1,stroke:#432874,color:#ffffff,stroke-width:2px;
+classDef service fill:#856404,stroke:#533f03,color:#ffffff,stroke-width:1px;
+
+class Internet internet;
+class vSwitch,HyperV hyperv;
+class pfWAN,pfLAN firewall;
+class LAN,Ubuntu,Win11 lan;
+class Docker docker;
+class PiHole,Jellyfin,Dashy,Vaultwarden,NPM service;
 ```
 
 
