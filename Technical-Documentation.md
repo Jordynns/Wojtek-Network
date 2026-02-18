@@ -194,7 +194,9 @@ class PiHole,Jellyfin,Dashy,Vaultwarden,NPM service;
 
 ## Design Decisions
 
-*(Content Goes Here)*
+The network was designed around security, managability, and isolation by implementing it in a fully virtualised environment within Hyper-V. A single dedicated virtual machine running pfSense acts as the central router and firewall, seperating the Wide Area Network from the internal Local Area Network and creating a default deny-all firewall policy. This ensures that all traffic is funneled through one point on the network allowing easier monitoring and management, along with the network segmentation being logically seperated by infrastructure, client devices, and services being containerised, which improve management, security, and troubleshooting.
+
+Web services were deployed using Docker on an Ubuntu Server virtual machine to simplify deployment and updates. Core services were assigned static IP addresses to ensure predictble routing, DNS resolution, and firewall management, while Dynamic Host Control Protocol remained for client devices on the network. Pi-Hole provides a central DNS filtering and internal domain resolution, and Nginx Proxy Manager enables HTTPS for secure access through locally issued certificates.
 
 ## IP Addressing Scheme
 
