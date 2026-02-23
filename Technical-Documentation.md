@@ -497,7 +497,7 @@ After you have implemented the Service Certificate navigate to Hosts > Proxy Hos
 </div>
 
 
-### Ubuntu Server Security: MFA for sudo Users
+## Ubuntu Server Security: MFA for sudo Users
 
 GOOGLE AUTHENTICATOR INSTALLATION (TERMINAL):
 
