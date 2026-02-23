@@ -492,11 +492,6 @@ After you have implemented the Service Certificate navigate to Hosts > Proxy Hos
 > |-----------------------------|------------------|
 > | ExampleService.home.arpa    | 192.168.10.20    |
 
-<div align="center" id="testing--validation">
-  <h1>Testing & Validation</h1>
-</div>
-
-
 ## Ubuntu Server Security: MFA for sudo Users
 
 GOOGLE AUTHENTICATOR INSTALLATION (TERMINAL):
@@ -528,6 +523,12 @@ GOOGLE AUTHENTICATOR CONFIGURATION FOR SUDO USERS:
      - add: auth required /lib/x86_64-linux-gnu/security/pam_google_authenticator.so below/above @include common-auth depends on whether you want the system to ask for a token before or after entering the password
      - Save file and exit.
      - Log out from termin and log in again. Try to use sudo privileges and check if MFA work correctly e.g.@ sudo ls or sudo apt update
+
+<div align="center" id="testing--validation">
+  <h1>Testing & Validation</h1>
+</div>
+
+
 
 ### Connectivity (Ping)
 To test connectivity between Network <-> Server and Client <-> Server you can utilise the ping command
