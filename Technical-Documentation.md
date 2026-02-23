@@ -496,6 +496,39 @@ After you have implemented the Service Certificate navigate to Hosts > Proxy Hos
   <h1>Testing & Validation</h1>
 </div>
 
+
+### Ubuntu Server Security: MFA for sudo Users
+
+GOOGLE AUTHENTICATOR INSTALLATION (TERMINAL):
+
+- Log in as sudo user
+- Update the system: sudo apt update 
+- Install google authenticator: sudo apt install google-authenticator 
+- Check if the modul has been installed correctly: ls /lib/x86_64-linux-gnu/security | grep google #it should show: pam_google_authenticator.so
+
+GOOGLE AUTHENTICATOR CONFIGURATION FOR SUDO USERS:
+
+*Each user who will use the Server as sudo must generate his own secret.*
+*Download Google Authanticator from AppStore / Google Play Store*
+
+- Login as a specific user in a Terminal e.g.: marek: su - marek
+- google_authenticator
+  - Time-based tokens: YES
+  - Open Google Authenticator App on your phone and scan QR code generated in terminal
+  - Update .google_authenticator file?: YES
+  - Disallow Multiple User?: YES
+  - A new token generated evety 30 seconds?: YES
+  - Enable rate limiting?: YES
+  - Check the .google_authenticator file, set the owner to the user, and grant the owner read/write permissions:
+     - ls -l ~/.google_authenticator
+     - chmod 600 ~/.google_authenticator
+     - chown marek:marek ~/.google_authenticator
+  - PAM (Pluggable Authentication Modules) Configuration for sudo users:
+     - edit sudo file: nano /etc/pam.d/sudo
+     - add: auth required /lib/x86_64-linux-gnu/security/pam_google_authenticator.so below/above @include common-auth depends on whether you want the system to ask for a token before or after entering the password
+     - Save file and exit.
+     - Log out from termin and log in again. Try to use sudo privileges and check if MFA work correctly e.g.@ sudo ls or sudo apt update
+
 ### Connectivity (Ping)
 To test connectivity between Network <-> Server and Client <-> Server you can utilise the ping command
 
