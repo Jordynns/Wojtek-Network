@@ -5,6 +5,7 @@
   <h1>Table of Contents</h1>
 </div>
 
+
 1. [**Summary**](#summary)
 2. [**Introduction**](#introduction)
    - ***Overview of Virtualization***
@@ -329,7 +330,7 @@ sudo chmod +x docker.sh
 ## Containers / Services
 To Setup all containers, use the following docker-compose.yml and create a stack within Portainer:
 
-```
+```yaml
 version: "3.9"
 
 services:
