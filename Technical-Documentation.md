@@ -41,13 +41,13 @@
    - [***Updating Devices***](#updating-devices)
    - [***Network Backup and Recovery***](#network-backup-and-recovery)
 7. [**Troubleshooting**](#troubleshooting)
-   - ***Common Issues***
+   - [***Common Issues***](#common-issues)
 8. [**Conclusion**](#conclusion)
-   - ***Achievements***
-   - ***Future Improvements***
+   - [***Achievements***](#achievements)
+   - [***Future Improvements***](#future-improvements)
 9. [**Appendices**](#appendices)
-    - ***Full Configurations***
-    - ***References***
+    - [***Full Configurations***](#full-configurations)
+    - [***References***](#references)
 
 <hr/>
 
