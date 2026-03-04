@@ -35,7 +35,7 @@
          - [***Creation of Certificate Authority***](#creation-of-certificate-authority)
          - [***Service Certificates and Keys***](#service-certificates-and-keys)
          - [***Nginx Proxy Manager Configuration***](#nginx-proxy-manager-configuration)
-     - [***Ubuntu Server Security***](#ubuntu-server-security:-mfa-for-sudo-users)
+     - [***Ubuntu Server Security***](#ubuntu-server-security)
 5. [**Testing & Validation**](#testing--validation)
    - [***Connectivity (Ping)***](#connectivity-(ping))
    - [***DHCP***](#dhcp)
@@ -493,7 +493,7 @@ After you have implemented the Service Certificate navigate to Hosts > Proxy Hos
 > |-----------------------------|------------------|
 > | ExampleService.home.arpa    | 192.168.10.20    |
 
-## Ubuntu Server Security: MFA for sudo Users
+## Ubuntu Server Security
 
 GOOGLE AUTHENTICATOR INSTALLATION (TERMINAL):
 
