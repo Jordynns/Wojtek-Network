@@ -19,7 +19,7 @@
    - [***IP Addressing Scheme***](ip-adressing-scheme)
    - [***Routing***](#routing)
    - [***Firewall***](#firewall)
-   - [***Security Design](#security-design)
+   - [***Security Design***](#security-design)
 4. [**Implementation**](#implementation)
    - [***Hyper-V***](#hyper-v-setup)
      - [***Virtual Switches***](#virtual-switches)
@@ -34,16 +34,12 @@
        - [***Service Certificates and Keys***](#service-certificates-and-keys)
        - [***Nginx Proxy Manager Configuration***](#nginx-proxy-manager-configuration)
 5. [**Testing & Validation**](#testing--validation)
-   - ***Connectivity (Ping)***
-   - ***Services***
-     - ***DNS***
-       - ***Filtering (Pi-Hole)***
-       - ***Custom Domain Resolution***
-     - ***DHCP***
+   - [***Connectivity (Ping)***](#connectivity-(ping))
+   - [***DHCP***](#dhcp)
 6. [**Maintenance & Backup**](#maintenance--backup)
-   - ***Create VM Snapshots / Checkpoints***
-   - ***Updating Devices***
-   - ***Network Backup / Recovery***
+   - [***Create VM Snapshots and Checkpoints***](#create-vm-snapshots-and-checkpoints)
+   - [***Updating Devices***](#updating-devices)
+   - [***Network Backup and Recovery***](#network-backup-and-recovery)
 7. [**Troubleshooting**](#troubleshooting)
    - ***Common Issues***
 8. [**Conclusion**](#conclusion)
@@ -554,7 +550,7 @@ Connecting clients to the network shall dish out IPs in the range of 192.168.10.
   <h1>Maintenance & Backup</h1>
 </div>
 
-### Create VM Snapshots / Checkpoints
+### Create VM Snapshots and Checkpoints
 Within Hyper-V to create a snapshot/checkpoint, you will Right Click VM > Checkpoint and that is it.
 
 ### Updating Devices
