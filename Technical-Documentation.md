@@ -7,7 +7,6 @@
 
 
 1. [**Summary**](#summary)
-2. [**Introduction**](#introduction)
    - ***Overview of Virtualization***
    - ***Objectives of SomethingNetwork***
 3. [**System Requirements**](#system-requirements)
