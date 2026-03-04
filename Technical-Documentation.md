@@ -7,20 +7,20 @@
 
 
 1. [**Summary**](#summary)
-   - ***Overview of Virtualization***
-   - ***Objectives of SomethingNetwork***
-3. [**System Requirements**](#system-requirements)
-   - ***Hardware Specifications***
-   - ***Software Used***
+2. [**System Requirements**](#system-requirements)
+   - [***Hardware Specifications***](#hardware-specifications)
+   - [***Software Used***](software-used)
         - [***Operating Systems***](#operating-systems)
         - [***Hypervisors***](#hypervisors)
         - [***Tools***](#tools)
-4. [**Network Design**](#network-design)
-   - ***Logical Topology Diagram***
-   - ***IP Addressing Scheme***
-   - ***Routing***
-   - ***Firewall***
-5. [**Implementation**](#implementation)
+3. [**Network Design**](#network-design)
+   - [***Logical Topology Diagram***](logical-topology-diagram)
+   - [***Design Decisions***](design-decisions)
+   - [***IP Addressing Scheme***](ip-adressing-scheme)
+   - [***Routing***](#routing)
+   - [***Firewall***](#firewall)
+   - [***Security Design](#security-design)
+4. [**Implementation**](#implementation)
    - [***Hyper-V***](#hyper-v-setup)
      - [***Virtual Switches***](#virtual-switches)
    - [***pfSense***](#pfsense-setup)
@@ -28,24 +28,28 @@
    - [***Docker / Portainer***](#docker-/-portainer-setup)
        - [***Pi-Hole***](#pihole-setup)
        - [***Jellyfin Setup***](#jellyfin-setup)
-6. [**Testing & Validation**](#testing--validation)
+   - [***Containers***](#containers)
+   - [***Reverse Proxy***](#reverse-proxy)
+       - [***Creation of Certificate Authority***](#creation-of-certificate-authority)
+       - [***Service Certificates and Keys***](#service-certificates-and-keys)
+       - [***Nginx Proxy Manager Configuration***](#nginx-proxy-manager-configuration)
+5. [**Testing & Validation**](#testing--validation)
    - ***Connectivity (Ping)***
    - ***Services***
      - ***DNS***
        - ***Filtering (Pi-Hole)***
        - ***Custom Domain Resolution***
      - ***DHCP***
-7. [**Maintenance & Backup**](#maintenance--backup)
+6. [**Maintenance & Backup**](#maintenance--backup)
    - ***Create VM Snapshots / Checkpoints***
    - ***Updating Devices***
    - ***Network Backup / Recovery***
-8. [**Troubleshooting**](#troubleshooting)
+7. [**Troubleshooting**](#troubleshooting)
    - ***Common Issues***
-9. [**Conclusion**](#conclusion)
+8. [**Conclusion**](#conclusion)
    - ***Achievements***
-   - ***Lessons Learned***
    - ***Future Improvements***
-10. [**Appendices**](#appendices)
+9. [**Appendices**](#appendices)
     - ***Full Configurations***
     - ***References***
 
@@ -326,7 +330,7 @@ sudo chmod +x docker.sh
 > [!TIP]
 > Navigate to https://192.168.10.3:9000/ to access the Web-GUI
 
-## Containers / Services
+## Containers
 To Setup all containers, use the following docker-compose.yml and create a stack within Portainer:
 
 ```yaml
@@ -415,11 +419,9 @@ networks:
     external: true
 ```
 
-## Reverse Proxy (Nginx Proxy Manager)
+## Reverse Proxy
 
-<hr/>
-
-## Creation of Certificate Authority
+### Creation of Certificate Authority
 Firstly you will need to create and generate a Local Certificate Authority, navigate to pfSense Web-GUI > System > Certificates > Authorities > +Add
 
 - Descriptive Name: Local-CA
@@ -438,7 +440,7 @@ Firstly you will need to create and generate a Local Certificate Authority, navi
 > Download and install the Local-CA certificate on endpoints e.g. Windows 11 client
 > Open it > Local Machine > Certificate Store > Trusted Root Certification Authorities > Finish
 
-## Service Certificates & Keys
+### Service Certificates and Keys
 
 Next generate individual Certificates & Keys for each service e.g. Pi-Hole, Bitwarden, etc.. Navigate to pfSense Web-GUI > System > Certificates > Certificates > +Add
 
@@ -459,7 +461,7 @@ Next generate individual Certificates & Keys for each service e.g. Pi-Hole, Bitw
 > [!TIP]
 > Download both Certificate and Key for the Service
 
-## Nginx Proxy Manager Configuration
+### Nginx Proxy Manager Configuration
 
 Navigate towards the IP for Nginx Proxy Manager (**192.168.10.20**) and after creating/logging in navigate to Certificates > Add Certificate > Custom Certificate
 
@@ -499,7 +501,7 @@ GOOGLE AUTHENTICATOR INSTALLATION (TERMINAL):
 - Log in as sudo user
 - Update the system: sudo apt update 
 - Install google authenticator: sudo apt install google-authenticator 
-- Check if the modul has been installed correctly: ls /lib/x86_64-linux-gnu/security | grep google #it should show: pam_google_authenticator.so
+- Check if the modul has been installed correctly: ```ls /lib/x86_64-linux-gnu/security | grep google #it should show: pam_google_authenticator.so```
 
 GOOGLE AUTHENTICATOR CONFIGURATION FOR SUDO USERS:
 
@@ -515,20 +517,20 @@ GOOGLE AUTHENTICATOR CONFIGURATION FOR SUDO USERS:
   - A new token generated evety 30 seconds?: YES
   - Enable rate limiting?: YES
   - Check the .google_authenticator file, set the owner to the user, and grant the owner read/write permissions:
-     - ls -l ~/.google_authenticator
-     - chmod 600 ~/.google_authenticator
-     - chown marek:marek ~/.google_authenticator
+  ```
+  ls -l ~/.google_authenticator
+  chmod 600 ~/.google_authenticator
+  chown marek:marek ~/.google_authenticator
+  ```
   - PAM (Pluggable Authentication Modules) Configuration for sudo users:
-     - edit sudo file: nano /etc/pam.d/sudo
-     - add: auth required /lib/x86_64-linux-gnu/security/pam_google_authenticator.so below/above @include common-auth depends on whether you want the system to ask for a token before or after entering the password
+     - edit sudo file: ```nano /etc/pam.d/sudo```
+     - add: auth required ```/lib/x86_64-linux-gnu/security/pam_google_authenticator.so below/above @include common-auth``` depends on whether you want the system to ask for a token before or after entering the password
      - Save file and exit.
-     - Log out from terminal and log in again. Try to use sudo privileges and check if MFA work correctly e.g.: sudo ls or sudo apt update
+     - Log out from terminal and log in again. Try to use sudo privileges and check if MFA work correctly e.g.: ```sudo ls``` or ```sudo apt update```
 
 <div align="center" id="testing--validation">
   <h1>Testing & Validation</h1>
 </div>
-
-
 
 ### Connectivity (Ping)
 To test connectivity between Network <-> Server and Client <-> Server you can utilise the ping command
