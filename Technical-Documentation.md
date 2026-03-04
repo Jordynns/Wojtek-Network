@@ -604,10 +604,13 @@ pihole -g
 </div>
 
 ### Achievements
-*(Content goes here)*
+- Virtualisation of Machines
+- Learned Basic Firewall Routing
+- Router Configuration through pfSense
+- Containerising Services through Docker
+- Learn How to Create a NAS through Samba
+- Reverse Proxying through Nginx Proxy Manager with Certificates
 
-### Lessons Learned
-*(Content goes here)*
 
 ### Future Improvements
 Improvements that can be added to the Project:
