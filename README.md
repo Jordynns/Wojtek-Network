@@ -1,30 +1,51 @@
 <div align="center">
-  <img src="logo.png" alt="Project Logo" width="400"/>
-  <div align="center">
+  <img src="logo.png" alt="Wojtek Network Logo" width="500"/>
 
-  <!-- Community -->
-  <img src="https://img.shields.io/github/contributors/jordynns/wojtek-network?style=flat-square" />
-  <img src="https://img.shields.io/github/stars/jordynns/wojtek-network?style=flat-square" />
+  **A Secure, Fully Virtualized Enterprise-Grade Home Lab**
 
-  <!-- Project Health -->
-  <img src="https://img.shields.io/github/last-commit/jordynns/wojtek-network?style=flat-square" />
-  <img src="https://img.shields.io/github/repo-size/jordynns/wojtek-network?style=flat-square" />
+  [![Hyper-V](https://img.shields.io/badge/Hyper--V-Windows-blue?style=for-the-badge&logo=microsoft-hyper-v)](https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/)
+  [![pfSense](https://img.shields.io/badge/Firewall-pfSense-red?style=for-the-badge&logo=pfsense)](https://www.pfsense.org/)
+  [![Docker](https://img.shields.io/badge/Container-Docker-lightblue?style=for-the-badge&logo=docker)](https://www.docker.com/)
+  [![Ubuntu](https://img.shields.io/badge/OS-Ubuntu-orange?style=for-the-badge&logo=ubuntu)](https://ubuntu.com/)
 
-</div>
+  [🚀 Quick Start](#quick-start) •  [📗 User Documentation](https://github.com/Jordynns/Wojtek-Network/blob/main/User-Documentation.md) • [📘 Technical Documentation](https://github.com/Jordynns/Wojtek-Network/blob/main/Technical-Documentation.md)
 </div>
 
 ---
 
-## 📘 Project Summary
+<div align="center" id="overview">
+  <h1>Overview</h1>
+</div>
 
 **Wojtek Network** is a fully virtualized home network environment built using **Microsoft Hyper-V**.  
 The project aims to simulate a realistic, secure, and scalable home or small-office network by combining virtual machines, routing, containerised services, and centralised management tools.
 
 The environment demonstrates real-world networking concepts including **network segmentation**, **firewalling**, **DNS filtering**, **DHCP**, **container orchestration**, and **service hosting**.
 
----
+<div align="center" id="quick-start">
+  <h1>🚀 Quick Start</h1>
+</div>
 
-## 🎯 Project Objectives
+Welcome to the **Wojtek Network**. Depending on your goal, choose a path below:
+
+### 1. 📖 Understand the Goal
+New here? Start by reviewing our **[Project Objectives](#-project-objectives)** to see the security standards and networking milestones we aimed to achieve.
+
+### 2. 🏗️ Explore the Blueprint
+Before deploying, visualize the flow of traffic. See the **[Logical Topology Diagram](#-architecture-overview)** to understand how pfSense segments the WAN from the LAN.
+
+### 3. 🛠️ Deploy the Lab
+Ready to build? Our **[Technical Documentation](https://github.com/Jordynns/Wojtek-Network/blob/main/Technical-Documentation.md)** provides a step-by-step implementation guide:
+* **Level 1:** [Hyper-V & pfSense Setup](https://github.com/Jordynns/Wojtek-Network/blob/main/Technical-Documentation.md#pfsense-setup)
+* **Level 2:** [Docker & Service Orchestration](https://github.com/Jordynns/Wojtek-Network/blob/main/Technical-Documentation.md#docker--portainer-setup)
+* **Level 3:** [SSL & Reverse Proxy Config](https://github.com/Jordynns/Wojtek-Network/blob/main/Technical-Documentation.md#reverse-proxy)
+
+### 4. 👤 Access the Services
+If the network is already running, head over to the **[User Documentation](https://github.com/Jordynns/Wojtek-Network/blob/main/User-Documentation.md)** to learn how to map the NAS, connect to Jellyfin, and trust the Local Certificate Authority.
+
+<div align="center" id="project-objectives">
+  <h1>🎯 Project Objectives</h1>
+</div>
 
 - Design and deploy a **secure virtual network** using Hyper-V
 - Implement **DHCP, routing and firewalling** with pfSense
@@ -33,9 +54,9 @@ The environment demonstrates real-world networking concepts including **network 
 - Demonstrate **media hosting** via Jellyfin
 - Validate connectivity, security, and reliability
 
----
-
-## 🧱 Architecture Overview
+<div align="center" id="architecture-overview">
+  <h1>🧱 Architecture Overview</h1>
+</div>
 
 The network consists of multiple virtual machines connected through isolated virtual switches:
 
@@ -50,73 +71,30 @@ The network consists of multiple virtual machines connected through isolated vir
 
 Traffic is segmented between **WAN** and **LAN**, with pfSense enforcing security boundaries.
 
----
+<div align="center" id="team-information">
+  <h1>👥 Team Information</h1>
+</div>
 
-## 🛠️ Technologies Used
-
-### Virtualization & Networking
-- Microsoft Hyper-V
-- Virtual Switches (WAN / LAN)
-- pfSense CE
-
-### Operating Systems
-- Ubuntu Server 24.04 LTS
-- Windows 11 (Host & Client)
-
-### Services & Tools
-- Docker
-- Portainer
-- Pi-hole
-- Jellyfin
-- Dashy
-
----
-
-## 📄 Documentation
-
-### 👤 User Documentation
-End-user setup, usage instructions, and basic troubleshooting.
-
-➡️ **[Read User Documentation](https://github.com/Jordynns/Wojtek-Network/blob/main/User-Documentation.md)**
-
----
-
-### 🛠️ Technical Documentation
-Full technical breakdown including architecture, configuration, implementation steps, and validation.
-
-➡️ **[Read Technical Documentation](https://github.com/Jordynns/Wojtek-Network/blob/main/Technical-Documentation.md)**
-
----
-
-## 🧪 Testing & Validation
-
-The network has been validated through:
-- VM-to-VM connectivity testing (ICMP / Ping)
-- DNS resolution and filtering verification
-- Service availability testing (Portainer, Pi-hole, Jellyfin, Dashy)
-- Firewall and routing validation via pfSense
-
----
-
-## 👥 Team Information
+<div align="center">
+  
+| Name | Primary Role | GitHub Profile |
+| :--- | :--- | :--- |
+| **Jordyn** | Network Implementation / Documentation | [@Jordynns](https://github.com/Jordynns) |
+| **Marek** | Monitoring / MFA | [@marekslapa](https://github.com/marekslapa) |
+| **Adam** | Website Design & Development | [@adamc02](https://github.com/adamc02) |
+| **Shae** | Nothing | [@Tadger65443](https://github.com/Tadger65443) |
 
 **Course:** HNC NextGen Computing  
-**Project Type:** Virtualised Network  
-**Submission Date:** 23/10/2025  
+**Project:** Virtualised Network Simulation  
+**Submission:** October 23, 2025
 
-### Team Members
-- [Jordyn](https://github.com/Jordynns)
-- [Marek](https://github.com/marekslapa)
-- [Adam](https://github.com/adamc02)
-- [Shae](https://github.com/Tadger65443)
+</div>
 
----
-
-## 📌 License & Usage
+<div align="center" id="license-&-usage">
+  <h1>📌 License & Usage</h1>
+</div>
 
 This project was developed **for educational purposes** as part of the HNC NextGen Computing course. The repository contains documentation and installation scripts that retrieve software from official upstream sources. Third-party software remains subject to its own licenses.
-
----
 
 <div align="center">
   <sub>Designed, deployed, and documented by the Wojtek team 🖧</sub>
