@@ -1,0 +1,226 @@
+appConfig:
+  theme: material-dark
+  layout: auto
+  iconSize: small
+pageInfo:
+  title: wojtek-network
+sections:
+  - name: Infrastructure
+    icon: fas fa-network-wired
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - &ref_0
+        title: pfSense
+        description: Edge Router & Firewall
+        icon: >-
+          https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/pfsense.png
+        url: https://pfsense.home.arpa
+        target: newtab
+        id: 0_1505_pfsense
+      - &ref_1
+        title: Ubuntu Server
+        description: Docker Host & NAS
+        icon: >-
+          https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/ubuntu-linux.png
+        url: http://192.168.10.3:9090
+        target: newtab
+        id: 1_1505_ubuntuserver
+      - &ref_2
+        title: Nginx Proxy Manager
+        description: Reverse Proxy
+        icon: >-
+          https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/nginx-proxy-manager.png
+        url: https://npm.home.arpa
+        target: newtab
+        id: 2_1505_nginxproxymanager
+    filteredItems:
+      - *ref_0
+      - *ref_1
+      - *ref_2
+  - name: Network Services
+    icon: fas fa-shield-alt
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - &ref_3
+        title: Pi-Hole
+        description: DNS & Ad-blocking
+        icon: >-
+          https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/pi-hole.png
+        url: https://pihole.home.arpa/admin/
+        target: newtab
+        id: 0_1614_pihole
+      - &ref_4
+        title: Vaultwarden
+        description: Password Manager
+        icon: >-
+          https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/vaultwarden.png
+        url: https://bitwarden.home.arpa/
+        target: newtab
+        id: 1_1614_vaultwarden
+      - &ref_5
+        title: Portainer
+        description: Container Management
+        icon: >-
+          https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/portainer.png
+        url: http://portainer.home.arpa:9000/
+        target: newtab
+        id: 2_1614_portainer
+    filteredItems:
+      - *ref_3
+      - *ref_4
+      - *ref_5
+  - name: Media & Utilities
+    icon: fas fa-film
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - &ref_6
+        title: Jellyfin
+        description: Media Streaming
+        icon: >-
+          https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyfin.png
+        url: https://jellyfin.home.arpa/
+        target: newtab
+        id: 0_1538_jellyfin
+      - &ref_7
+        title: YouTube
+        icon: >-
+          https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/youtube.png
+        url: https://www.youtube.com/
+        target: newtab
+        id: 1_1538_youtube
+      - &ref_8
+        title: Twitch.tv
+        description: Livestreaming Platform
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/twitch.png
+        url: https://www.twitch.tv/directory
+        target: newtab
+        id: 2_1538_twitchtv
+    filteredItems:
+      - *ref_6
+      - *ref_7
+      - *ref_8
+  - name: Security & Tools
+    icon: fas fa-lock
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - &ref_9
+        title: HaveIBeenPwned
+        description: Breach Monitoring
+        icon: fas fa-user-secret
+        url: https://haveibeenpwned.com/
+        target: newtab
+        id: 0_1487_haveibeenpwned
+      - &ref_10
+        title: DNS Leak Test
+        description: Verify DNS Privacy
+        icon: fas fa-eye-slash
+        url: https://www.dnsleaktest.com/
+        target: newtab
+        id: 1_1487_dnsleaktest
+      - &ref_11
+        title: Explainshell
+        description: Command Breakdown
+        icon: fas fa-terminal
+        url: https://explainshell.com/
+        target: newtab
+        id: 2_1487_explainshell
+      - &ref_12
+        title: Censys
+        description: Search indexed information about your IP
+        icon: si-searxng
+        url: https://search.censys.io/
+        target: newtab
+        id: 3_1487_censys
+      - &ref_13
+        title: Ping.eu
+        description: Multi-tool Network Utility
+        icon: si-framework
+        url: https://ping.eu/
+        target: newtab
+        id: 4_1487_pingeu
+    filteredItems:
+      - *ref_9
+      - *ref_10
+      - *ref_11
+      - *ref_12
+      - *ref_13
+  - name: Monitoring
+    icon: fas fa-desktop
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - &ref_14
+        title: Grafana
+        description: Monitor System Metrics
+        icon: >-
+          https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/grafana.png
+        url: ''
+        target: newtab
+        id: 0_1062_grafana
+    filteredItems:
+      - *ref_14
+  - name: Social Media
+    icon: fas fa-hashtag
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - &ref_15
+        title: Instagram
+        icon: >-
+          https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/instagram.png
+        url: https://www.instagram.com/
+        target: newtab
+        id: 0_1115_instagram
+      - &ref_16
+        title: Facebook
+        icon: >-
+          https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/facebook.png
+        url: https://www.facebook.com/?locale=en_GB
+        target: newtab
+        id: 1_1115_facebook
+      - &ref_17
+        title: Reddit
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/reddit.png
+        url: https://www.reddit.com/
+        target: newtab
+        id: 2_1115_reddit
+      - &ref_18
+        title: Twitter
+        icon: >-
+          https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/twitter.png
+        url: https://x.com/
+        target: newtab
+        id: 3_1115_twitter
+    filteredItems:
+      - *ref_15
+      - *ref_16
+      - *ref_17
+      - *ref_18
