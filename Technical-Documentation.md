@@ -8,7 +8,6 @@
 
 1. [**Summary**](#summary)
 2. [**System Requirements**](#system-requirements)
-   - [***Hardware Specifications***](#hardware-specifications)
    - [***Software Used***](software-used)
         - [***Operating Systems***](#operating-systems)
         - [***Hypervisors***](#hypervisors)
@@ -68,13 +67,6 @@ The environment demonstrates real-world networking concepts including network se
 <div align="center" id="system-requirements">
   <h1>System Information</h1>
 </div>
-
-## Hardware Specifications
-
-#### Our Specifications
-- CPU: [**Intel(R) Core(TM) i9-14900**](https://www.intel.com/content/www/us/en/products/sku/236793/intel-core-i9-processor-14900-36m-cache-up-to-5-80-ghz/specifications.html)
-- GPU: Intel(R) UHD Graphics 770
-- RAM: 128GB DDR4 @ 3600MHz
 
 ## Software Used (OS, Hypervisors, Containers, Tools)
 
