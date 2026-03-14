@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="logo.png" alt="Project Logo" width="400"/>
+  <img src="logo.png" alt="Project Logo" width="500"/>
 </div>
 <div align="center">
   <h1>Table of Contents</h1>
