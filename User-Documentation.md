@@ -92,9 +92,5 @@ To make the NAS appear as a drive (e.g., the `Z:` drive) on your PC:
 * This is an architectural mystery. We are currently treating this as a "feature" rather than a "bug."
 
 <div align="center">
-<br />
-<kbd>Shift + Refresh</kbd> to clear browser cache if a service is acting up.
-<br />
-<br />
-<sub>Designed and Maintained by the Wojtek Team | 2026</sub>
+  <sub>Designed, deployed, and documented by the Wojtek team 🖧</sub>
 </div>
