@@ -24,6 +24,18 @@ graph TD
     Service --> Jellyfin[Jellyfin Media]
     Service --> Bitwarden[Bitwarden Vault]
     Service --> NAS[Samba Storage]
+
+    classDef user fill:#4A90D9,stroke:#2C5F8A,color:#fff
+    classDef dns fill:#E8A838,stroke:#B07820,color:#fff
+    classDef proxy fill:#7B68EE,stroke:#5A4DB0,color:#fff
+    classDef router fill:#E85D4A,stroke:#B03D2C,color:#fff
+    classDef service fill:#48BB78,stroke:#2F855A,color:#fff
+
+    class User user
+    class PiHole dns
+    class NPM proxy
+    class Service router
+    class Jellyfin,Bitwarden,NAS service
 ```
 
 <div align="center" id="quick-access">
