@@ -571,8 +571,24 @@ GOOGLE AUTHENTICATOR CONFIGURATION FOR SUDO USERS:
                             - Volumes: map additional volume --> continer /etc/prometheus/prometheus.yml select Bind, host: /home/prometheus/prometheus.yml select read-only
                             - Map additional volume --> Container: /prometheus select Bind, Host: /home/prometheus/data, select writable
                             - Go to Network tab --> Network: ip_vlan, IPv4 Address: 192.168.10.9 --> Deploy the container
+                            
            - ```docker restart prometheus```
            - ```docker start prometheus````
+
+           - Open Prometheus from Portainer or http://192.168.10.9:9090 go to Status --> Target Health: both services Prometheus $ Node Exporter should be UP
+
+      GRAFANA:
+
+        - Create a directory to store dashboards and datasources on the Server: sudo mkdir -p /home/grafana/data
+        - grant permissions: sudo chown -R 472:472 /home/grafana
+        - open Grafana in Portainer or http://192.168.10.7:3000 --> user:admin password: admin --> change a password
+        - Add Prometheus as a Data source: Connection --> Add Sources --> Add data source --> select Prometheus
+        - URL: http://192.168.10.9:9090, Save % Test
+
+      NODE EXPORTER:
+        - Grafana --> Dashboards --> New --> Import
+        - Dashboard ID: 1860, click Load
+        
 
 
    
