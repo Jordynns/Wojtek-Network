@@ -540,6 +540,42 @@ GOOGLE AUTHENTICATOR CONFIGURATION FOR SUDO USERS:
      - add: auth required ```/lib/x86_64-linux-gnu/security/pam_google_authenticator.so below/above @include common-auth``` depends on whether you want the system to ask for a token before or after entering the password
      - Save file and exit.
      - Log out from terminal and log in again. Try to use sudo privileges and check if MFA work correctly e.g.: ```sudo ls``` or ```sudo apt update```
+   
+## Prometheus & Grafana -- Monitoring Tools
+     PROMETHEUS:
+          - create a directory on server for saving metric history: ```sudo mkdir -p /home/prometheus/data``` and grant permissions ```sudo chown -R 65534:65534 /home/prometheus```
+          - create config file ```nano /home/prometheus/prometheus.yml```
+          - paste below configuration:
+```global:
+     scrape_interval: 15s
+
+   scrape_configs:
+
+     - job_name: "prometheus"
+       static_configs:
+         - targets: ["localhost:9090"]
+
+     - job_name: "node"
+       static_configs:
+         - targets: ["192.168.10.8:9100"]```
+
+         - save file CTRL + S, CTRL + X
+        
+
+ Adding a Container with Prometheus in Portainer:
+
+          - Open Portainer --> Go to Containers --> Add Container
+          - Name: prometheus, Image: prom/prometheus:latest,
+          - Map additional port, Host: 9190, Container: 9090
+          - Scroll down --> Advanced container settings:
+                            - Volumes: map additional volume --> continer /etc/prometheus/prometheus.yml select Bind, host: /home/prometheus/prometheus.yml select read-only
+                            - Map additional volume --> Container: /prometheus select Bind, Host: /home/prometheus/data, select writable
+                            - Go to Network tab --> Network: ip_vlan, IPv4 Address: 192.168.10.9 --> Deploy the container
+           - ```docker restart prometheus```
+           - ```docker start prometheus````
+
+
+   
 
 <div align="center" id="testing--validation">
   <h1>Testing & Validation</h1>
