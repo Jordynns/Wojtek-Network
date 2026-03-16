@@ -615,6 +615,13 @@ GOOGLE AUTHENTICATOR CONFIGURATION FOR SUDO USERS:
       NODE EXPORTER:
         - Grafana --> Dashboards --> New --> Import
         - Dashboard ID: 1860, click Load
+
+## Mistral local AI chatbot
+
+       - Install Ollama in the terminal: ```curl -fsSL https://ollama.com/install.sh | sh
+       - restart terminal
+       - Install Mistral model: ```ollama pull mistral``` - 4.1GB basic versrion or ```ollama pull mixtral``` - 40GB more advanced version
+       - Open chat: ```ollama run mistral``` or ```ollama run mixtral```
         
 
 
