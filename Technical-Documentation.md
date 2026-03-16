@@ -543,23 +543,23 @@ GOOGLE AUTHENTICATOR CONFIGURATION FOR SUDO USERS:
    
 ## Prometheus & Grafana 
      PROMETHEUS:
-          - create a directory on server for saving metric history: ```sudo mkdir -p /home/prometheus/data``` and grant permissions ```sudo chown -R 65534:65534 /home/prometheus```
-          - create config file ```nano /home/prometheus/prometheus.yml```
+          - create a directory on server for saving metric history: sudo mkdir -p /home/prometheus/data``` and grant permissions ```sudo chown -R 65534:65534 /home/prometheus
+          - create config file: nano /home/prometheus/prometheus.yml
           - paste below configuration:
-```global:
-     scrape_interval: 15s
+     global:
+       scrape_interval: 15s
 
-   scrape_configs:
+     scrape_configs:
 
-     - job_name: "prometheus"
-       static_configs:
-         - targets: ["localhost:9090"]
+       - job_name: "prometheus"
+         static_configs:
+           - targets: ["localhost:9090"]
 
-     - job_name: "node"
-       static_configs:
-         - targets: ["192.168.10.8:9100"]```
+       - job_name: "node"
+         static_configs:
+           - targets: ["192.168.10.8:9100"]
 
-         - save file CTRL + S, CTRL + X
+ save file CTRL + S, CTRL + X
         
 
  Adding a Container with Prometheus in Portainer:
