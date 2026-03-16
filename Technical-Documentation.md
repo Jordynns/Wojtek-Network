@@ -543,8 +543,8 @@ GOOGLE AUTHENTICATOR CONFIGURATION FOR SUDO USERS:
    
 ## Prometheus & Grafana 
      PROMETHEUS:
-          - create a directory on server for saving metric history: sudo mkdir -p /home/prometheus/data``` and grant permissions ```sudo chown -R 65534:65534 /home/prometheus
-          - create config file: nano /home/prometheus/prometheus.yml
+          - create a directory on server for saving metric history: ```sudo mkdir -p /home/prometheus/data``` and grant permissions ```sudo chown -R 65534:65534 /home/prometheus```
+          - create config file: ```nano /home/prometheus/prometheus.yml```
           - paste below configuration:
      global:
        scrape_interval: 15s
