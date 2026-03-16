@@ -541,7 +541,7 @@ GOOGLE AUTHENTICATOR CONFIGURATION FOR SUDO USERS:
      - Save file and exit.
      - Log out from terminal and log in again. Try to use sudo privileges and check if MFA work correctly e.g.: ```sudo ls``` or ```sudo apt update```
    
-## Prometheus & Grafana -- Monitoring Tools
+## Prometheus & Grafana 
      PROMETHEUS:
           - create a directory on server for saving metric history: ```sudo mkdir -p /home/prometheus/data``` and grant permissions ```sudo chown -R 65534:65534 /home/prometheus```
           - create config file ```nano /home/prometheus/prometheus.yml```
