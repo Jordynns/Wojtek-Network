@@ -429,6 +429,30 @@ services:
     volumes:
     - /home/nginx/data:/data
     - /home/nginx/letsencrypt:/etc/letsencrypt
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: unless-stopped
+    networks:
+      ip_vlan:
+        ipv4_address: 192.168.10.7
+    environment:
+      - GF_SERVER_HTTP_PORT=3000
+    volumes:
+      - /home/grafana/data:/var/lib/grafana
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    restart: unless-stopped
+    networks:
+      ip_vlan:
+        ipv4_address: 192.168.10.8
+    command:
+      - '--path.rootfs=/host'
+    volumes:
+      - '/:/host:ro,rslave'
+
 
 networks:
   ip_vlan:
