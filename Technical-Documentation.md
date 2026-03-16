@@ -205,6 +205,9 @@ Each service has been allocated their own IP to allow for easier management and 
 |       Jellyfin      	|          192.168.10.4          	|                     Media Streaming                     	|
 |        Dashy        	|          192.168.10.5          	|              Network Dashboard via Browser              	|
 |      Bitwarden      	|          192.168.10.6          	|                 Secure Password Manager                 	|
+|       Grafana         |          192.168.10.7           |                  Dashboard/Visualization                  |
+|    Node Exporter      |          192.168.10.8           |                      System metrics                       |
+|      Prometheus       |          192.168.10.9           |                     Metrics collector                     |
 | Nginx Proxy Manager 	|          192.168.10.20          | Reverse Proxy w/ Signed Certs for HTTPS Traffic (Local) 	|
 |      DHCP Pool      	| 192.168.10.20 - 192.168.10.254 	|            Dynamic IP allocation for clients            	|
 
