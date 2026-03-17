@@ -81,10 +81,11 @@ The environment demonstrates real-world networking concepts including network se
 - [**Hyper-V**](https://en.wikipedia.org/wiki/Hyper-V)
 
 ### Containers
-- [**Portainer**]
-- [**Pi-Hole**]
-- [**Jellyfin**]
-- [**Dashy**]
+- [**Portainer**](https://www.portainer.io/)
+- [**Cockpit**](https://cockpit-project.org/)
+- [**Pi-Hole**](https://pi-hole.net/)
+- [**Jellyfin**](https://jellyfin.org/)
+- [**Dashy**](https://dashy.to/)
 
 #### Tools
 - [**Search Engines**](https://en.wikipedia.org/wiki/Search_engine)
@@ -93,8 +94,7 @@ The environment demonstrates real-world networking concepts including network se
 - [**GitHub**](https://github.com/)
 - [**Discord**](https://discord.com/)
 - [**Teams**](https://teams.live.com/free/)
-- [**Cockpit**]
-- [**Docker**]
+- [**Docker**](https://www.docker.com/)
 
 <div align="center" id="network-design">
   <h1>Network Design</h1>
