@@ -435,6 +435,7 @@ services:
     volumes:
     - /home/nginx/data:/data
     - /home/nginx/letsencrypt:/etc/letsencrypt
+
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
