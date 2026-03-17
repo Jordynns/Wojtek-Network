@@ -569,59 +569,58 @@ GOOGLE AUTHENTICATOR CONFIGURATION FOR SUDO USERS:
      - Log out from terminal and log in again. Try to use sudo privileges and check if MFA work correctly e.g.: ```sudo ls``` or ```sudo apt update```
    
 ## Prometheus & Grafana 
-     PROMETHEUS:
-          - create a directory on server for saving metric history: ```sudo mkdir -p /home/prometheus/data``` and grant permissions ```sudo chown -R 65534:65534 /home/prometheus```
-          - create config file: ```nano /home/prometheus/prometheus.yml```
-          - paste below configuration:
-     global:
-       scrape_interval: 15s
+ PROMETHEUS:
+      - create a directory on server for saving metric history: ```sudo mkdir -p /home/prometheus/data``` and grant permissions ```sudo chown -R 65534:65534 /home/prometheus```
+      - create config file: ```nano /home/prometheus/prometheus.yml```
+      - paste below configuration:
+ global:
+   scrape_interval: 15s
 
-     scrape_configs:
+ scrape_configs:
 
-       - job_name: "prometheus"
-         static_configs:
-           - targets: ["localhost:9090"]
+   - job_name: "prometheus"
+     static_configs:
+       - targets: ["localhost:9090"]
 
-       - job_name: "node"
-         static_configs:
-           - targets: ["192.168.10.8:9100"]
+   - job_name: "node"
+     static_configs:
+       - targets: ["192.168.10.8:9100"]
 
  save file CTRL + S, CTRL + X
         
 
  Adding a Container with Prometheus in Portainer:
+  - Open Portainer --> Go to Containers --> Add Container
+  - Name: prometheus, Image: prom/prometheus:latest,
+  - Map additional port, Host: 9190, Container: 9090
+  - Scroll down --> Advanced container settings:
+                    - Volumes: map additional volume --> continer /etc/prometheus/prometheus.yml select Bind, host: /home/prometheus/prometheus.yml select read-only
+                    - Map additional volume --> Container: /prometheus select Bind, Host: /home/prometheus/data, select writable
+                    - Go to Network tab --> Network: ip_vlan, IPv4 Address: 192.168.10.9 --> Deploy the container
+                    
+   - ```docker restart prometheus```
+   - ```docker start prometheus```
 
-          - Open Portainer --> Go to Containers --> Add Container
-          - Name: prometheus, Image: prom/prometheus:latest,
-          - Map additional port, Host: 9190, Container: 9090
-          - Scroll down --> Advanced container settings:
-                            - Volumes: map additional volume --> continer /etc/prometheus/prometheus.yml select Bind, host: /home/prometheus/prometheus.yml select read-only
-                            - Map additional volume --> Container: /prometheus select Bind, Host: /home/prometheus/data, select writable
-                            - Go to Network tab --> Network: ip_vlan, IPv4 Address: 192.168.10.9 --> Deploy the container
-                            
-           - ```docker restart prometheus```
-           - ```docker start prometheus````
+   - Open Prometheus from Portainer or http://192.168.10.9:9090 go to Status --> Target Health: both services Prometheus $ Node Exporter should be UP
 
-           - Open Prometheus from Portainer or http://192.168.10.9:9090 go to Status --> Target Health: both services Prometheus $ Node Exporter should be UP
+GRAFANA:
 
-      GRAFANA:
+- Create a directory to store dashboards and datasources on the Server: sudo mkdir -p /home/grafana/data
+- grant permissions: sudo chown -R 472:472 /home/grafana
+- open Grafana in Portainer or http://192.168.10.7:3000 --> user:admin password: admin --> change a password
+- Add Prometheus as a Data source: Connection --> Add Sources --> Add data source --> select Prometheus
+- URL: http://192.168.10.9:9090, Save % Test
 
-        - Create a directory to store dashboards and datasources on the Server: sudo mkdir -p /home/grafana/data
-        - grant permissions: sudo chown -R 472:472 /home/grafana
-        - open Grafana in Portainer or http://192.168.10.7:3000 --> user:admin password: admin --> change a password
-        - Add Prometheus as a Data source: Connection --> Add Sources --> Add data source --> select Prometheus
-        - URL: http://192.168.10.9:9090, Save % Test
-
-      NODE EXPORTER:
-        - Grafana --> Dashboards --> New --> Import
-        - Dashboard ID: 1860, click Load
+NODE EXPORTER:
+- Grafana --> Dashboards --> New --> Import
+- Dashboard ID: 1860, click Load
 
 ## Mistral local AI chatbot
 
-       - Install Ollama in the terminal: ```curl -fsSL https://ollama.com/install.sh | sh
-       - restart terminal
-       - Install Mistral model: ```ollama pull mistral``` - 4.1GB basic versrion or ```ollama pull mixtral``` - 40GB more advanced version
-       - Open chat: ```ollama run mistral``` or ```ollama run mixtral```
+ - Install Ollama in the terminal: ```curl -fsSL https://ollama.com/install.sh | sh
+ - restart terminal
+ - Install Mistral model: ```ollama pull mistral``` - 4.1GB basic versrion or ```ollama pull mixtral``` - 40GB more advanced version
+ - Open chat: ```ollama run mistral``` or ```ollama run mixtral```
         
 
 
