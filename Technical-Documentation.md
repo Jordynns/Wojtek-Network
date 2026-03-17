@@ -159,6 +159,9 @@ subgraph Docker_Services["Container Services"]
     Jellyfin["192.168.10.4<br/>Jellyfin"]
     Dashy["192.168.10.5<br/>Dashy"]
     Vaultwarden["192.168.10.6<br/>Vaultwarden"]
+    Grafana["192.168.10.7<br/>Grafana"]
+    NodeExporter["192.168.10.8<br/>Node Exporter"]
+    Prometheus["192.168.10.9<br/>Prometheus"]
     NPM["192.168.10.20<br/>Nginx Proxy Manager"]
 end
 
@@ -167,6 +170,9 @@ Docker --> Jellyfin
 Docker --> Dashy
 Docker --> Vaultwarden
 Docker --> NPM
+Docker --> Prometheus
+Docker --> Grafana
+Docker --> NodeExporter
 
 %% =========================
 %% Styling
@@ -184,7 +190,7 @@ class vSwitch,HyperV hyperv;
 class pfWAN,pfLAN firewall;
 class LAN,Ubuntu,Win11 lan;
 class Docker docker;
-class PiHole,Jellyfin,Dashy,Vaultwarden,NPM service;
+class PiHole,Jellyfin,Dashy,Vaultwarden,NPM,Prometheus,Grafana,NodeExporter service;
 ```
 
 ## Design Decisions
