@@ -86,11 +86,12 @@ The environment demonstrates real-world networking concepts including network se
 - [**Pi-Hole**](https://pi-hole.net/)
 - [**Jellyfin**](https://jellyfin.org/)
 - [**Dashy**](https://dashy.to/)
+- [**Bitwarden**](https://bitwarden.com/help/install-on-premise-linux/)
+- [**Prometheus**](https://prometheus.io/download/)
+- [**Node Exporter**](https://prometheus.io/docs/guides/node-exporter/)
+- [**Grafana**](https://grafana.com/)
 
 #### Tools
-- [**Search Engines**](https://en.wikipedia.org/wiki/Search_engine)
-    - [***Firefox***](https://www.firefox.com/en-US/)
-    - [***Brave***](https://brave.com/)
 - [**GitHub**](https://github.com/)
 - [**Discord**](https://discord.com/)
 - [**Teams**](https://teams.live.com/free/)
