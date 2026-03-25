@@ -82,7 +82,7 @@ Traffic is segmented between **WAN** and **LAN**, with pfSense enforcing securit
 | **Jordyn** | Network Implementation / Documentation | [@Jordynns](https://github.com/Jordynns) |
 | **Marek** | Monitoring / MFA | [@marekslapa](https://github.com/marekslapa) |
 | **Adam** | Website Design & Development | [@adamc02](https://github.com/adamc02) |
-| **Shae** | Nothing | [@Tadger65443](https://github.com/Tadger65443) |
+| **Shae** | Website Pages & MoM | [@Tadger65443](https://github.com/Tadger65443) |
 
 **Course:** HNC NextGen Computing  
 **Project:** Virtualised Network Simulation  
