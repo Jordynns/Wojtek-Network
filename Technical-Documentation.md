@@ -554,7 +554,9 @@ ls /lib/x86_64-linux-gnu/security | grep google #it should show: pam_google_auth
                     - Map additional volume --> Container: /prometheus select Bind, Host: /home/prometheus/data, select writable
                     - Go to Network tab --> Network: ip_vlan, IPv4 Address: 192.168.10.9 --> Deploy the container
                     
-   - ```docker restart prometheus```
+```
+docker restart prometheus
+```
 
    - Open Prometheus from Portainer or http://192.168.10.9:9090 go to Status --> Target Health: both services Prometheus $ Node Exporter should be UP
 
