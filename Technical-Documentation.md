@@ -473,11 +473,17 @@ networks:
 
 - Log in as Sudo user
 - Update the system
-```sudo apt update``` 
+```
+sudo apt update
+``` 
 - Install google authenticator
-```sudo apt install google-authenticator```
+```
+sudo apt install google-authenticator
+```
 - Check if the modul has been installed correctly
-```ls /lib/x86_64-linux-gnu/security | grep google #it should show: pam_google_authenticator.so```
+```
+ls /lib/x86_64-linux-gnu/security | grep google #it should show: pam_google_authenticator.so
+```
 
 ### Google Authenticator Configuration for Sudo Users
 
@@ -500,21 +506,31 @@ networks:
   ```
   - PAM (Pluggable Authentication Modules) Configuration for sudo users:
      - edit sudo file
-    ```nano /etc/pam.d/sudo```
+    ```
+    nano /etc/pam.d/sudo
+    ```
      - add: auth required
-    ```/lib/x86_64-linux-gnu/security/pam_google_authenticator.so below/above @include common-auth```
-        depends on whether you want the system to ask for a token before or after entering the password
+    ```
+    /lib/x86_64-linux-gnu/security/pam_google_authenticator.so below/above @include common-auth
+    ```
      - Save file and exit.
      - Log out from terminal and log in again. Try to use sudo privileges and check if MFA work correctly e.g.:
-    ```sudo ls``` or ```sudo apt update```
+    ```
+    sudo ls
+    sudo apt update
+    ```
    
 ## Prometheus & Grafana 
  PROMETHEUS:
       - create a directory on server for saving metric history
-      ```sudo mkdir -p /home/prometheus/data``` 
-      ```sudo chown -R 65534:65534 /home/prometheus```
+      ```
+      sudo mkdir -p /home/prometheus/data
+      sudo chown -R 65534:65534 /home/prometheus
+      ```
       - create config file
-      ```nano /home/prometheus/prometheus.yml```
+      ```
+      nano /home/prometheus/prometheus.yml
+      ```
       - paste below configuration:
  global:
    scrape_interval: 15s
@@ -542,16 +558,19 @@ networks:
                     - Go to Network tab --> Network: ip_vlan, IPv4 Address: 192.168.10.9 --> Deploy the container
                     
    - ```docker restart prometheus```
-   - ```docker start prometheus```
 
    - Open Prometheus from Portainer or http://192.168.10.9:9090 go to Status --> Target Health: both services Prometheus $ Node Exporter should be UP
 
 GRAFANA:
 
 - Create a directory to store dashboards and datasources on the Server
-```sudo mkdir -p /home/grafana/data```
+```
+sudo mkdir -p /home/grafana/data
+```
 - Grant permissions
-```sudo chown -R 472:472 /home/grafana```
+```
+sudo chown -R 472:472 /home/grafana
+```
 - Open Grafana in Portainer or http://192.168.10.7:3000 --> user:admin password: admin --> change a password
 - Add Prometheus as a Data source: Connection --> Add Sources --> Add data source --> select Prometheus
 - URL: http://192.168.10.9:9090, Save % Test
@@ -563,7 +582,9 @@ NODE EXPORTER:
 ## Mistral local AI chatbot
 
  - Install Ollama in the terminal
-```curl -fsSL https://ollama.com/install.sh | sh```
+```
+curl -fsSL https://ollama.com/install.sh | sh
+```
  - restart terminal
  - Install Mistral model
  - ```ollama pull mistral``` - 4.1GB basic versrion or ```ollama pull mixtral``` - 40GB more advanced version
