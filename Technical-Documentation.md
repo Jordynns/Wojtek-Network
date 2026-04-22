@@ -469,14 +469,17 @@ networks:
 
 ## Ubuntu Server Security
 
-GOOGLE AUTHENTICATOR INSTALLATION (TERMINAL):
+### Google Authenticator Configuration (Terminal)
 
-- Log in as sudo user
-- Update the system: sudo apt update 
-- Install google authenticator: sudo apt install google-authenticator 
-- Check if the modul has been installed correctly: ```ls /lib/x86_64-linux-gnu/security | grep google #it should show: pam_google_authenticator.so```
+- Log in as Sudo user
+- Update the system
+```sudo apt update``` 
+- Install google authenticator
+```sudo apt install google-authenticator```
+- Check if the modul has been installed correctly
+```ls /lib/x86_64-linux-gnu/security | grep google #it should show: pam_google_authenticator.so```
 
-GOOGLE AUTHENTICATOR CONFIGURATION FOR SUDO USERS:
+### Google Authenticator Configuration for Sudo Users
 
 *Each user who will use the Server as sudo must generate his own secret.*
 *Download Google Authanticator from AppStore / Google Play Store*
@@ -496,15 +499,22 @@ GOOGLE AUTHENTICATOR CONFIGURATION FOR SUDO USERS:
   chown marek:marek ~/.google_authenticator
   ```
   - PAM (Pluggable Authentication Modules) Configuration for sudo users:
-     - edit sudo file: ```nano /etc/pam.d/sudo```
-     - add: auth required ```/lib/x86_64-linux-gnu/security/pam_google_authenticator.so below/above @include common-auth``` depends on whether you want the system to ask for a token before or after entering the password
+     - edit sudo file
+    ```nano /etc/pam.d/sudo```
+     - add: auth required
+    ```/lib/x86_64-linux-gnu/security/pam_google_authenticator.so below/above @include common-auth```
+        depends on whether you want the system to ask for a token before or after entering the password
      - Save file and exit.
-     - Log out from terminal and log in again. Try to use sudo privileges and check if MFA work correctly e.g.: ```sudo ls``` or ```sudo apt update```
+     - Log out from terminal and log in again. Try to use sudo privileges and check if MFA work correctly e.g.:
+    ```sudo ls``` or ```sudo apt update```
    
 ## Prometheus & Grafana 
  PROMETHEUS:
-      - create a directory on server for saving metric history: ```sudo mkdir -p /home/prometheus/data``` and grant permissions ```sudo chown -R 65534:65534 /home/prometheus```
-      - create config file: ```nano /home/prometheus/prometheus.yml```
+      - create a directory on server for saving metric history
+      ```sudo mkdir -p /home/prometheus/data``` 
+      ```sudo chown -R 65534:65534 /home/prometheus```
+      - create config file
+      ```nano /home/prometheus/prometheus.yml```
       - paste below configuration:
  global:
    scrape_interval: 15s
@@ -538,9 +548,11 @@ GOOGLE AUTHENTICATOR CONFIGURATION FOR SUDO USERS:
 
 GRAFANA:
 
-- Create a directory to store dashboards and datasources on the Server: sudo mkdir -p /home/grafana/data
-- grant permissions: sudo chown -R 472:472 /home/grafana
-- open Grafana in Portainer or http://192.168.10.7:3000 --> user:admin password: admin --> change a password
+- Create a directory to store dashboards and datasources on the Server
+```sudo mkdir -p /home/grafana/data```
+- Grant permissions
+```sudo chown -R 472:472 /home/grafana```
+- Open Grafana in Portainer or http://192.168.10.7:3000 --> user:admin password: admin --> change a password
 - Add Prometheus as a Data source: Connection --> Add Sources --> Add data source --> select Prometheus
 - URL: http://192.168.10.9:9090, Save % Test
 
@@ -550,10 +562,13 @@ NODE EXPORTER:
 
 ## Mistral local AI chatbot
 
- - Install Ollama in the terminal: ```curl -fsSL https://ollama.com/install.sh | sh
+ - Install Ollama in the terminal
+```curl -fsSL https://ollama.com/install.sh | sh```
  - restart terminal
- - Install Mistral model: ```ollama pull mistral``` - 4.1GB basic versrion or ```ollama pull mixtral``` - 40GB more advanced version
- - Open chat: ```ollama run mistral``` or ```ollama run mixtral```
+ - Install Mistral model
+ - ```ollama pull mistral``` - 4.1GB basic versrion or ```ollama pull mixtral``` - 40GB more advanced version
+ - Open chat
+ - ```ollama run mistral``` or ```ollama run mixtral```
         
 
 ## Reverse Proxy
