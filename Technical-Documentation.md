@@ -7,7 +7,7 @@
 
 
 1. [**Summary**](#summary)
-2. [**System Requirements**](#system-requirements)
+2. [**System Information**](#system-information)
    - [***Software Used***](software-used)
         - [***Operating Systems***](#operating-systems)
         - [***Hypervisors***](#hypervisors)
@@ -64,7 +64,7 @@ The environment demonstrates real-world networking concepts including network se
 
 <hr/>
 
-<div align="center" id="system-requirements">
+<div align="center" id="system-information">
   <h1>System Information</h1>
 </div>
 
