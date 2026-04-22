@@ -97,9 +97,9 @@ nav ul li a:hover {
 
 /* ----- Footer ----- */
 footer {
-    padding: 90px;
     text-align: center;
-    background: #ffffff;
+    padding: 20px; 
+    width: 100%;
 }
 
 /* ============================================================
@@ -578,3 +578,23 @@ tr:nth-child(even) {
 .doc-content a:hover {
     text-decoration: underline;
 }
+
+.tip-boxb {
+    background: #ffffff;
+    border-left: 4px solid #2232c5;
+    padding: 18px 20px;
+    color: #000000;
+    max-width: 700px;
+}
+
+.tip-titleb {
+    color: #540dda;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tip-boxb a { color: #3b82f6; text-decoration: none; }
+.tip-boxb a:hover { text-decoration: underline; }

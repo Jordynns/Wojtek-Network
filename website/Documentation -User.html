@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wojtek Network</title>
+
+    <link rel="icon" type="image/x-icon" href="resources/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+  <header>
+           <div class="header-container">
+        <a href="index.html"><img src="resources/Logo.png" alt="Logo" style="height:150px;width:150px;"></a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Documentation.html">Tech Documentation</a></li>
+                <li><a href="Documentation -User.html">User Documentation</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                
+            </ul>
+        </nav>
+        </div>
+  </header>
+
+
+<section class="doc-layout">
+  <aside class="Section-Area">
+    <h3>Sections</h3>
+    <a href="#QA">Quick Access (Dashboard)</a>
+    <a href="#SO">Security Onboarding</a>
+    <a href="#NS">Network Storage (NAS)</a>
+    <a href="#CF">Common Fixes</a>
+  </aside>
+
+
+
+  <main class="doc-content">
+  <section id="QA">
+      <div class="headings"><h1>Quick Access (Dashboard)</h1>
+        <hr width="100%;" color="#d3d3d3" size="3">
+        </div>
+        <BR>
+  <p>We use Dashy as our central hub. You don't need to remember every IP address; just bookmark the dashboard.</p>
+  <br>
+  <ul>
+  <li><b>Primary URL:</b> https://dashy.home.arpa</li>
+  <li><b>Direct IP:</b> http://192.168.10.5</li>
+  </ul>
+  <br>
+  <table>  <tr>
+    <th>Service</th>
+    <th>Local URL</th>
+    <th>Purpose</th>
+    </tr>
+    <tr>
+    <td>Jellyfin</td>
+    <td>jellyfin.home.arpa 	</td>
+    <td>Movies, TV Shows, and Music.</td>
+    </tr>
+      <tr>
+      <td>Bitwarden</td>
+      <td>bitwarden.home.arpa</td>
+      <td>Primary DNS & Ad-b</td>
+    </tr>
+    <tr>
+      <td>Pi-hole</td>
+      <td>192.168.10.2/admin</td>
+      <td>Ad-blocking stats and DNS.</td>
+    </tr>
+</table>
+<br>
+<hr width="100%;" color="#d3d3d3" size="6">
+</section>
+
+
+<section id="#SO">
+      <div class="headings"><h1>Security Onboarding</h1>
+        <hr width="100%;" color="#d3d3d3" size="3">
+        </div>
+      <br>
+
+    <div class="tip-boxb">
+    <div class="tip-titleb">
+        ⚠️ Important
+    </div>
+
+      <p>
+        <b>Mandatory Setup:</b> Because we use a private Certificate Authority, your browser will show a "Your connection is not private" warning until you trust our root certificate.
+      </p>
+    </div>
+    <br>
+    <h3>Trusting the Wojtek Certificate</h3>
+    <br>
+    <p>1.<b> Download: </b>Access the <a href="https://downgit.github.io/#/home?url=https:%2F%2Fgithub.com%2FJordynns%2FWojtek-Network%2Fblob%2Fmain%2Fresources%2FLocal-CA.crt">Local-CA.crt</a> from our shared repository</p>
+    <p>2.<b> Windows:</b></p>
+    <ul>
+      <li>Double-click the file -> Install Certificate.</li>
+      <li>Select Local Machine.</li>
+      <li>Choose Place all certificates in the following store -> Trusted Root Certification Authorities.</li>
+    </ul>
+    <p>3. <b>Browsers (FireFox) </b>You must manually import the certificate under Settings > Privacy & Security > Certificates > View Certificates > Import.</p>
+<br>
+<hr width="100%;" color="#d3d3d3" size="6">
+</section>
+
+<section id="NS">
+      <div class="headings"><h1>Network Storage (NAS)</h1>
+        <hr width="100%;" color="#d3d3d3" size="3">
+        </div>
+      <br>
+  <p>The network provides a centralized location for file sharing and backups.</p>
+  <br>
+  <h3>Mapping the Drive (Windows)</h3>
+  <br>
+  <p>To make the NAS appear as a drive (e.g., the Z: drive) on your PC:<br>
+     1. Open File Explorer.<br>
+     2. Right-click This PC -> Map network drive...<br>
+     3. Folder: \\192.168.10.3\nas<br>
+     4. Check Connect using different credentials.<br>
+     5. Enter your assigned nasuser credentials.<br>
+  </p>
+  <br>
+
+    <div class="tip-box">
+    <div class="tip-title">
+        💡 Tip
+    </div>
+
+    <p>
+        Use the command line for a quick mount: net use Z: \\192.168.10.3\nas /persistent:yes
+    </p>
+  </div>
+  <br>
+  <hr width="100%;" color="#d3d3d3" size="6">
+</section>
+
+<section id="CF">
+      <div class="headings"><h1>Common Fixes</h1>
+        <hr width="100%;" color="#d3d3d3" size="3">
+        </div>
+        <br>
+  <h3>I can't reach any ".home.arpa" websites</h3>
+  <br>
+        <ul>
+          <li><b>Check DNS:</b> Ensure your device is receiving its IP via DHCP from pfSense. Your DNS server should be set to 192.168.10.2.</li>
+          <li><b>VPN:</b>Disable any external VPNs (NordVPN, ExpressVPN, etc.), as they bypass our local routing.</li>
+        </ul>
+        <br>
+  <h3>Jellyfin is asking for a "Server Address"</h3>
+        <br>
+  <ul>
+    <li><b>Enter:</b> http://192.168.10.4 or https://jellyfin.home.arpa.</li>
+  </ul>
+<br>
+<h3>Why is Shae in the team list?</h3>
+<ul>
+  <il>This is an architectural mystery. We are currently treating this as a "feature" rather than a "bug."</il>
+</ul>
+ <br>
+ <hr width="100%;" color="#d3d3d3" size="6">
+</section>
+</section>
+</main>
+
+       <footer>
+    <p>          &copy; 2026 Wojtek All rights reserved.</p>
+</footer>
+</body>
+</html>
