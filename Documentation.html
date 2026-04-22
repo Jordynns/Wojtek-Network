@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wojtek Network</title>
+
+    <link rel="icon" type="image/x-icon" href="resources/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+
+<section class="doc-layout">
+  <aside class="Section-Area">
+    <h3>Sections</h3>
+    <a href="#System-Requirements">System Requirements</a>
+    <a href="#Network-Design">Network Design</a>
+    <a href="#Implementation">Implementation</a>
+    <a href="#Testing-Validation">Testing & Validation</a>
+    <a href="#Maintenance-Backup">Maintenance & Backup</a>
+    <a href="#Troubleshooting">Troubleshooting</a>
+    <a href="#Conclusion">Conclusion</a>
+    <a href="#Appendices">Appendices</a>
+  </aside>
+
+<main class="doc-content">
+<section id="System-Requirements">
+      <div class="headings"><h1>System Requirements</h1>
+        <hr width="100%;" color="#d3d3d3" size="3">
+        </div>
+<br>
+      <h2>Software Used (OS, Hypervisors, Containers, Tools)</h2>
+      <hr width="100%;" color="#d3d3d3" size="3">
+      <br>
+      
+
+    <h3>Operating Systems</h3>
+<P>
+      <ul>
+  <li><a href="https://www.linux.org/" target="_blank">Linux</a></li>
+    <ul>
+      <li><a href="https://www.pfsense.org/" target="_blank">pfSense</a></li>
+      <li><a href="https://ubuntu.com/server" target="_blank">Ubuntu Server</a></li>
+    </ul>
+  </li>
+  <li><a href="https://www.microsoft.com/en-gb/windows" target="_blank">Windows</a>
+    <ul>
+      <li><a href="https://www.microsoft.com/en-gb/windows/windows-11" target="_blank">Windows 11</a></li>
+    </ul>
+  </li>
+</ul>
+<br>
+
+<h3>Hypervisors</h3>
+ <ul>
+  <li><a href="https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/hyper-v-overview" target="_blank">Hyper-V</a></li>
+ </ul>
+  <br>
+
+<h3>Containers</h3>
+  <ul>
+  <li><a href="https://docs.portainer.io/" target="_blank">Portainer</a></li>
+  <li><a href="https://cockpit-project.org/" target="_blank">Cockpit</a></li>
+  <li><a href="https://pi-hole.net/" target="_blank">Pi-Hole</a></li>
+  <li><a href="https://jellyfin.org/" target="_blank">Jellyfin</a></li>
+  <li><a href="https://dashy.to/" target="_blank">Dashy</a></li>
+  <li><a href="https://github.com/dani-garcia/vaultwarden" target="_blank">Bitwarden (Vaultwarden)</a></li>
+  <li><a href="https://prometheus.io/" target="_blank">Prometheus</a></li>
+  <li><a href="https://prometheus.io/docs/guides/node-exporter/" target="_blank">Node Exporter</a></li>
+  <li><a href="https://grafana.com/" target="_blank">Grafana</a></li>
+    </ul>
+  </li>
+</ul>
+<br>
+
+<h3>Tools</h3>
+<ul>
+  <li><a href="https://github.com/" target="_blank">GitHub</a></li>
+  <li><a href="https://discord.com/" target="_blank">Discord</a></li>
+  <li><a href="https://www.microsoft.com/en-gb/microsoft-teams/group-chat-software" target="_blank">Microsoft Teams</a></li>
+  <li><a href="https://www.docker.com/" target="_blank">Docker</a></li>
+</ul>
+<br>
+</P>
+      <hr width="100%;" color="#d3d3d3" size="6">
+</section>
+<hr width="100%;" color="#d3d3d3" size="6">
+<section id="Network-Design">
+      <div class="headings"><h1>Network Design</h1>
+        <hr width="100%;" color="#d3d3d3" size="3">
+      </div>
+        
+    <div class="Subheadings"><h2>Logical Topology Diagram</h2>
+    
+<br>
+
+<div class="diagram-wrapper">
+
+  <!-- Legend -->
+  <div class="legend">
+    <h3>Legend</h3>
+    <div class="legend-items">
+      <div class="legend-item"><div class="legend-dot" style="background:#2d6aa0"></div> Internet / Edge</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#6a6a7e"></div> Virtualisation Layer</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#c0233a"></div> Firewall / Routing</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#1d7a45"></div> LAN Devices</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#6b3fa0"></div> Container Network</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#b8860b"></div> Application Services</div>
+    </div>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <button title="Expand/Collapse">↔</button>
+    <button title="Copy">⧉</button>
+  </div>
+
+  <!-- Clipped viewport -->
+  <div class="canvas-viewport">
+    <div class="canvas" id="canvas">
+
+      <div class="node blue node-internet">Internet</div>
+      <svg height="30" width="20"><line x1="10" y1="0" x2="10" y2="22" stroke="#555" stroke-width="2"/><polygon points="10,28 6,20 14,20" fill="#555"/></svg>
+
+      <div class="node grey node-vswitch">External vSwitch</div>
+      <svg height="30" width="20"><line x1="10" y1="0" x2="10" y2="22" stroke="#555" stroke-width="2"/><polygon points="10,28 6,20 14,20" fill="#555"/></svg>
+
+      <div class="node grey node-hyperv">Hyper-V Host</div>
+
+      <svg height="40" width="340" style="overflow:visible">
+        <line x1="170" y1="0"  x2="170" y2="20" stroke="#555" stroke-width="2"/>
+        <line x1="170" y1="20" x2="110" y2="20" stroke="#555" stroke-width="2"/>
+        <line x1="170" y1="20" x2="230" y2="20" stroke="#555" stroke-width="2"/>
+        <line x1="110" y1="20" x2="110" y2="36" stroke="#555" stroke-width="2"/>
+        <polygon points="110,40 106,32 114,32" fill="#555"/>
+        <line x1="230" y1="20" x2="230" y2="36" stroke="#555" stroke-width="2"/>
+        <polygon points="230,40 226,32 234,32" fill="#555"/>
+      </svg>
+
+      <div class="pfsense-box">
+        <span class="box-label">pfSense VM</span>
+        <div class="node red node-wan">WAN - hn0</div>
+        <div class="node red node-lan-ip">LAN - 192.168.10.1</div>
+      </div>
+
+      <svg height="30" width="20"><line x1="10" y1="0" x2="10" y2="22" stroke="#555" stroke-width="2"/><polygon points="10,28 6,20 14,20" fill="#555"/></svg>
+
+      <div class="node green node-subnet">192.168.10.0/24</div>
+
+      <svg height="40" width="380" style="overflow:visible">
+        <line x1="190" y1="0"  x2="190" y2="20" stroke="#555" stroke-width="2"/>
+        <line x1="190" y1="20" x2="100" y2="20" stroke="#555" stroke-width="2"/>
+        <line x1="190" y1="20" x2="280" y2="20" stroke="#555" stroke-width="2"/>
+        <line x1="100" y1="20" x2="100" y2="36" stroke="#555" stroke-width="2"/>
+        <polygon points="100,40 96,32 104,32" fill="#555"/>
+        <line x1="280" y1="20" x2="280" y2="36" stroke="#555" stroke-width="2"/>
+        <polygon points="280,40 276,32 284,32" fill="#555"/>
+      </svg>
+
+      <div class="lan-box">
+        <span class="box-label">LAN Clients</span>
+        <div class="node green node-ubuntu">Ubuntu Server<br>192.168.10.3</div>
+        <div class="node green node-win11">Windows 11 Client<br>DHCP</div>
+      </div>
+
+      <svg height="30" width="20"><line x1="10" y1="0" x2="10" y2="22" stroke="#555" stroke-width="2"/><polygon points="10,28 6,20 14,20" fill="#555"/></svg>
+
+      <div class="node purple node-docker">Docker ipvlan Network</div>
+
+      <svg height="50" width="1060" style="overflow:visible">
+        <line x1="530" y1="0"  x2="530" y2="20" stroke="#555" stroke-width="2"/>
+        <line x1="60"  y1="20" x2="1000" y2="20" stroke="#555" stroke-width="2"/>
+        <line x1="60"  y1="20" x2="60"  y2="46" stroke="#555" stroke-width="2"/><polygon points="60,50 56,42 64,42"    fill="#555"/>
+        <line x1="190" y1="20" x2="190" y2="46" stroke="#555" stroke-width="2"/><polygon points="190,50 186,42 194,42" fill="#555"/>
+        <line x1="320" y1="20" x2="320" y2="46" stroke="#555" stroke-width="2"/><polygon points="320,50 316,42 324,42" fill="#555"/>
+        <line x1="450" y1="20" x2="450" y2="46" stroke="#555" stroke-width="2"/><polygon points="450,50 446,42 454,42" fill="#555"/>
+        <line x1="580" y1="20" x2="580" y2="46" stroke="#555" stroke-width="2"/><polygon points="580,50 576,42 584,42" fill="#555"/>
+        <line x1="720" y1="20" x2="720" y2="46" stroke="#555" stroke-width="2"/><polygon points="720,50 716,42 724,42" fill="#555"/>
+        <line x1="850" y1="20" x2="850" y2="46" stroke="#555" stroke-width="2"/><polygon points="850,50 846,42 854,42" fill="#555"/>
+        <line x1="1000" y1="20" x2="1000" y2="46" stroke="#555" stroke-width="2"/><polygon points="1000,50 996,42 1004,42" fill="#555"/>
+      </svg>
+
+      <div class="services-box" style="flex-wrap:nowrap; width:max-content; max-width:none;">
+        <span class="box-label">Container Services</span>
+        <div class="node gold node-service">192.168.10.2<br>Pi-hole</div>
+        <div class="node gold node-service">192.168.10.4<br>Jellyfin</div>
+        <div class="node gold node-service">192.168.10.5<br>Dashy</div>
+        <div class="node gold node-service">192.168.10.6<br>Vaultwarden</div>
+        <div class="node gold node-service">192.168.10.7<br>Grafana</div>
+        <div class="node gold node-service">192.168.10.9<br>Prometheus</div>
+        <div class="node gold node-service">192.168.10.8<br>Node Exporter</div>
+        <div class="node gold node-service">192.168.10.20<br>Nginx Proxy Manager</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Nav pad -->
+  <div class="nav-buttons">
+    <div class="nav-btn empty"></div>
+    <button class="nav-btn" id="btn-up">▲</button>
+    <button class="nav-btn" id="btn-zoomin">+</button>
+
+    <button class="nav-btn" id="btn-left">◀</button>
+    <button class="nav-btn" id="btn-reset">↺</button>
+    <button class="nav-btn" id="btn-right">▶</button>
+
+    <div class="nav-btn empty"></div>
+    <button class="nav-btn" id="btn-down">▼</button>
+    <button class="nav-btn" id="btn-zoomout">−</button>
+  </div>
+
+</div>
+
+<script>
+  const canvas   = document.getElementById('canvas');
+  const viewport = document.querySelector('.canvas-viewport');
+  const STEP = 60;
+  let oy = 0, ox = 0, scale = 1, fitScale = 1;
+
+  window.addEventListener('load', () => {
+    const cw = canvas.scrollWidth;
+    const vw = viewport.clientWidth;
+    if (cw > vw) {
+      fitScale = Math.max(0.3, vw / cw);
+      scale = fitScale;
+      apply();
+    }
+  });
+
+  function apply() {
+    canvas.style.transform       = `translate(${ox}px, ${oy}px) scale(${scale})`;
+    canvas.style.transformOrigin = 'top center';
+  }
+
+  document.getElementById('btn-up').onclick      = () => { oy += STEP; apply(); };
+  document.getElementById('btn-down').onclick    = () => { oy -= STEP; apply(); };
+  document.getElementById('btn-left').onclick    = () => { ox += STEP; apply(); };
+  document.getElementById('btn-right').onclick   = () => { ox -= STEP; apply(); };
+  document.getElementById('btn-reset').onclick   = () => { oy = 0; ox = 0; scale = fitScale; apply(); };
+  document.getElementById('btn-zoomin').onclick  = () => { scale = Math.min(2,   scale + 0.15); apply(); };
+  document.getElementById('btn-zoomout').onclick = () => { scale = Math.max(0.4, scale - 0.15); apply(); };
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowUp')    { oy += STEP; apply(); }
+    if (e.key === 'ArrowDown')  { oy -= STEP; apply(); }
+    if (e.key === 'ArrowLeft')  { ox += STEP; apply(); }
+    if (e.key === 'ArrowRight') { ox -= STEP; apply(); }
+    if (e.key === '+') { scale = Math.min(2,   scale + 0.1); apply(); }
+    if (e.key === '-') { scale = Math.max(0.4, scale - 0.1); apply(); }
+  });
+</script>
+<br>
+
+<div class="Subheadings"><h2>Network Decisions</h2>
+  <hr width="100%;" color="#d3d3d3" size="3">
+  <br>
+  <p>The network was designed around security, managability, and isolation by implementing it in a fully virtualised environment within Hyper-V. A single dedicated virtual machine running pfSense acts as the central router and firewall, seperating the Wide Area Network from the internal Local Area Network and creating a default deny-all firewall policy. This ensures that all traffic is funneled through one point on the network allowing easier monitoring and management, along with the network segmentation being logically seperated by infrastructure, client devices, and services being containerised, which improve management, security, and troubleshooting.</p>
+<br>
+<p>Web services were deployed using Docker on an Ubuntu Server virtual machine to simplify deployment and updates. Core services were assigned static IP addresses to ensure predictble routing, DNS resolution, and firewall management, while Dynamic Host Control Protocol remained for client devices on the network. Pi-Hole provides a central DNS filtering and internal domain resolution, and Nginx Proxy Manager enables HTTPS for secure access through locally issued certificates.</p>
+        </div>
+      <br>
+    
+<div class="Subheadings"><h2>IP Addressing Scheme</h2>
+  <hr width="100%;" color="#d3d3d3" size="3">
+  <br>
+  <table>  <tr>
+    <th>Service</th>
+    <th>IP</th>
+    <th>Usage</th>
+  </tr>
+  <tr>
+    <td>pfSense</td>
+    <td>192.168.10.1</td>
+    <td>Default Gateway & Router</td>
+  </tr>
+  <tr>
+    <td>Pi-hole</td>
+    <td>192.168.10.2</td>
+    <td>Primary DNS & Ad-blocking/Filtering</td>
+  </tr>
+  <tr>
+    <td>Ubuntu Server</td>
+    <td>192.168.10.3</td>
+    <td>Docker Host & NAS (Cockpit)</td>
+  </tr>
+  <tr>
+    <td>Jellyfin</td>
+    <td>192.168.10.4</td>
+    <td>Media Streaming</td>
+  </tr>
+  <tr>
+    <td>Dashy</td>
+    <td>192.168.10.5</td>
+    <td>Network Dashboard via Browser</td>
+  </tr>
+  <tr>
+    <td>Bitwarden</td>
+    <td>192.168.10.6</td>
+    <td>Secure Password Manager</td>
+  </tr>
+  <tr>
+    <td>Grafana</td>
+    <td>192.168.10.7</td>
+    <td>Dashboard/Visualization</td>
+  </tr>
+  <tr>
+    <td>Node Exporter</td>
+    <td>192.168.10.8</td>
+    <td>System metrics</td>
+  </tr>
+  <tr>
+    <td>Prometheus</td>
+    <td>192.168.10.9</td>
+    <td>Reverse Proxy w/Signed Certs for HTTPS Traffic (Local)</td>
+  </tr>
+  <tr>
+    <td>Nginx Proxy Manager</td>
+    <td>192.168.10.20</td>
+    <td>Reverse Proxy w/ Signed Certs for HTTPS Traffic (Local)</td>
+  </tr>
+  <tr>
+    <td>DHCP Pool</td>
+    <td>192.168.10.20 - 192.168.10.254</td>
+    <td>Dynamic IP allocation for clients</td>
+  </tr>
+
+  
+</table>
+
+<div class="Subheadings"><h2>Routing</h2>
+  <hr width="100%;" color="#d3d3d3" size="3">
+  <br>
+  <p>When you access a service like <b>jellyfin.home.arpa</b>, your request follows this secure path:
+</p>
+
+<!-- Request Routing Diagram -->
+<div class="diagram-wrapper" style="margin: 20px 0;">
+  <div class="legend">
+    <h3>Legend</h3>
+    <div class="legend-items">
+      <div class="legend-item"><div class="legend-dot" style="background:#2d6aa0"></div> Client</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#b8860b"></div> DNS / Filter</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#6b3fa0"></div> Proxy</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#c0233a"></div> Router</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#1d7a45"></div> Services</div>
+    </div>
+  </div>
+  <div class="toolbar">
+    <button title="Expand/Collapse">↔</button>
+    <button title="Copy">⧉</button>
+  </div>
+  <div style="overflow:hidden; position:relative; height:600px;">
+    <div id="rt-canvas" style="padding:30px 20px 60px; display:flex; flex-direction:column; align-items:center; gap:0; transform-origin:top center;">
+
+      <!-- User Device (circle) -->
+      <div style="width:90px; height:90px; border-radius:50%; background:#2d6aa0; border:1px solid #3a85c8; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:500; font-size:13px; text-align:center;">User<br>Device</div>
+
+      <!-- DNS Query label + arrow -->
+      <div style="display:flex; flex-direction:column; align-items:center; gap:0;">
+        <svg height="14" width="80"><text x="40" y="11" text-anchor="middle" fill="#aaa" font-size="11" font-family="Arial">DNS Query</text></svg>
+        <svg height="24" width="20"><line x1="10" y1="0" x2="10" y2="16" stroke="#555" stroke-width="2"/><polygon points="10,22 6,14 14,14" fill="#555"/></svg>
+      </div>
+
+      <!-- Pi-hole -->
+      <div class="node gold" style="width:200px; text-align:center;">Pi-hole: Filter Ads</div>
+
+      <!-- Valid label + arrow -->
+      <div style="display:flex; flex-direction:column; align-items:center; gap:0;">
+        <svg height="14" width="80"><text x="40" y="11" text-anchor="middle" fill="#aaa" font-size="11" font-family="Arial">Valid</text></svg>
+        <svg height="24" width="20"><line x1="10" y1="0" x2="10" y2="16" stroke="#555" stroke-width="2"/><polygon points="10,22 6,14 14,14" fill="#555"/></svg>
+      </div>
+
+      <!-- Nginx Proxy Manager -->
+      <div class="node purple" style="width:220px; text-align:center;">Nginx Proxy Manager</div>
+
+      <!-- SSL Encryption label + arrow -->
+      <div style="display:flex; flex-direction:column; align-items:center; gap:0;">
+        <svg height="14" width="120"><text x="60" y="11" text-anchor="middle" fill="#aaa" font-size="11" font-family="Arial">SSL Encryption</text></svg>
+        <svg height="24" width="20"><line x1="10" y1="0" x2="10" y2="16" stroke="#555" stroke-width="2"/><polygon points="10,22 6,14 14,14" fill="#555"/></svg>
+      </div>
+
+      <!-- Internal Service (diamond) -->
+      <div style="width:90px; height:90px; background:#c0233a; border:1px solid #e0304d; transform:rotate(45deg); display:flex; align-items:center; justify-content:center; margin:6px 0;">
+        <span style="transform:rotate(-45deg); color:#fff; font-size:12px; font-weight:500; text-align:center; line-height:1.4;">Internal<br>Service</span>
+      </div>
+
+      <!-- Fan out to 3 services -->
+      <svg height="60" width="500" style="overflow:visible; margin-top:10px;">
+        <line x1="250" y1="0"  x2="250" y2="20" stroke="#555" stroke-width="2"/>
+        <line x1="80"  y1="20" x2="420" y2="20" stroke="#555" stroke-width="2"/>
+        <line x1="80"  y1="20" x2="80"  y2="56" stroke="#555" stroke-width="2"/><polygon points="80,60 76,52 84,52"   fill="#555"/>
+        <line x1="250" y1="20" x2="250" y2="56" stroke="#555" stroke-width="2"/><polygon points="250,60 246,52 254,52" fill="#555"/>
+        <line x1="420" y1="20" x2="420" y2="56" stroke="#555" stroke-width="2"/><polygon points="420,60 416,52 424,52" fill="#555"/>
+      </svg>
+
+      <!-- Three service nodes -->
+      <div style="display:flex; gap:20px; justify-content:center;">
+        <div class="node green" style="width:140px; text-align:center;">Jellyfin Media</div>
+        <div class="node green" style="width:140px; text-align:center;">Bitwarden Vault</div>
+        <div class="node green" style="width:140px; text-align:center;">Samba Storage</div>
+      </div>
+
+    </div>
+  </div>
+  <!-- Nav pad -->
+  <div class="nav-buttons">
+    <div class="nav-btn empty"></div>
+    <button class="nav-btn" id="rt-up">▲</button>
+    <button class="nav-btn" id="rt-zoomin">+</button>
+    <button class="nav-btn" id="rt-left">◀</button>
+    <button class="nav-btn" id="rt-reset">↺</button>
+    <button class="nav-btn" id="rt-right">▶</button>
+    <div class="nav-btn empty"></div>
+    <button class="nav-btn" id="rt-down">▼</button>
+    <button class="nav-btn" id="rt-zoomout">−</button>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const rc = document.getElementById('rt-canvas');
+    const STEP = 60;
+    let oy = 0, ox = 0, sc = 1.2;
+    function applyRt() {
+      rc.style.transform = `translate(${ox}px, ${oy}px) scale(${sc})`;
+      rc.style.transformOrigin = 'top center';
+    }
+    document.getElementById('rt-up').onclick      = () => { oy += STEP; applyRt(); };
+    document.getElementById('rt-down').onclick    = () => { oy -= STEP; applyRt(); };
+    document.getElementById('rt-left').onclick    = () => { ox += STEP; applyRt(); };
+    document.getElementById('rt-right').onclick   = () => { ox -= STEP; applyRt(); };
+    document.getElementById('rt-reset').onclick   = () => { oy = 0; ox = 0; sc = 1.2; applyRt(); };
+    document.getElementById('rt-zoomin').onclick  = () => { sc = Math.min(2, sc + 0.15); applyRt(); };
+    document.getElementById('rt-zoomout').onclick = () => { sc = Math.max(0.3, sc - 0.15); applyRt(); };
+  })();
+</script>
+
+
+<div class="Subheadings"><h2>Firewall</h2>
+  <hr width="100%;" color="#d3d3d3" size="3">
+  <br>
+  <p>Basic pfSense Firewall configuration, essentially block all and allow what is needed</p>
+<br>
+
+<table><tr>
+  <th>Protocol</th>
+  <th>Source</th>
+  <th>Port</th>
+  <th>Destination</th>
+  <th>Port</th>
+  <th>Gateway</th>
+  <th>Description</th>
+  </tr>
+  <tr>
+    <td>*</td>
+    <td>*</td>
+    <td>*</td>
+    <td>LAN Address</td>
+    <td>8443</td>
+    <td>*</td>
+    <td>Anti-Lockout Rule (pfSense Default)</td>
+  </tr>
+  <tr>
+    <td>IPv4 TCP/UDP</td>
+    <td>LAN Subnets</td>
+    <td>*</td>
+    <td>192.168.10.2</td>
+    <td>53</td>
+    <td>*</td>
+    <td>Allow DNS - Pi-Hole</td>
+  </tr>
+  <tr>
+    <td>IPv4 TCP/UDP</td>
+    <td>LAN Subnets</td>
+    <td>*</td>
+    <td>*</td>
+    <td>53</td>
+    <td>*</td>
+    <td>Reject to Prevent DNS Bypass</td>
+  </tr>
+  <tr>
+    <td>IPv4 TCP</td>
+    <td>LAN Subnets</td>
+    <td>*</td>
+    <td>*</td>
+    <td>80, 433</td>
+    <td>*</td>
+    <td>Allow Common Internet Ports (HTTP(S)</td>
+  </tr>
+  <tr>
+    <td>IPv4 UDP</td>
+    <td>LAN Subnets</td>
+    <td>*</td>
+    <td>*</td>
+    <td>123</td>
+    <td>*</td>
+    <td>NTP Time Sync (SSL/HTTPS))</td>
+  </tr>
+  <tr>
+    <td>IPv4 ICMP</td>
+    <td>LAN Subnets</td>
+    <td>*</td>
+    <td>*</td>
+    <td>*</td>
+    <td>*</td>
+    <td>Enable Ping usage on the network</td>
+  </tr>
+  <tr>
+    <td>IPv4 TCP/UDP</td>
+    <td>192.168.10.2</td>
+    <td>*</td>
+    <td></td>
+    <td>53</td>
+    <td>*</td>
+    <td>Allow Pi-Hole Outbound DNS</td>
+  </tr>
+
+  <tr>
+    <td>IPv4*</td>
+    <td>LAN Subnets</td>
+    <td>*</td>
+    <td>*</td>
+    <td>*</td>
+    <td>*</td>
+    <td>Block all traffic not defined</td>
+  </tr>
+</table>
+
+<div class="Subheadings"><h2>Security Design</h2></div>
+<hr width="100%;" color="#d3d3d3" size="3">
+<br>
+<p>Our security design goes off the basis of "Block everything, allow what is needed" essentially we block all traffic that isn't required for operations. For example, we only allow the Pi-Hole to get DNS requests from LAN sources and the Pi-Hole to fetch outbound DNS sources only. We have locked all other port connections aside from 80, 443, 123, and 53 as these are the only vital connections we currently need for external/internal connections.</p>
+<br>
+      <hr width="100%;" color="#d3d3d3" size="6">
+</section>
+ 
+
+<section id="Implementation">
+      <div class="headings"><h1>Network Implementation</h1>
+        </div>
+        <hr width="100%;" color="#d3d3d3" size="3">
+        <br>
+       <div class="Subheadings"><h2>Host Hyper-V Settings</h2>
+        <hr width="100%;" color="#d3d3d3" size="3">
+        <br>
+      </div>
+      <h3>Virtual Switches</h3>
+       <ul>
+  <li><b>Wide Area Network (WAN)</b></li>
+    <ul>
+      <li><b>Name:</b> WAN</li>
+      <li><b>Connection Type:</b> External (Select Host NIC)</li>
+    </ul>
+  </li>
+  <li><b>Local Area Network (LAN)</b>
+    <ul>
+      <li><b>Name:</b> LAN</li>
+      <li><b>Connection Type:</b> Internal</li>
+    </ul>
+  </li>
+</ul>
+<br>
+  <h2>pfSense Setup</h2>
+  <hr width="100%;" color="#d3d3d3" size="3">
+  <br>
+  <h3>Hyper-V Settings</h3>
+<ul>
+  <li><b>Generation:</b> Generation 2</li>
+  <li><b>Memory</b> 2048MB (Static)</li>
+  <li><b>NIC:</b> WAN (Public) + LAN (Internal)</li>
+  <li><b>Storage:</b> 6GB (Static)</li>
+  <li><b>ISO:</b> pfSense-CE-2.7.2-RELEASE-amd64.iso</li>
+  <li><b>Processor:</b> 1</li>
+  <li><b>Security:</b> Secure Boot (Off) </li>
+  </li>
+</ul>
+      <br>
+  VLAN Setup: No WAN: hn0 LAN: hn1 Assign Interfaces: Custom IPv4 subnet, 192.168.10.1 (DHCP range 192.168.10.20 - 192.168.10.254)<br></p>
+<br>
+
+  <h2>Ubuntu Server Setup</h2>
+  <hr width="100%;" color="#d3d3d3" size="3">
+  <br>
+
+  
+    <h3>Hyper-V Settings:</h3>
+    <br>
+    <ul>
+  <li><b>Generation:</b> Generation 2</li>
+  <li><b>Memory</b> 4096MB (Static)</li>
+  <li><b>NIC:</b> LAN (Internal)</li>
+  <li><b>Storage:</b> 42GB+ (Static) + 5-20GB (Static) NAS Drive</li>
+  <li><b>ISO:</b> ubuntu-2.04.3-live-server-amd.iso</li>
+  <li><b>Processor:</b> 6</li>
+  <li><b>Security:</b> Secure Boot (Off) </li>
+  </li>
+</ul>
+  <br>
+  Post Install:
+  <br>
+
+  <div class="code-box">
+  <code>sudo apt update && apt upgrade -y</code>
+  </div>
+
+  <p>Optional (GUI):</p>
+
+  <div class="code-box">
+  <code>sudo apt install xubuntu-desktop -y</code>
+  </div>
+<br>
+  <h2>NAS Setup</h2>
+  <hr width="100%;" color="#d3d3d3" size="3">
+  <br>
+
+  <P>Install cockpit:</P>
+
+  <div class="code-box">
+  <code>sudo apt install cockpit -y</code>
+  </div>
+
+  <p>After install navigate to 192.168.10.3:9090 and mount NAS drive to /srv/storage location in ext4
+  <br>
+  Run:</p>
+
+  <div class="code-box">
+    <code>sudo apt install samba<br>
+    sudo adduser nasuser<br>
+    sudo smbpasswd -a nasuser<br>
+    sudo smbpasswd -e nasuser<br>
+   sudo chown -R nasuser:nasuser /srv/storage<br>
+    sudo chmod -R 775 /srv/storag<br></code>
+  </div>
+
+  <p>Update /etc/samba/smb.conf file with additional lines <a href="https://github.com/Jordynns/Wojtek-Network/blob/main/config/samba/smb.conf" target="blank"><strong>smb.conf</strong></a>
+    <br>
+    Login with:
+  </p>
+
+  <div class="code-box">
+  <code>nasuser:*****</code>
+  </div>
+<br>
+  <h2>Docker / Portainer Setup</h2>
+  <hr width="100%;" color="#d3d3d3" size="3">
+  <br>
+  <p>Run the docker.sh install script:</p>
+  
+ <div class="code-box">
+  <code>sudo curl -fsSL -o docker.sh https://raw.githubusercontent.com/Jordynns/Wojtek-Network/refs/heads/main/scripts/docker.sh | bash<br>
+sudo chmod +x docker.sh<br>
+./docker.sh</code>
+  </div>
+
+  <br>
+
+  <div class="tip-box">
+    <div class="tip-title">
+        💡 Tip
+    </div>
+
+    <p>
+        Navigate to 
+        <a href="https://192.168.10.3:9000/">https://192.168.10.3:9000/</a> 
+        to access the Web-GUI
+    </p>
+</div>
+
+<br>
+<h2>Containers</h2>
+<hr width="100%;" color="#d3d3d3" size="3">
+<br>
+
+<p>To Setup all containers, use the following docker-compose.yml and create a stack within Portainer:</p>
+
+<div class="code-box">
+  <code>version: "3.9"
+version: "3.9"<br>
+<br>
+services:<br>
+  pihole:<br>
+    image: pihole/pihole:latest<br>
+    container_name: pihole<br>
+    restart: unless-stopped<br>
+    networks:<br>
+      ip_vlan:<br>
+        ipv4_address: 192.168.10.2<br>
+    environment:<br>
+      TZ: "Etc/UTC"<br>
+      WEBPASSWORD: "Pa$$w0rd"<br>
+      FTLCONF_LOCAL_IPV4: "192.168.10.2"<br>
+      DNSMASQ_LISTENING: "all"<br>
+      QUERY_LOGGING: "true"<br>
+    volumes:<br>
+      - /docker/pihole/etc-pihole:/etc/pihole<br>
+      - /docker/pihole/etc-dnsmasq.d:/etc/dnsmasq.d<br>
+<br>
+  jellyfin:<br>
+    image: jellyfin/jellyfin<br>
+    container_name: jellyfin<br>
+    restart: unless-stopped<br>
+    user: "1000:1000"<br>
+    networks:<br>
+      ip_vlan:<br>
+        ipv4_address: 192.168.10.4<br>
+    environment:<br>
+      JELLYFIN_HTTP_PORT: "80"<br>
+    volumes:<br>
+      - /srv/storage/jellyfin/cache:/cache<br>
+      - /srv/storage/jellyfin/config:/config<br>
+      - /srv/storage/jellyfin/media:/media:ro<br>
+<br>
+  dashy:<br>
+    image: lissy93/dashy<br>
+    container_name: dashy<br>
+    restart: unless-stopped<br>
+    networks:<br>
+      ip_vlan:<br>
+        ipv4_address: 192.168.10.5<br>
+    environment:<br>
+      NODE_ENV: production<br>
+      UID: "1000"<br>
+      GID: "1000"<br>
+      PORT: "80"<br>
+    volumes:<br>
+      - /home/dashy/conf.yml:/app/user-data/conf.yml<br>
+      <br>
+  bitwarden:<br>
+   image: vaultwarden/server:latest<br>
+   container_name: bitwarden<br>
+   restart: unless-stopped<br>
+   networks:<br>
+     ip_vlan:<br>
+       ipv4_address: 192.168.10.6<br>
+   volumes:<br>
+     - /home/bitwarden/bw-data:/data<br>
+   environment:<br>
+    DOMAIN: "https://bitwarden.home.arpa"<br>
+    WEBSOCKET_ENABLED: "true"<br>
+    SIGNUPS_ALLOWED: "true"<br>
+    ADMIN_TOKEN: "Pa$$w0rd"<br>
+<br>
+  nginx-proxy-manager:<br>
+    image: jc21/nginx-proxy-manager:latest<br>
+    container_name: nginx-proxy-manager<br>
+    restart: unless-stopped<br>
+    networks:<br>
+      ip_vlan:<br>
+        ipv4_address: 192.168.10.20<br>
+    ports:<br>
+    - "80:80"<br>
+    - "443:443"<br>
+    - "81:81"<br>
+    volumes:<br>
+    - /home/nginx/data:/data<br>
+    - /home/nginx/letsencrypt:/etc/letsencrypt<br>
+<br>
+  grafana:<br>
+    image: grafana/grafana:latest<br>
+    container_name: grafana<br>
+    restart: unless-stopped<br>
+    networks:<br>
+      ip_vlan:<br>
+        ipv4_address: 192.168.10.7<br>
+    environment:<br>
+      - GF_SERVER_HTTP_PORT=3000<br>
+    volumes:<br>
+      - /home/grafana/data:/var/lib/grafana<br>
+<br>
+  node-exporter:<br>
+    image: prom/node-exporter:latest<br>
+    container_name: node-exporter<br>
+    restart: unless-stopped<br>
+    networks:<br>
+      ip_vlan:<br>
+        ipv4_address: 192.168.10.8<br>
+    command:<br>
+      - '--path.rootfs=/host'<br>
+    volumes:<br>
+      - '/:/host:ro,rslave'<br>
+<br>
+<br>
+networks:<br>
+  ip_vlan:<br>
+    external: true<br>
+    
+  </p>
+</code>
+</div>
+<br>
+<h2>Ubuntu Server Security</h2>
+<hr width="100%;" color="#d3d3d3" size="3">
+<br>
+
+<h3>Google Authenticator Installation (Terminal)</h3>
+<p>
+<br>
+<ul>
+  <li>Log in as sud user</li>
+  <li><b>Update the System: </b>sudo apt update</li>
+  <li><b>Install google authenticator:</b> sudo apt install google-authenticator</li>
+  <li><b>Check if the modul has bee installed correctly:</b> ls /lib/x86_64-linux-gnu/security | ge gogle #it should show: pam_google_authenticator.so</li>
+  </ul> 
+  <br>
+<h3>Google Authenticator Configuration for Sudo Users:</h3>
+
+Each user who will use the Server as sudo must generate his own secret. Download Google Authanticator from AppStore / Google Play Store<br>
+
+    <ul>
+      <li>Login as a specific user in a Terminal e.g.: marek: su - marek</li>
+    <li>google_authenticator</li>
+    <ul>
+       <li> Time-based tokens: YES</li>
+        <li>Open Google Authenticator App on your phone and scan QR code generated in terminal<br>
+        <li>Update .google_authenticator file?: YES</li>
+        <li>Disallow Multiple User?: YES</li>
+        <li>A new token generated evety 30 seconds?: YES</li>
+        <li>Enable rate limiting?: YES</li>
+        <li>Check the .google_authenticator file, set the owner to the user, and grant the owner read/write permissions:</li>
+        </ul>
+    </ul>
+</p>
+
+<br>
+
+<div class="code-box">
+  <code>ls -l ~/.google_authenticator<br>
+chmod 600 ~/.google_authenticator<br>
+chown marek:marek ~/.google_authenticator<br></code>
+  </div>
+
+  <br>
+  <ul>
+    <li>PAM (Pluggable Authentication Modules) Configuration for sudo users:<br>
+  <ul>
+    <li>edit sudo file: nano /etc/pam.d/sudo</li>
+    <li>add: auth required /lib/x86_64-linux-gnu/security/pam_google_authenticator.so below/above @include common-auth depends on whether you want the system to ask for a token before or after entering the password</li>
+    <li>Save file and exit.</li>
+    <li>Log out from terminal and log in again. Try to use sudo privileges and check if MFA work correctly e.g.: sudo ls or sudo apt update</li>
+</ul>
+</ul>
+  </p>
+  <br>
+
+ 
+<h2>Prometheus</h2>
+<hr width="100%;" color="#d3d3d3" size="3">
+<br>
+<p>Create a directory on server for saving metric history: sudo mkdir -p /home/prometheus/data and grant permissions sudo chown -R 65534:65534 /home/prometheus - create config file: nano /home/prometheus/prometheus.yml - paste below configuration: global: scrape_interval: 15s</p>
+<br>
+<h3>Scrape_Configs:</h3>
+<ul>
+  <li><b>job_name:</b> "prometheus" static_configs:</li>
+  <ul>
+  <li><b>targets:</b> ["localhost:9090"]</li>
+  </ul>
+  <li><b>job_name:</b> "node" static_configs:</li>
+  <ul>
+  <li><b>targets:</b> ["192.168.10.8:9100"]</li>
+  </ul>
+</ul>
+<br>
+Save file CTRL + S, CTRL + X<br>
+<br>
+<h3>Adding a Container with Prometheus in Portainer:</h3>
+<ul>
+  <li>Open Portainer --> Go to Containers --> Add Container</li>
+  <li>Name: prometheus, Image: prom/prometheus:latest,</li>
+  <li>Map additional port, Host: 9190, Container: 9090</li>
+  <li>Scroll down --> Advanced container settings: - Volumes: map additional volume --> continer /etc/prometheus/prometheus.yml select Bind, host: /home/prometheus/prometheus.yml select read-only - Map additional volume --> Container: /prometheus select Bind, Host: /home/prometheus/data, select writable - Go to Network tab --> Network: ip_vlan, IPv4 Address: 192.168.10.9 --> Deploy the container</li>
+  <li><b>docker restart prometheus</b></li>
+  <li><b>docker start prometheus</b></li>
+  <li>Open Prometheus from Portainer or http://192.168.10.9:9090 go to Status --> Target Health: both services Prometheus $ Node Exporter should be UP</li>
+</ul>
+<br>
+
+<h2>Grafana</h2>
+<hr width="100%;" color="#d3d3d3" size="3">
+<ul>
+  <li>Create a directory to store dashboards and datasources on the Server: sudo mkdir -p /home/grafana/data</li>
+  <li>grant permissions: sudo chown -R 472:472 /home/grafana</li>
+  <li>open Grafana in Portainer or http://192.168.10.7:3000 --> user:admin password: admin --> change a password</li>
+  <li>Add Prometheus as a Data source: Connection --> Add Sources --> Add data source --> select Prometheus</li>
+  <li>URL: http://192.168.10.9:9090, Save % Test</li>
+</ul>
+<br>
+
+<h2>Node Explorer</h2>
+<hr width="100%;" color="#d3d3d3" size="3">
+<br>
+<ul>
+  <li>Grafana --> Dashboards --> New --> Import</li>
+  <li>Dashboard ID: 1860, click Load</li>
+</ul>
+<br>
+
+<h2>Mistral local AI chatbot</h2>
+<hr width="100%;" color="#d3d3d3" size="3">
+<br>
+<ul>
+  <li>Install Ollama in the terminal: ```curl -fsSL <a href="https://ollama.com/install.sh">https://ollama.com/install.sh | sh</a></li>
+  <li>Restart terminal</li>
+  <li>Install Mistral model: ollama pull mistral - 4.1GB basic versrion or ollama pull mixtral - 40GB more advanced version</li>
+  <li>Open chat: ollama run mistral or ollama run mixtral</li>
+</ul> 
+
+<br>  
+<h2>Reverse Proxy</h2>
+<hr width="100%;" color="#d3d3d3" size="3">
+<br>
+<h3>Creation of Certificate Authority</h3>
+<p>Firstly you will need to create and generate a Local Certificate Authority, navigate to pfSense Web-GUI > System > Certificates > Authorities > +Add<br>
+<br>
+<ul>
+  <li>Descriptive Name: Local-CA</li>
+  <li>Method: Create an internal Certificate Authority</li>
+  <li>Key Type: RSA 2048</li>
+  <li>Digest Alorithm: sha256</li>
+  <li>Lifetime (days): 3650 (10 years)</li>
+  <li>Common Name: internal-ca</li>
+  <li>Personal Preference Settings:</li>
+  <ul>
+    <li>Country Code: GB</li>
+    <li>State: Scotland</li>
+    <li>City: Glasgow</li>
+    <li>Organisation: Wojtek</li>
+  </ul>
+</ul>
+
+<br>
+<div class="tip-box">
+    <div class="tip-title">
+        💡 Tip
+    </div>
+
+
+    <p>
+        Download and install the Local-CA certificate on endpoints e.g. Windows 11 client Open it > Local Machine > Certificate Store > Trusted Root Certification Authorities > Finish
+    </p>
+</div>
+<br>
+<h3>Service Certificates and Keys</h2>
+<p>Next generate individual Certificates & Keys for each service e.g. Pi-Hole, Bitwarden, etc.. Navigate to pfSense Web-GUI > System > Certificates > Certificates > +Add<br>
+<br>
+<ul>
+  <li>Method: Create an internal Certificate</li>
+  <li> Descriptive Name: ExampleService-cert</li>
+  <li>Certificate Authority: Local-CA</li>
+  <li>Key Type: RSA 2048</li>
+  <li>Digest Algorithm: sha256</li>
+  <li>Lifetime (days): 800</li>
+  <li>Common Name: ExampleURL.home.arpa</li>
+  <li>Personal Preference Settings:</li>
+    <ul>
+        <li>Country Code: GB</li>
+        <li>State: Scotland</li>
+        <li>City: Glasgow</li>
+        <li>Organisation: Wojtek</li>
+      <li>Certificate Type: Server Certificate</li>
+    </ul>
+</ul>
+<br>
+<div class="tip-box">
+    <div class="tip-title">
+        💡 Tip
+    </div>
+
+    <p>
+        Download both Certificate and Key for the Service
+</div>
+
+
+<br>
+<h3>Nginx Proxy Manager Configuration</h3>
+
+<p>Navigate towards the IP for Nginx Proxy Manager (192.168.10.20) and after creating/logging in navigate to Certificates > Add Certificate > Custom Certificate<br>
+<br>
+<ul>
+    <li>Name: ExampleService</li>
+    <li>Certificate Key: ExampleService-cert.key</li>
+    <li>Certificate: ExampleService-cert.crt</li>
+    <li>Intermediate Certificate: Local-CA</li>
+</ul>
+<br>
+After you have implemented the Service Certificate navigate to Hosts > Proxy Hosts > Add Proxy Host</p>
+<br>
+<ul>
+    <li>Details</li>
+    <ul>
+       <li> Domain Names: ExampleService.home.arpa</li>
+        <li>Scheme: http</li>
+        <li>Forward Hostname / IP: 192.168.10.x</li>
+        <li>Forward Port: xx</li>
+        <li>Options:</li>
+        <ul>
+            <li>Cache Assets: ❌</li>
+            <li>Block Common Exploits: ✅</li>
+            <li>Websockets Support: ✅</li>
+        </ul>
+    </ul>
+    <li>SSL</li>
+    <ul>
+        <li>SL Certificate: ExampleService</li>
+        <li>orce SSL: ✅</li>
+        <li>HTTP/2 Support: ✅</li>
+        <li> HSTS Enabled: ❌</li>
+        <li>HSTS Sub-domains: ❌</li>
+    </ul>
+</ul>
+
+<br>
+
+<div class="tip-box">
+    <div class="tip-title">
+        💡 Tip
+    </div>
+
+    <p>
+        Be sure to make the domain name to resolve to Nginx Proxy Manager IP within Pi-Hole</p>
+
+        <table> <tr>
+          <th>Domain</th>
+          <th>IP Address</th>
+          </tr>
+          <tr>
+            <td>ExampleService.home.arpa</td>
+            <td>192.168.10.20</td>
+        </table>
+</div>
+<br>
+<hr width="100%;" color="#d3d3d3" size="6">
+<br>
+</section>
+    
+
+<section id="Testing-Validation">
+      <div class="headings"><h1>Testing & Validation</h1>
+        <hr width="100%;" color="#d3d3d3" size="3">
+        <br>
+        </div>
+
+        <h2>Connectivity (Ping)</h2>
+      <p>To test connectivity between Network <-> Server and Client <-> Server you can utilise the ping command<br>
+<br>
+Windows 11 Client <-> Server:<br></p>
+
+<div class="code-box">
+  <code>ping 192.168.10.3</code>
+  </div>
+<br>
+  <p>Server <-> Windows 11 Client:</p>
+<br>
+  <div class="code-box">
+  <code>ping 192.168.10.21</code>
+  </div>
+<br>
+  <h2>DHCP</h2>
+
+  <p>Connecting clients to the network shall dish out IPs in the range of 192.168.10.20 - 192.168.10.254... The Windows 11 client shall have the IP of 192.168.10.21+</p>
+  <br>
+      <hr width="100%;" color="#d3d3d3" size="6">
+      <br>
+    </section>
+
+<section id="Maintenance-Backup">
+      <div class="headings"><h1>Maintenance & Backup</h1>
+        </div>
+        <hr width="100%;" color="#d3d3d3" size="3">
+        <br>
+        <h3>Create VM Snapshots and Checkpoints</h3>
+        <br|>
+      <p>Within Hyper-V to create a snapshot/checkpoint, you will Right Click VM > Checkpoint and that is it.</p>
+<br>
+      <h3>Updating Devices</h3>
+      <br>
+
+      <div class="tip-box">
+    <div class="tip-title">
+        💡 Tip
+        
+    </div>
+    <p>Before Updating any devices/machines, it is recommended to create a backup & restorepoint/checkpoint of the machine.</p>
+    </div>
+    <br>
+    <p>Linux:</p>
+    <br>
+    <div class="code-box">
+  <code>sudo apt update && apt upgrade -y</code>
+  </div>
+  <br>
+  <p>Windows: Updates > Download & Install<br>
+<br>
+Docker Containers: Redeploy the stack, keep persistent data</p>
+      <br>
+      <hr width="100%;" color="#d3d3d3" size="6">
+      <br>
+    </section>
+
+<section id="Troubleshooting">
+     <div class="headings"><h1>Troubleshooting</h1>
+      </div>
+      <hr width="100%;" color="#d3d3d3" size="3">
+      <br>
+      <h2>Common Issues</h2>
+      <hr width="100%;" color="#d3d3d3" size="3">
+      <br>
+      <h3>Mapping NAS</h3>
+      <p>To Map the NAS on Windows Run in CMD:</p>
+      <br>
+      
+    <div class="code-box">
+  <code>net use Z: \\192.168.10.3\nas /persistent:yes</code>
+  </div>
+  <br>
+  
+  <h3>Pi-Hole Password Wrong</h3>
+  <p>To update or change the password use the following command (inside Portainer Docker terminal):</p>
+<br>
+  <div class="code-box">
+  <code>pihole setpassword</code>
+  </div>
+<br>
+  <h2>Pi-Hole Filter Lists Not Updating</h2>
+  <p>To update the lists after adding, head to Tools > Update Gravity and update the lists or run the command:</p>
+  <br>
+  <div class="code-box">
+  <code>pihole -g</code>
+  </div>
+<br>
+      <hr width="100%;" color="#d3d3d3" size="6">
+      <br>
+    </section>
+
+<section id="Conclusion">
+      <div class="headings"><h1>Conclusion</h1>
+        <hr width="100%;" color="#d3d3d3" size="3">
+        <br>
+        </div>
+        <h3>Achievements</h3>
+        <ul>
+          <li>Virtualisation of Machines</li>
+          <li>Learned Basic Firewall Routing</li>
+          <li> Router Configuration through pfSense</li>
+          <li>Containerising Services through Docker</li>
+          <li>Learn How to Create a NAS through Samba</li>
+          <li>Reverse Proxying through Nginx Proxy Manager with Certificates</li>
+        </ul>   
+    <br>
+        <h3>Future Improvements</h3>
+        <ul>
+          </li>Improvements that can be added to the Project:</li>
+          <li>Secure RDP via Tunneling Parsec / Moonlight</li>
+          <li>Securley host services via Cloud Flared tunneling</li>
+          <li>Implement Cloud Flare Zero Trust to ensure a secured login to publically hosted services</li>
+          <li>Additional Docker Services e.g. NextCloud (Self-hosted Cloud Storage Solution)</li>
+        </ul>
+  <br>
+      <hr width="100%;" color="#d3d3d3" size="6">
+      <br>
+  
+</section>
+
+<section id="Appendices">
+      <div class="headings"><h1>Appendices</h1>
+        <hr width="100%;" color="#d3d3d3" size="3">
+        <br>
+        </div>
+        <h3>Full Configurations</h3>
+        <p>Check out <a href="https://github.com/Jordynns/Wojtek-Network/tree/main/config" target="blank"><strong>Configs</strong></a> within the repository to find all of our configuratio</p>
+        </div>
+        <br>
+      <h3>References</h3>
+      1. <a href="https://docs.netgate.com/pfsense/en/latest/" target="blank"><strong>pfSense Documentation</strong></a><br>
+      2. <a href="https://docs.docker.com/engine/network/" target="blank"><strong>Docker Network Documentation</strong></a><br>
+      3. <a href="https://docs.portainer.io/start/install-ce/server/docker/linux" target="blank"><strong>Portainer CE with Docker Documentation</strong></a><br>
+      4. <a href="https://docs.pi-hole.net/" target="blank"><strong>Pi-Hole Documentation</strong></a><br>
+      5. <a href="https://nginxproxymanager.com/guide/" target="blank"><strong>Nginx Proxy Manager Documentation</strong></a><br>
+      6. <a href="https://mermaid.js.org/" target="blank"><strong>Mermaid Diagram</strong></a><br>
+      <br>
+      <hr width="100%;" color="#d3d3d3" size="6">
+      <br>
+    </section>
+     </main>
+</section>
+
+
+</main>
+
+<header>
+           <div class="header-container">
+        <a href="index.html"><img src="resources/Logo.png" alt="Logo" style="height:150px;width:150px;"></a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Documentation.html">Documentation</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                
+            </ul>
+        </nav>
+        </div>
+</header>
+
+        <footer>
+    <p>&copy; 2026 Wojtek All rights reserved.</p>
+</footer>
+</body>
+</html>
