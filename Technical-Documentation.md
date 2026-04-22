@@ -471,7 +471,7 @@ networks:
 
 ### Google Authenticator Configuration (Terminal)
 
-- Log in as Sudo user
+- Log in as sudo user
 - Update the system
 ```
 sudo apt update
@@ -527,7 +527,7 @@ ls /lib/x86_64-linux-gnu/security | grep google #it should show: pam_google_auth
       sudo mkdir -p /home/prometheus/data
       sudo chown -R 65534:65534 /home/prometheus
       ```
-      - create config file
+      - Create config file
       ```
       nano /home/prometheus/prometheus.yml
       ```
@@ -544,9 +544,6 @@ ls /lib/x86_64-linux-gnu/security | grep google #it should show: pam_google_auth
    - job_name: "node"
      static_configs:
        - targets: ["192.168.10.8:9100"]
-
- save file CTRL + S, CTRL + X
-        
 
  Adding a Container with Prometheus in Portainer:
   - Open Portainer --> Go to Containers --> Add Container
