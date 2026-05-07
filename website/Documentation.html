@@ -1043,26 +1043,374 @@ After you have implemented the Service Certificate navigate to Hosts > Proxy Hos
         </div>
 
         <h2>Connectivity (Ping)</h2>
-      <p>To test connectivity between Network <-> Server and Client <-> Server you can utilise the ping command<br>
+        <hr width="100%;" color="#d3d3d3" size="3">
+        <br>
+      <p>Verify bidirectional connectivity between all key network nodes using ICMP.<br>
 <br>
-Windows 11 Client <-> Server:<br></p>
+<p>Windows 11 Client > pfSense Gateway:<br></p>
 
 <div class="code-box">
+  <code>ping 192.168.10.1</code>
+  </div>
+<br>
+
+  <p>Windows 11 Client → Ubuntu Server:</p>
+  <div class="code-box">
   <code>ping 192.168.10.3</code>
   </div>
 <br>
-  <p>Server <-> Windows 11 Client:</p>
-<br>
-  <div class="code-box">
+<p>Ubuntu Server → Windows 11 Client:</p>
+<div class="code-box">
   <code>ping 192.168.10.21</code>
   </div>
 <br>
-  <h2>DHCP</h2>
+ 
+<p>Ubuntu Server → Internet:</p>
+  <div class="code-box">
+  <code>ping 8.8.8.8<br>
+  ping google.com</code>
+  </div>
+<br>
 
-  <p>Connecting clients to the network shall dish out IPs in the range of 192.168.10.20 - 192.168.10.254... The Windows 11 client shall have the IP of 192.168.10.21+</p>
+<table><tr>
+  <th>Test</th>
+  <th>Source</th>
+  <th>Destination</th>
+  <th>Expected</th>
+  <th>Result</th>
+  </tr>
+  <tr>
+    <td>Client → Gateway</td>
+    <td>Win11</td>
+    <td>192.168.10.1</td>
+    <td>Reply received</td>
+    <td>✅ Pass</td>
+  </tr>
+  <tr>
+    <td>Client → Server</td>
+    <td>Win11</td>
+    <td>192.168.10.3</td>
+    <td>Reply received</td>
+    <td>✅ Pass</td>
+  </tr>
+  <tr>
+    <td>Server → Client</td>
+    <td>Ubuntu</td>
+    <td>192.168.10.21</td>
+    <td>Reply received</td>
+    <td>✅ Pass</td>
+  </tr>
+  <tr>
+    <td>Server → Internet</td>
+    <td>Ubuntu</td>
+    <td>8.8.8.8</td>
+    <td>Reply received</td>
+    <td>✅ Pass</td>
+  </tr>
+</table>
+<br>
+<div class="tip-boxc">
+    <div class="tip-titlec">
+        ⓘ Note
+    </div>
+    <p>If ping to the internet fails but internal ping succeeds, check the pfSense WAN interface and outbound firewall rules.</p>
+</div>
+<br>
+  <h2>DHCP</h2>
+<hr width="100%;" color="#d3d3d3" size="3">
+<br>
+  <p>Connecting a client to the LAN should automatically assign an IP in the range <b>192.168.10.20 – 192.168.10.254.</b></p>
   <br>
-      <hr width="100%;" color="#d3d3d3" size="6">
-      <br>
+  <p>Verify on Windows 11 Client:</p>
+  <div class="code-box">
+  <code>ipconfig /all</code>
+  </div>
+<br>
+<p>Check active DHCP leases in pfSense: Navigate to Status > DHCP Leases in the pfSense Web GUI.</p>
+<br>
+
+<table><tr>
+  <th>Test</th>
+  <th>Expected</th>
+  <th>Result</th>
+  </tr>
+  <tr>
+    <td>IP assigned automatically</td>
+    <td>192.168.10.20–254 range</td>
+    <td>✅ Pass</td>
+  </tr>
+  <tr>
+    <td>Client → Server</td>
+    <td>Win11</td>
+    <td>✅ Pass</td>
+  </tr>
+  <tr>
+    <td>Default gateway set</td>
+    <td>192.168.10.1</td>
+    <td>✅ Pass</td>
+  </tr>
+  <tr>
+    <td>DNS server set</td>
+    <td>192.168.10.2 (Pi-Hole)</td>
+    <td>✅ Pass</td>
+  </tr>
+  <tr>
+    <td>Lease visible in pfSense</td>
+    <td>Client hostname + MAC listed</td>
+    <td>✅ Pass</td>
+  </tr>
+</table>
+
+<br>
+<div class="tip-boxc">
+    <div class="tip-titlec">
+        ⓘ Note
+    </div>
+    <p>Pi-Hole query logs are viewable at <b> http://192.168.10.2/admin </b> under Query Log. Blocked queries will appear highlighted in red.</p>
+</div>
+<br>
+
+<h2>DNS Filtering & Pi-Hole Validation</h2>
+<hr width="100%;" color="#d3d3d3" size="3">
+<br>
+<p>Confirm DNS queries route through Pi-Hole, ad domains are blocked, and internal names resolve correctly.</p>
+<br>
+
+<p>Verify DNS resolution goes through Pi-Hole</p>
+<div class="code-box">
+  <code>nslookup google.com 192.168.10.2</code>
+  </div>
+  <br>
+
+  <p>Verify a known ad domain is blocked:</p>
+  <div class="code-box">
+  <code>nslookup doubleclick.net 192.168.10.2</code>
+  </div>
+  <br>
+
+  <p>Expected response: <b>0.0.0.0</b> or <b>NXDOMAIN</b></p>
+  <br>
+  <p>Verify DNS bypass is blocked (direct external DNS should fail):</p>
+  <div class="code-box">
+  <code>nslookup google.com 8.8.8.8</code>
+  </div>
+  <br>
+
+  <p>Expected: Request times out, pfSense rejects port 53 traffic to any IP other than Pi-Hole.</p>
+<br>
+<p>Verify internal domain resolution:</p>
+<div class="code-box">
+  <code>nslookup jellyfin.home.arpa 192.168.10.2</code>
+  </div>
+  <br>
+
+  <p>Expected: Returns <b>192.168.10.20</b> (Nginx Proxy Manager)</p>
+  <br>
+<table><tr>
+  <th>Test</th>
+  <th>Expected</th>
+  <th>Result</th>
+  </tr>
+  <tr>
+    <td>DNS resolves via Pi-Hole</td>
+    <td>Valid response from 192.168.10.2</td>
+    <td>✅ Pass</td>
+  </tr>
+  <tr>
+    <td>CAd domain blocked</td>
+    <td>0.0.0.0 or NXDOMAIN returned</td>
+    <td>✅ Pass</td>
+  </tr>
+  <tr>
+    <td>DNS bypass rejected</td>
+    <td>Timeout on port 53 to 8.8.8.8</td>
+    <td>✅ Pass</td>
+  </tr>
+  <tr>
+    <td>Internal domain resolves</td>
+    <td>Returns 192.168.10.20</td>
+    <td>✅ Pass</td>
+  </tr>
+  <tr>
+    <td>Lease visible in pfSense</td>
+    <td>Client hostname + MAC listed</td>
+    <td>✅ Pass</td>
+  </tr>
+</table>
+<br>
+
+<div class="tip-boxc">
+    <div class="tip-titlec">
+        ⓘ Note
+    </div>
+    <p>Pi-Hole query logs are viewable at <b>http://192.168.10.2/admin</b>  under Query Log. Blocked queries will appear highlighted in red.</p>
+</div>
+<br>
+
+<h2>Firewall Rule Testing</h2>
+<hr width="100%;" color="#d3d3d3" size="3">
+<br>
+<p>Validate that pfSense enforces the defined ruleset, permitting only expected traffic and silently dropping everything else.</p>
+<br>
+<p>Confirm HTTP/HTTPS access works (should be allowed):</p>
+<div class="code-box">
+  <code>curl -I https://google.com<br>
+  curl -I http://google.com</code>
+</div>
+  <br>
+  <p>Confirm a non-permitted port is blocked (e.g. port 25 outbound):</p>
+  <div class="code-box">
+  <code>nc -zv -w 3 8.8.8.8 25</code>
+  </div>
+  <br>
+  <p>Expected: Connection timed out</p>
+  <br>
+  <p>Confirm DNS bypass is blocked:</p>
+<div class="code-box">
+  <code>nslookup google.com 1.1.1.1</code>
+</div>
+<p>Expected: Times out</p>
+
+<p>Confirm NTP sync is permitted (port 123):</p>
+<div class="code-box">
+  <code>sudo timedatectl status</code>
+</div>
+<br>
+<p>Expected: <b>System clock synchronized: yes</b></p>
+<br>
+<table><tr>
+  <th>Rule</th>
+  <th>Protocol</th>
+  <th>Port</th>
+  <th>Expected Behaviour</th>
+  <th>Results</th>
+  </tr>
+  <tr>
+    <td>Allow HTTP/HTTPS</td>
+    <td>TCP</td>
+    <td>80, 443</td>
+    <td>Permitted</td>
+    <td>✅ Pass</td>
+  </tr>
+  <tr>
+    <td>Allow DNS to Pi-Hole only</td>
+    <td>TCP/UDP</td>
+    <td>53</td>
+    <td>Permitted to 192.168.10.2 only</td>
+    <td>✅ Pass</td>
+  </tr>
+  <tr>
+    <td>Block external DNS</td>
+    <td>TCP/UDP</td>
+    <td>53</td>
+    <td>Rejected / Timeout</td>
+    <td>✅ Pass</td>
+  </tr>
+  <tr>
+    <td>Allow NTP</td>
+    <td>UDP</td>
+    <td>123</td>
+    <td>Permitted</td>
+    <td>✅ Pass</td>
+  </tr>
+  <tr>
+    <td>Allow ICMP</td>
+    <td>ICMP</td>
+    <td>*</td>
+    <td>Ping succeeds</td>
+    <td>✅ Pass</td>
+  </tr>
+  <tr><td>Block all other traffic</td>
+    <td>*</td>
+    <td>*</td>
+    <td>Dropped</td>
+    <td>✅ Pass</td>
+  </tr>
+</table>
+<br>
+<div class="tip-boxc">
+    <div class="tip-titlec">
+        ⓘ Note
+    </div>
+    <p>Firewall block events can be reviewed under <b>Status > System Logs > Firewall</b> in the pfSense Web GUI.</p>
+</div>
+<br>
+
+<h2>HTTPS / Reverse Proxy & Certificate Validation</h2>
+<hr width="100%;" color="#d3d3d3" size="3">
+<p>Confirm services are accessible via HTTPS with valid locally-signed certificates and that HTTP correctly redirects.</p>
+<br>
+
+<p>From the Windows 11 Client browser, navigate to a proxied service:</p>
+<div class="code-box">
+  <code>https://jellyfin.home.arpa<br>
+https://bitwarden.home.arpa<br>
+https://dashy.home.arpa</code>
+</div>
+<br>
+
+<p>Inspect the certificate chain from the command line:</p>
+<div class="code-box">
+  <code># Windows (PowerShell)<br>
+Test-NetConnection -ComputerName jellyfin.home.arpa -Port 443<br>
+<br>
+# Linux / Ubuntu Server<br>
+curl -vI https://jellyfin.home.arpa 2>&1 | grep -E "issuer|subject|SSL|expire"<br></code>
+</div>
+  <br>
+
+
+<p>Expected: Issued by <b>internal-ca</b>/ <b>Local-CA</b></p>
+<br>
+<p>Verify HTTP redirects to HTTPS:</p>
+
+<code>curl -I http://jellyfin.home.arpa</code>
+</div>
+  <br>
+<p>Expected: <b>301 Moved Permanently</b> or <b>302 Found</b> with <b>Location: https://...</b></p>
+<br>
+<table><tr>
+  <th>Test</th>
+  <th>Expected</th>
+  <th>Result</th>
+  </tr>
+  <tr>
+    <td>Service loads over HTTPS</td>
+    <td>Page loads without error</td>
+    <td>✅ Pass</td>
+  </tr>
+  <tr>
+    <td>Page loads without error</td>
+    <td>Local-CA (internal-ca)</td>
+    <td>✅ Pass</td>
+  </tr>
+  <tr>
+    <td>HTTP redirects to HTTPS</td>
+    <td>301/302 with HTTPS location</td>
+    <td>✅ Pass</td>
+  </tr>
+  <tr>
+    <td>Browser shows secure padlock</td>
+    <td>No certificate warning shown</td>
+    <td>✅ Pass</td>
+  </tr>
+  <tr>
+    <td>HTTP/2 active</td>
+    <td>Protocol shown as h2 in browser dev tools</td>
+    <td>✅ Pass</td>
+  </tr>
+</table>
+<br>
+<div class="tip-boxc">
+    <div class="tip-titlec">
+        ⓘ Note
+    </div>
+    <p>If the browser shows a certificate warning, confirm the Local-CA certificate has been installed under Trusted Root Certification Authorities<br>
+       on the client machine <b>(certmgr.msc > Local Machine)</b>.</p>
+</div>
+<br>
+<hr width="100%;" color="#d3d3d3" size="6">
+
     </section>
 
 <section id="Maintenance-Backup">

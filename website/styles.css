@@ -598,3 +598,24 @@ tr:nth-child(even) {
 
 .tip-boxb a { color: #3b82f6; text-decoration: none; }
 .tip-boxb a:hover { text-decoration: underline; }
+
+.tip-boxc{
+    background: #ffffff;
+    border-left: 4px solid #2248c5;
+    padding: 18px 20px;
+    color: #000000;
+    max-width: 700px;
+}
+
+.tip-titlec {
+    color: #0d2cda;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tip-boxc a { color: #3b82f6; text-decoration: none; }
+.tip-boxc a:hover { text-decoration: underline; }
+
