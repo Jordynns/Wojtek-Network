@@ -9,7 +9,7 @@
   [![Uptime](https://img.shields.io/badge/Uptime-99.9%25-blueviolet?style=for-the-badge)](https://github.com/Jordynns/Wojtek-Network)
   [![Security](https://img.shields.io/badge/Encryption-AES--256-orange?style=for-the-badge&logo=linux-foundation)](https://github.com/Jordynns/Wojtek-Network)
   
-  [🚀 Quick Access](#quick-access) • [❓Troubleshooting](#common-fixes)
+  [🚀Quick Access](#quick-access) • [🛡️Security Onboarding](#security-onboarding) • [📂Network Storage (NAS)](#network-storage-nas) • [❓Troubleshooting](#common-fixes) •
 </div>
 
 ---
@@ -18,7 +18,7 @@
 <h2>🚀 Quick Access (Dashboard)</h2>
 </div>
 
-We use Dashy as our central hub. You don't need to remember every IP address; just bookmark the dashboard.
+The Dashy dashboard acts as our central hub. You don't need to remember every IP address; just bookmark the dashboard.
 
 * Primary URL: https://dashy.home.arpa
 * Direct IP: `http://192.168.10.5`
@@ -34,7 +34,7 @@ We use Dashy as our central hub. You don't need to remember every IP address; ju
 </div>
 
 > [!IMPORTANT]
-> **Mandatory Setup:** Because we use a private Certificate Authority, your browser will show a "Your connection is not private" warning until you trust our root certificate.
+> **Mandatory Setup:** A private Certificate Authority is used, your browser will show a "Your connection is not private" warning until you trust the root certificate.
 
 **Trusting the Wojtek Certificate**
 
