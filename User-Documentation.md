@@ -2,7 +2,7 @@
   <img src="logo.png" alt="Wojtek Network Logo" width="500"/>
 
   ### **The User Documentation**
-  *A userc guide for accessing media, storage, and security services.*
+  *A user guide for accessing media, storage, and security services.*
 
   [![Status](https://img.shields.io/badge/Network-Operational-success?style=for-the-badge&logo=uptime-kuma)](https://github.com/Jordynns/Wojtek-Network)
   [![Security Level](https://img.shields.io/badge/Security-Enterprise--Grade-blue?style=for-the-badge)](https://github.com/Jordynns/Wojtek-Network)
