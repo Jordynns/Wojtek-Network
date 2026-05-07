@@ -221,7 +221,7 @@ Each service has been allocated their own IP to allow for easier management and 
 
 ## Routing
 
-When you access a service like `jellyfin.home.arpa`, your request follows this secure path:
+Accessing a service like `jellyfin.home.arpa`, the request follows this secure path:
 ```mermaid
 graph TD
     User((User Device)) -->|DNS Query| PiHole[Pi-hole: Filter Ads]
@@ -260,7 +260,7 @@ Basic pfSense Firewall configuration, essentially block all and allow what is ne
 | IPv4 *    	  | LAN Subnets 	|   *  	| *            	| *       	| *       	| Block all traffic not defined        	|
 
 ## Security Design
-Our security design goes off the basis of "Block everything, allow what is needed" essentially we block all traffic that isn't required for operations. For example, we only allow the Pi-Hole to get DNS requests from LAN sources and the Pi-Hole to fetch outbound DNS sources only. We have locked all other port connections aside from 80, 443, 123, and 53 as these are the only vital connections we currently need for external/internal connections.
+The security design goes off the basis of "Block everything, allow what is needed" essentially we block all traffic that isn't required for operations. For example, it only allows the Pi-Hole to get DNS requests from LAN sources and the Pi-Hole to fetch outbound DNS sources only. All other port connections aside from 80, 443, 123, and 53 as these are the only vital connections that are currently need for external/internal connections.
 
 <hr/>
 
@@ -594,7 +594,7 @@ curl -fsSL https://ollama.com/install.sh | sh
 ## Reverse Proxy
 
 ### Creation of Certificate Authority
-Firstly you will need to create and generate a Local Certificate Authority, navigate to pfSense Web-GUI > System > Certificates > Authorities > +Add
+Firstly create and generate a Local Certificate Authority, navigate to pfSense Web-GUI > System > Certificates > Authorities > +Add
 
 - Descriptive Name: Local-CA
 - Method: Create an internal Certificate Authority
